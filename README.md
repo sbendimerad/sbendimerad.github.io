@@ -39,20 +39,19 @@ Same file, without `external:` and without the include line. Write the post belo
 In `projects/index.qmd`, copy one card block and edit it.
 
 **Course pages (generated, do not edit by hand)**
-Course pages are built from the course repos by `tools/build_courses.py`. The originals are never modified.
+Each course lives in its own repo. Changes are made **there**, on the `website` branch, and every
+notebook is re-run before pushing. The website only reads that branch:
 
 ```bash
-gh repo clone sbendimerad/python-course-instructor /tmp/pci -- --depth 1
-python3 tools/build_courses.py /tmp/pci
+gh repo clone sbendimerad/python-course-instructor /tmp/pci -- --branch website
+python3 tools/build_courses.py python /tmp/pci
 quarto preview
 ```
 
-The script merges each lesson with its exercises, puts every solution in a collapsed
-"Show solution" box, makes a zip (notebooks + data) per section, and runs a privacy scan
-(emails, keys, Jedha links). It stops if anything is found.
-
-New section: add it to `COURSES` at the top of `tools/build_courses.py` and to the course
-sidebar in `_quarto.yml`, then run the script again.
+The script makes, per section, a lesson page and an exercises page (hints and solutions folded),
+plus a zip of the notebooks and data. It also generates the course overview and the sidebar
+(`courses/_sidebars.yml`), and runs a privacy scan (emails, keys, Jedha links) that stops the
+build if anything is found. New section: add it to `COURSES` at the top of the script.
 
 **Publish**
 Commit and push to `main`. The site is live a minute or two later.
