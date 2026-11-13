@@ -1,0 +1,77 @@
+<%
+// Home page: "Start here" cards + Writing tabs, built from writing/*.qmd.
+// Items arrive sorted by date (newest first).
+const href = (it) => it.external || it.path;
+const featured = items.find(it => it.featured) || items[0];
+const latest = items.find(it => it !== featured) || items[0];
+const themes = ["Production ML", "Responsible AI", "AI in health", "Careers & learning"];
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const cat = (it) => (it.categories && it.categories[0]) || "";
+%>
+```{=html}
+<section class="sb-section">
+<h2 class="sb-h2" style="margin-bottom:24px">Start here</h2>
+<div class="sb-cards">
+<a class="sb-card" href="courses/index.html">
+<span class="sb-label">Free learning path</span>
+<h3>Not sure where to start?</h3>
+<p>Python, Math for AI, Machine Learning, Deep Learning. Free, with exercises and solutions.</p>
+</a>
+<a class="sb-card" href="<%= href(featured) %>">
+<span class="sb-label">Featured article</span>
+<h3><%= featured.title %></h3>
+<p><%= featured.source %></p>
+</a>
+<a class="sb-card" href="<%= href(latest) %>">
+<span class="sb-label">Latest · <%= cat(latest) %></span>
+<h3><%= latest.title %></h3>
+<p><%= latest.source %></p>
+</a>
+</div>
+</section>
+
+<section class="sb-section">
+<div class="sb-head">
+<h2 class="sb-h2">Writing</h2>
+<a href="writing/index.html">All posts →</a>
+</div>
+<div class="sb-tabs" role="tablist" aria-label="Writing themes">
+<% themes.forEach((t, i) => { %>
+<button type="button" role="tab" id="tab-<%= slug(t) %>" aria-controls="panel-<%= slug(t) %>" aria-selected="<%= i === 0 ? 'true' : 'false' %>" tabindex="<%= i === 0 ? 0 : -1 %>"><%= t %></button>
+<% }) %>
+</div>
+<% themes.forEach((t, i) => { const list = items.filter(it => (it.categories || []).includes(t)).slice(0, 3); %>
+<div class="sb-rows" role="tabpanel" id="panel-<%= slug(t) %>" aria-labelledby="tab-<%= slug(t) %>" <%= i === 0 ? '' : 'hidden' %>>
+<% list.forEach(it => { %>
+<a class="sb-row" href="<%= href(it) %>">
+<span class="t"><%= it.title %></span>
+<span class="m"><%= it.date %></span>
+</a>
+<% }) %>
+</div>
+<% }) %>
+</section>
+
+<script>
+(function () {
+var tabs = document.querySelectorAll('.sb-tabs [role="tab"]');
+function select(tab) {
+tabs.forEach(function (t) {
+var on = t === tab;
+t.setAttribute('aria-selected', on ? 'true' : 'false');
+t.tabIndex = on ? 0 : -1;
+document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+});
+}
+tabs.forEach(function (t, i) {
+t.addEventListener('click', function () { select(t); });
+t.addEventListener('keydown', function (e) {
+var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+if (!d) return;
+var n = tabs[(i + d + tabs.length) % tabs.length];
+select(n); n.focus();
+});
+});
+})();
+</script>
+```

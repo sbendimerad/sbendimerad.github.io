@@ -1,0 +1,10 @@
+---
+title: "Introduction to fMRI Data Analysis with Python"
+date: 2026-01-16
+categories: ["AI in health"]
+description: "A hands-on introduction to analysing fMRI data with Python."
+source: "Data Science Collective (Medium)"
+external: https://medium.com/data-science-collective/introduction-to-fmri-data-analysis-with-python-c8683c40ef89
+---
+
+{{< include _article.qmd >}}

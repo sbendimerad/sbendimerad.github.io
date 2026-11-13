@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+// Light theme (default). Layout rules live in _sb-rules.scss, shared with dark.
+
+$sb-bg:        #FFFFFF;
+$sb-text:      #111111;
+$sb-text-2:    #444444;
+$sb-text-3:    #666666;
+$sb-divider:   #EEEEEE;
+$sb-border:    #E5E5E5;
+$sb-border-2:  #D4D4D4;
+$sb-surface:   #F6F6F6;
+$sb-surface-2: #F2F2F2;
+$sb-accent:    #3B47C4;
+$sb-highlight: #DCE0FA;
+$sb-btn-bg:    #111111;
+$sb-toggle-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'/%3E%3C/svg%3E");
+$sb-btn-text:  #FFFFFF;
+
+$body-bg: $sb-bg;
+$body-color: $sb-text;
+$primary: $sb-accent;
+$link-color: $sb-accent;
+$navbar-bg: $sb-bg;
+$navbar-fg: $sb-text-2;
+$navbar-hl: $sb-text;
+$footer-bg: $sb-bg;
+$footer-fg: $sb-text-3;
+$code-bg: $sb-surface;
+$code-color: #8B2C6E;
+$border-color: $sb-divider;
+$callout-color-note: $sb-accent;
+
+/*-- scss:rules --*/
+@import "sb-rules";

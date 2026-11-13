@@ -1,0 +1,63 @@
+---
+pagetitle: "Work with me — Sabrine Bendimerad"
+description: "Training, talks and consulting to take AI from prototype to production. In English, French and Arabic, on-site or remote."
+page-layout: custom
+---
+
+```{=html}
+<div class="sb-mid">
+
+<section style="display:flex;flex-direction:column;gap:16px">
+  <h1 class="sb-h1">Work with me</h1>
+  <p class="sb-lead">I help teams take AI from prototype to production, and teach them to do it themselves.</p>
+  <p class="sb-muted" style="margin:0;font-size:16px">Available in English, French and Arabic · on-site or remote, internationally.</p>
+</section>
+
+<section class="sb-offers">
+  <div class="sb-offer">
+    <h2>Training &amp; workshops</h2>
+    <div>
+      <p>Hands-on training in Python, machine learning, deep learning and ML in production, for teams, bootcamps and universities.</p>
+      <span class="f">Half-day to multi-week · on-site or remote</span>
+    </div>
+  </div>
+  <div class="sb-offer">
+    <h2>Talks</h2>
+    <div>
+      <p>Taking AI from research to production, responsible AI, AI in health, women in tech.</p>
+      <span class="f">Conferences, companies, meetups, webinars</span>
+    </div>
+  </div>
+  <div class="sb-offer">
+    <h2>Consulting</h2>
+    <div>
+      <p>Review of an AI project, pipeline and MLOps choices, and the path from prototype to a system in production.</p>
+      <span class="f">Short missions · audits · advisory</span>
+    </div>
+  </div>
+  <div class="sb-offer">
+    <h2>Technical writing</h2>
+    <div>
+      <p>Clear, accurate articles and guides on AI and machine learning for technical audiences. Recent client work for kapa.ai.</p>
+      <span class="f">Articles · guides · documentation</span>
+    </div>
+  </div>
+</section>
+
+<section class="sb-clients">
+  <p class="k">I've trained and worked with</p>
+  <p class="v">Jedha · EFREI · PSB · Université Paris Cité · La Poste · Société Générale</p>
+</section>
+
+<section class="sb-contact">
+  <h2 class="sb-h2">Tell me about your project</h2>
+  <p>A few lines are enough. I reply within a few days.</p>
+  <div class="sb-btns">
+    <a class="sb-btn sb-btn-primary" href="mailto:sabrine.bendimerad1@gmail.com">Email me</a>
+    <a class="sb-btn" href="https://www.linkedin.com/in/sabrine-bendimerad-43570b107/">LinkedIn</a>
+  </div>
+  <p class="sb-muted" style="font-size:15px">sabrine.bendimerad1@gmail.com</p>
+</section>
+
+</div>
+```

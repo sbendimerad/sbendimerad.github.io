@@ -1,0 +1,28 @@
+---
+title: "Writing"
+description: "Articles on machine learning in production, responsible AI, AI in health, and careers in AI. Originals on Towards Data Science, Medium and kapa.ai."
+body-classes: sb-hide-title
+listing:
+  id: writing
+  contents:
+    - "*.qmd"
+    - "!index.qmd"
+  template: ../_writing.ejs
+  sort: "date desc"
+  date-format: "MMM YYYY"
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  feed: true
+  fields: [title, date, categories, description, source, external, path]
+---
+
+```{=html}
+<header class="sb-writing-head">
+  <h1 class="sb-h1">Writing</h1>
+  <p class="sb-lead" style="margin-top:14px">On machine learning in production, responsible AI, AI in health, and careers in AI. Each link goes to the original article.</p>
+</header>
+```
+
+::: {#writing}
+:::

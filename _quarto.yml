@@ -1,0 +1,73 @@
+metadata-files:
+  - courses/_sidebars.yml
+
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "courses/**/*.ipynb"
+    - "!mockup/"
+    - "!README.md"
+  resources:
+    - assets/
+    - robots.txt
+    - courses/*/files/*.zip
+
+execute:
+  enabled: false
+  freeze: auto
+
+website:
+  title: "Sabrine Bendimerad"
+  description: "Senior AI/ML engineer taking AI from research to production, now in health AI. Writing, projects, free courses and training."
+  # Change to https://sabrinebendimerad.com once the domain is set up.
+  site-url: "https://sbendimerad.github.io/"
+  favicon: assets/favicon.svg
+  image: assets/photo.jpg
+  open-graph: true
+  twitter-card: true
+  page-navigation: true
+  search: false
+  bread-crumbs: false
+  navbar:
+    background: light
+    collapse-below: md
+    left: []
+    right:
+      - href: writing/index.qmd
+        text: Writing
+      - href: projects/index.qmd
+        text: Projects
+      - href: courses/index.qmd
+        text: Courses
+      - href: about.qmd
+        text: About
+      - href: work-with-me.qmd
+        text: "Work with me →"
+  page-footer:
+    left: "© Sabrine Bendimerad"
+    right:
+      - text: LinkedIn
+        href: https://www.linkedin.com/in/sabrine-bendimerad-43570b107/
+      - text: Towards Data Science
+        href: https://towardsdatascience.com/author/sabrine.bendimerad1/
+      - text: Medium
+        href: https://medium.com/@sabrine.bendimerad1
+      - text: GitHub
+        href: https://github.com/sbendimerad
+
+format:
+  html:
+    theme:
+      light: [cosmo, custom.scss]
+      dark: [darkly, custom-dark.scss]
+    respect-user-color-scheme: false
+    mainfont: Inter
+    monofont: "JetBrains Mono"
+    toc: false
+    smooth-scroll: true
+    link-external-newwindow: false
+    anchor-sections: false
+    lang: en
+    css: assets/fonts.css

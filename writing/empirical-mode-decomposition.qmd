@@ -1,0 +1,10 @@
+---
+title: "Empirical Mode Decomposition: The Most Intuitive Way to Decompose Complex Signals and Time Series"
+date: 2025-11-22
+categories: ["AI in health"]
+description: "An intuitive introduction to Empirical Mode Decomposition for signals and time series."
+source: "Towards Data Science"
+external: https://towardsdatascience.com/preprocessing-signal-data-with-empirical-mode-decomposition/
+---
+
+{{< include _article.qmd >}}

@@ -1,0 +1,63 @@
+---
+pagetitle: "Free courses — Sabrine Bendimerad"
+description: "Free AI courses: Python, Math for AI, Machine Learning and Deep Learning. Every section has a notebook, exercises and solutions."
+page-layout: custom
+---
+
+```{=html}
+<div class="sb-mid">
+
+<section style="display:flex;flex-direction:column;gap:16px">
+  <h1 class="sb-h1">Free courses</h1>
+  <p class="sb-lead">Not sure where to start with AI? Follow these four courses in order. Each one is a short list of sections. Every section has a notebook, exercises and their solutions. Nothing else.</p>
+</section>
+
+<section class="sb-courses">
+  <a class="sb-course" href="python/index.html">
+    <span class="num">01</span>
+    <div>
+      <h2>Python</h2>
+      <p>From the basics to NumPy, pandas, Plotly and APIs.</p>
+      <span class="meta">5 sections · no prerequisites</span>
+    </div>
+    <span class="go">Start →</span>
+  </a>
+  <div class="sb-course soon">
+    <span class="num">02</span>
+    <div>
+      <h2>Math for AI</h2>
+      <p>Linear algebra, derivatives, probability and statistics, worked by hand on small numbers.</p>
+      <span class="meta">Coming soon</span>
+    </div>
+  </div>
+  <div class="sb-course soon">
+    <span class="num">03</span>
+    <div>
+      <h2>Machine Learning</h2>
+      <p>Supervised and unsupervised learning: regression, classification, trees, clustering, PCA.</p>
+      <span class="meta">Coming soon</span>
+    </div>
+  </div>
+  <div class="sb-course soon">
+    <span class="num">04</span>
+    <div>
+      <h2>Deep Learning</h2>
+      <p>Neural networks from scratch, then PyTorch.</p>
+      <span class="meta">Coming soon</span>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:48px">
+  <h2 class="sb-h2" style="font-size:22px;margin-bottom:20px">How every section works</h2>
+  <div class="sb-steps">
+    <div><b>1. Notebook</b><span>Read the explanation and the code.</span></div>
+    <div><b>2. Exercises</b><span>Try them on your own first.</span></div>
+    <div><b>3. Solutions</b><span>Reveal them when you're done.</span></div>
+  </div>
+</section>
+
+<p class="sb-note">Free to use and share. Every section comes with its notebooks and data to download.</p>
+
+</div>
+```

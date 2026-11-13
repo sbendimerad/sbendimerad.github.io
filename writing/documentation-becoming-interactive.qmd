@@ -1,0 +1,10 @@
+---
+title: "Documentation Is Becoming Interactive — Here's What That Means for DevRel Teams"
+date: 2026-01-14
+categories: ["Production ML"]
+description: "What interactive, AI-powered documentation means for developer relations teams. Written for kapa.ai."
+source: "kapa.ai"
+external: https://www.kapa.ai/blog/documentation-is-becoming-interactive
+---
+
+{{< include _article.qmd >}}

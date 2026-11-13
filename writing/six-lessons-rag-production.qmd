@@ -1,0 +1,10 @@
+---
+title: "Six Lessons Learned Building RAG Systems in Production"
+date: 2025-12-19
+categories: ["Production ML"]
+description: "Lessons from building retrieval-augmented generation systems that run in production."
+source: "Towards Data Science"
+external: https://towardsdatascience.com/six-lessons-learned-building-rag-systems-in-production/
+---
+
+{{< include _article.qmd >}}

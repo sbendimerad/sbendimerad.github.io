@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" width="720" height="240" role="img" aria-label="REST endpoints and HTTP methods for a users resource" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>REST endpoints and HTTP methods for a users resource</title>
+<rect width="720" height="240" fill="#FFFFFF"/>
+<text x="30" y="26" font-size="15" fill="#111111" font-weight="700" text-anchor="start" dominant-baseline="middle">REST: one resource, a few URLs, standard methods</text>
+<rect x="30" y="56" width="660" height="28" fill="#F4F4F5"/>
+<text x="40" y="70.0" font-size="12" fill="#111111" font-weight="600" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">method</text>
+<text x="200" y="70.0" font-size="12" fill="#111111" font-weight="600" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">endpoint</text>
+<text x="400" y="70.0" font-size="12" fill="#111111" font-weight="600" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">what it does</text>
+<line x1="30" y1="84" x2="690" y2="84" stroke="#D4D4D4"/>
+<text x="40" y="98.0" font-size="12" fill="#2E7D4F" font-weight="700" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">GET</text>
+<text x="200" y="98.0" font-size="12" fill="#111111" font-weight="400" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">/users</text>
+<text x="400" y="98.0" font-size="12" fill="#555555" font-weight="400" text-anchor="start" dominant-baseline="middle">list all users</text>
+<line x1="30" y1="112" x2="690" y2="112" stroke="#D4D4D4"/>
+<text x="40" y="126.0" font-size="12" fill="#2E7D4F" font-weight="700" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">GET</text>
+<text x="200" y="126.0" font-size="12" fill="#111111" font-weight="400" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">/users/42</text>
+<text x="400" y="126.0" font-size="12" fill="#555555" font-weight="400" text-anchor="start" dominant-baseline="middle">read user 42</text>
+<line x1="30" y1="140" x2="690" y2="140" stroke="#D4D4D4"/>
+<text x="40" y="154.0" font-size="12" fill="#3B47C4" font-weight="700" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">POST</text>
+<text x="200" y="154.0" font-size="12" fill="#111111" font-weight="400" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">/users</text>
+<text x="400" y="154.0" font-size="12" fill="#555555" font-weight="400" text-anchor="start" dominant-baseline="middle">create a user</text>
+<line x1="30" y1="168" x2="690" y2="168" stroke="#D4D4D4"/>
+<text x="40" y="182.0" font-size="12" fill="#B26A00" font-weight="700" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">PUT / PATCH</text>
+<text x="200" y="182.0" font-size="12" fill="#111111" font-weight="400" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">/users/42</text>
+<text x="400" y="182.0" font-size="12" fill="#555555" font-weight="400" text-anchor="start" dominant-baseline="middle">update user 42</text>
+<line x1="30" y1="196" x2="690" y2="196" stroke="#D4D4D4"/>
+<text x="40" y="210.0" font-size="12" fill="#B3261E" font-weight="700" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">DELETE</text>
+<text x="200" y="210.0" font-size="12" fill="#111111" font-weight="400" text-anchor="start" dominant-baseline="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">/users/42</text>
+<text x="400" y="210.0" font-size="12" fill="#555555" font-weight="400" text-anchor="start" dominant-baseline="middle">delete user 42</text>
+<rect x="30" y="56" width="660" height="168" fill="none" stroke="#D4D4D4"/>
+</svg>

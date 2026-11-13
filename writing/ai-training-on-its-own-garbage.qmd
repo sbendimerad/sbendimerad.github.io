@@ -1,0 +1,10 @@
+---
+title: "Why AI Is Training on Its Own Garbage (and How to Fix It)"
+date: 2026-04-08
+categories: ["Responsible AI"]
+description: "What happens when models learn from AI-generated data, and what we can do about it."
+source: "Towards Data Science"
+external: https://towardsdatascience.com/why-ai-is-training-on-its-own-garbage-and-how-to-fix-it/
+---
+
+{{< include _article.qmd >}}

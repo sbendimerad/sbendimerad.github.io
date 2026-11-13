@@ -1,0 +1,10 @@
+---
+title: "AI Knowledge Base for Technical Products: Complete Guide [2026]"
+date: 2026-02-19
+categories: ["Production ML"]
+description: "A guide to AI knowledge bases for technical products. Written for kapa.ai."
+source: "kapa.ai"
+external: https://www.kapa.ai/blog/ai-knowledge-base-for-technical-products-complete-guide-2026
+---
+
+{{< include _article.qmd >}}

@@ -1,0 +1,96 @@
+---
+pagetitle: "Sabrine Bendimerad — I take AI from research to production"
+description: "Senior AI/ML engineer taking AI from research to production, now in health AI. Writing, projects, free courses, training and consulting."
+page-layout: custom
+section-divs: false
+image: assets/photo.jpg
+listing:
+  id: home-writing
+  contents:
+    - "writing/*.qmd"
+    - "!writing/index.qmd"
+  template: _home-writing.ejs
+  sort: "date desc"
+  date-format: "MMM YYYY"
+  fields: [title, date, categories, description, source, external, featured, path]
+---
+
+```{=html}
+<div class="sb-wrap sb-home">
+
+<section class="sb-hero">
+  <div class="sb-hero-text">
+    <span class="sb-eyebrow">Engineer · Researcher · Writer · Lecturer</span>
+    <h1>I take AI from research to <span class="hl">production</span>.</h1>
+    <p><strong>Hi, I'm Sabrine.</strong> An applied mathematics engineer by training (Télécom Paris), I've spent 10 years in innovation and R&amp;D teams, first in energy, then on water networks, where I contributed to a patent on leak prediction.</p>
+    <p>Then I wanted to point what I knew at health. I completed a Master's in computational neuroscience at CentraleSupélec and moved into biosignals and medical imaging with AI startups. Today I build pipelines for multimodal brain imaging (MEG, fMRI and structural MRI) that work for both sides: rigorous enough for research, robust enough for a product.</p>
+    <p>Along the way, I teach, write, and help open the door for more women in tech.</p>
+    <div class="sb-btns">
+      <a class="sb-btn sb-btn-primary" href="work-with-me.html">Work with me</a>
+      <a class="sb-btn" href="courses/index.html">Free courses</a>
+    </div>
+  </div>
+  <div class="sb-hero-photo">
+    <picture>
+      <source srcset="assets/photo-portrait.webp" type="image/webp">
+      <img class="sb-portrait" src="assets/photo-portrait.jpg" alt="Sabrine Bendimerad" width="800" height="1000">
+    </picture>
+  </div>
+</section>
+
+<section>
+  <div class="sb-stats">
+    <div><span class="n">10 yrs</span><span class="l">R&amp;D to production</span></div>
+    <div><span class="n">1</span><span class="l">Patent</span></div>
+    <div><span class="n">500+</span><span class="l">People trained</span></div>
+    <div><span class="n">30</span><span class="l">Articles published</span></div>
+  </div>
+  <p class="sb-logos">Trained and taught with Jedha · EFREI · PSB · Université Paris Cité · La Poste · Société Générale — and writing for Towards Data Science</p>
+</section>
+```
+
+::: {#home-writing}
+:::
+
+```{=html}
+<section class="sb-section sb-two">
+  <div>
+    <span class="sb-label">Now</span>
+    <h2>AI for health</h2>
+    <p>I work on brain imaging and decoding as a research engineer. Same question as always: what does it take for this model to leave the lab?</p>
+  </div>
+  <div>
+    <span class="sb-label">Women in AI</span>
+    <h2>Opening the door for more women in tech</h2>
+    <p>Google Women Techmakers Ambassador, president of the Descodeuses association, and mentor: more than 60% of the mentees I supported in their 2025 job search found a role.</p>
+  </div>
+</section>
+
+<section class="sb-section">
+  <div class="sb-head">
+    <h2 class="sb-h2">How I can help</h2>
+    <a href="work-with-me.html">Work with me →</a>
+  </div>
+  <div class="sb-three">
+    <div>
+      <h3>Training &amp; workshops</h3>
+      <p>Python, ML, deep learning and ML in production, for teams and schools.</p>
+    </div>
+    <div>
+      <h3>Talks</h3>
+      <p>From research to production, responsible AI, AI in health, women in tech.</p>
+    </div>
+    <div>
+      <h3>Consulting</h3>
+      <p>Taking your AI project from prototype to a system in production.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sb-cta">
+  <h2>Have an AI project that needs to leave the lab?</h2>
+  <a class="sb-btn sb-btn-primary" href="work-with-me.html">Get in touch</a>
+</section>
+
+</div>
+```

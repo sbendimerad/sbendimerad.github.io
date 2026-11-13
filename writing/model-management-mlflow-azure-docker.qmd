@@ -1,0 +1,10 @@
+---
+title: "Model Management with MLflow, Azure, and Docker"
+date: 2024-09-17
+categories: ["Production ML"]
+description: "Tracking and managing models with MLflow, Docker and Azure."
+source: "TDS Archive (Medium)"
+external: https://medium.com/data-science/model-management-with-mlflow-azure-and-docker-2920b51a5bdd
+---
+
+{{< include _article.qmd >}}

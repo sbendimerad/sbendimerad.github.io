@@ -1,0 +1,10 @@
+---
+title: "Model Deployment with FastAPI, Azure, and Docker"
+date: 2024-09-28
+categories: ["Production ML"]
+description: "Serving a model with FastAPI, packaged with Docker and deployed on Azure."
+source: "TDS Archive (Medium)"
+external: https://medium.com/data-science/model-deployment-with-fastapi-azure-and-docker-10e5cfbc1f4f
+---
+
+{{< include _article.qmd >}}

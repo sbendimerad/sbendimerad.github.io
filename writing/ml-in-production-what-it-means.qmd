@@ -1,0 +1,11 @@
+---
+title: "Machine Learning in Production? What This Really Means"
+date: 2026-01-28
+categories: ["Production ML"]
+description: "What it really takes for a model to leave the notebook and work in the real world."
+source: "Towards Data Science"
+external: https://towardsdatascience.com/machine-learning-in-production-what-this-really-means/
+featured: true
+---
+
+{{< include _article.qmd >}}

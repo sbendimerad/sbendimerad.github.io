@@ -1,0 +1,10 @@
+---
+title: "A Realistic Roadmap to Start an AI Career in 2026"
+date: 2025-12-09
+categories: ["Careers & learning"]
+description: "A realistic, step-by-step path into an AI career."
+source: "Towards Data Science"
+external: https://towardsdatascience.com/a-realistic-roadmap-to-start-an-ai-career-in-2026/
+---
+
+{{< include _article.qmd >}}

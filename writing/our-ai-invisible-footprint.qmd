@@ -1,0 +1,10 @@
+---
+title: "Our AI Has an Invisible Footprint — Let's See How to Measure It"
+date: 2026-11-02
+categories: ["Responsible AI"]
+description: "How to measure the energy and carbon cost of the AI systems we build."
+source: "Towards Data Science"
+external: https://towardsdatascience.com/our-ai-has-an-invisible-footprint-lets-see-how-to-measure-it/
+---
+
+{{< include _article.qmd >}}

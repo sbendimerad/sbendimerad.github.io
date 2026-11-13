@@ -1,0 +1,8 @@
+::: {.sb-ext-meta}
+Published on **{{< meta source >}}**. The original article stays the reference version.
+:::
+
+::: {.sb-btns}
+[Read the article →]({{< meta external >}}){.sb-btn .sb-btn-primary}
+[All posts](index.qmd){.sb-btn}
+:::

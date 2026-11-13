@@ -1,0 +1,10 @@
+```{=html}
+<div class="list sb-rows" style="margin-top:28px">
+<% for (const it of items) { %>
+<a class="sb-row" href="<%= it.external || it.path %>" <%= metadataAttrs(it) %>>
+<span class="info"><span class="t"><%= it.title %></span><span class="src"><%= it.source %><% if (it.categories) { %> · <%= it.categories.join(', ') %><% } %></span></span>
+<span class="m listing-date"><%= it.date %></span>
+</a>
+<% } %>
+</div>
+```

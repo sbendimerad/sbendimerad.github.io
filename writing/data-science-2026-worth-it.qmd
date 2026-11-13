@@ -1,0 +1,10 @@
+---
+title: "Data Science in 2026: Is It Still Worth It?"
+date: 2025-11-28
+categories: ["Careers & learning"]
+description: "An honest look at data science as a career in 2026."
+source: "Towards Data Science"
+external: https://towardsdatascience.com/data-science-in-2026-is-it-still-worth-it/
+---
+
+{{< include _article.qmd >}}
