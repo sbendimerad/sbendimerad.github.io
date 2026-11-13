@@ -417,6 +417,7 @@ a:hover { opacity: .8; }
 }
 
 div.sb-card:hover { transform: none; }
+.sb-card-wide { grid-column: 1 / -1; }
 .sb-card-links { display: flex; gap: 16px; margin-top: auto !important; a { font-weight: 600; color: $sb-accent; text-decoration: none; } }
 
 // ---------- Writing listing ----------

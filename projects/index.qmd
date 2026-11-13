@@ -19,6 +19,13 @@ A card without a link uses <div class="sb-card"> instead of <a>.
 
 <section class="sb-projects">
 
+  <a class="sb-card sb-card-wide" href="../assets/docs/bendimerad-2025-msc-thesis-multifractal-meg.pdf">
+    <span class="sb-label">Master's thesis · 2025 · PDF</span>
+    <h3>Improved multifractal analysis of brain oscillations in MEG time series</h3>
+    <p>A data-driven pipeline that combines adaptive mode decompositions (VMD and multivariate VMD) with wavelet-based multifractal analysis of resting-state MEG. Alpha oscillations show the strongest synchrony and the richest scale-free dynamics.</p>
+    <div class="sb-tags"><span class="sb-tag">MEG</span><span class="sb-tag">multifractal analysis</span><span class="sb-tag">VMD / MVMD</span><span class="sb-tag">signal processing</span></div>
+  </a>
+
   <a class="sb-card" href="https://sbendimerad.github.io/pymultifracs-book/intro.html">
     <span class="sb-label">Book</span>
     <h3>Multifractal analysis with pymultifracs</h3>
@@ -29,7 +36,7 @@ A card without a link uses <div class="sb-card"> instead of <a>.
   <a class="sb-card" href="https://github.com/sbendimerad/mfa-internship/blob/main/src/mvmd.py">
     <span class="sb-label">Implementation</span>
     <h3>MVMD in PyTorch</h3>
-    <p>Multivariate variational mode decomposition in PyTorch, used to extract shared oscillatory modes across MEG sensors.</p>
+    <p>Multivariate variational mode decomposition in PyTorch, GPU-accelerated and about 10× faster than the existing CPU version. Used to extract shared oscillatory modes across 306 MEG sensors.</p>
     <div class="sb-tags"><span class="sb-tag">signal processing</span><span class="sb-tag">PyTorch</span><span class="sb-tag">MEG</span></div>
   </a>
 

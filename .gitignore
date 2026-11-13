@@ -6,3 +6,4 @@ site-build-brief.md
 **/*.quarto_ipynb
 .DS_Store
 __pycache__/
+Report_Internship2025_*.pdf
