@@ -19,7 +19,7 @@ A card without a link uses <div class="sb-card"> instead of <a>.
 
 <section class="sb-projects">
 
-  <a class="sb-card sb-card-wide" href="../assets/docs/bendimerad-2025-msc-thesis-multifractal-meg.pdf">
+  <a class="sb-card sb-card-wide" href="https://github.com/sbendimerad/mfa-internship/blob/main/report/Bendimerad_2025_MSc_thesis_multifractal_MEG.pdf">
     <span class="sb-label">Master's thesis · 2025 · PDF</span>
     <h3>Improved multifractal analysis of brain oscillations in MEG time series</h3>
     <p>A data-driven pipeline that combines adaptive mode decompositions (VMD and multivariate VMD) with wavelet-based multifractal analysis of resting-state MEG. Alpha oscillations show the strongest synchrony and the richest scale-free dynamics.</p>
