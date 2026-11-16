@@ -40,6 +40,8 @@ SETUP = nbformat.v4.new_code_cell(
 
 # Outputs that contain email addresses are never saved (privacy): the code stays, the output is cleared.
 EMAIL = re.compile(r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@(?!example\.com)[A-Za-z0-9.-]+\.[a-z]{2,}")
+# Lines that only describe the machine that ran the notebook (XGBoost looking for a GPU...)
+NOISE = re.compile(r"nvidia-smi: not found")
 
 
 def run(path, save, allow):
@@ -65,6 +67,9 @@ def run(path, save, allow):
             for o in c.get("outputs", []):
                 if "execution_count" in o:
                     o["execution_count"] = None
+                if o.get("output_type") == "stream":  # noise from the machine that ran the notebook
+                    o["text"] = "".join(l for l in o["text"].splitlines(True) if not NOISE.search(l))
+            c.outputs = [o for o in c.get("outputs", []) if o.get("output_type") != "stream" or o["text"]]
     if save and ok and status == "OK":
         cleared = 0
         for c in nb.cells:

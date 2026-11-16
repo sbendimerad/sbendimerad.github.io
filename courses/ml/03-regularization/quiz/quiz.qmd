@@ -1,0 +1,110 @@
+---
+title: "Regularization: quiz"
+subtitle: "Machine Learning · Section 3 · Quiz"
+description: "Check what you learned: Fight overfitting with Ridge and Lasso, and tune hyperparameters with cross-validation and grid search."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/regularization.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What does regularization add to the loss of a linear regression?
+
+::: {.sb-quiz-options}
+- A term that rewards large coefficients
+- A penalty on the size of the coefficients
+- More training examples
+- A second model
+:::
+
+::: {.sb-quiz-explain}
+Ridge adds $\lambda \sum \beta_j^2$, Lasso adds $\lambda \sum |\beta_j|$. The model must then balance fitting the data and keeping its coefficients small, which limits overfitting.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** What is the main difference between Lasso and Ridge?
+
+::: {.sb-quiz-options}
+- Ridge only works for classification
+- Lasso can set some coefficients exactly to zero
+- Ridge can set some coefficients exactly to zero
+- Lasso doesn't need a hyperparameter
+:::
+
+::: {.sb-quiz-explain}
+The L1 penalty of Lasso pushes some coefficients to exactly zero: it also **selects features**. Ridge shrinks all the coefficients, but rarely to exactly zero.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** What happens when the regularization strength $\lambda$ (`alpha`) becomes very large?
+
+::: {.sb-quiz-options}
+- The model overfits more
+- The coefficients go to zero and the model underfits
+- Nothing changes
+- The training becomes impossible
+:::
+
+::: {.sb-quiz-explain}
+With a huge penalty, the best choice is to keep the coefficients close to zero: the model predicts almost a constant. In the workflow lesson, $R^2$ drops from 0.79 to 0.26 when `alpha` goes from 10 to 1000.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** When does regularization help the most?
+
+::: {.sb-quiz-options}
+- When there are many more examples than features
+- When there are many features compared to the number of examples
+- When all the features are categorical
+- When the target is categorical
+:::
+
+::: {.sb-quiz-explain}
+With few features and many examples, a linear model has no room to overfit. With 2,000 genes for 801 samples (the gene expression exercise), it overfits badly, and regularization makes all the difference.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** Why do we use cross-validation in a grid search, instead of the test set?
+
+::: {.sb-quiz-options}
+- Because it is faster
+- Because the test set must stay untouched to evaluate the final model
+- Because the test set is too small
+- Because grid search can't use a test set
+:::
+
+::: {.sb-quiz-explain}
+If we chose the hyperparameters on the test set, the test score would be optimistic: we would have tuned the model to it. Cross-validation tunes on the training data only.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** In a 5-fold cross-validation, how many times is the model trained?
+
+::: {.sb-quiz-options}
+- Once
+- 5 times
+- 10 times
+- As many times as there are examples
+:::
+
+::: {.sb-quiz-explain}
+The training data is split into 5 folds: each fold is used once as the validation set, while the model trains on the other 4. The score is the average of the 5 validation scores.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Regularization exercises →](../exercises/ridge-vs-lasso.ipynb)**
+:::

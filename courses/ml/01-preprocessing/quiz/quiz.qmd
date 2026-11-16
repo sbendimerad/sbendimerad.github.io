@@ -1,0 +1,110 @@
+---
+title: "Preprocessing: quiz"
+subtitle: "Machine Learning · Section 1 · Quiz"
+description: "Check what you learned: What machine learning is, and how to prepare data for a model with pandas and scikit-learn."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/what-is-machine-learning.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** A model predicts the price of a house from its surface and its number of rooms. What kind of problem is it?
+
+::: {.sb-quiz-options}
+- A classification problem
+- A regression problem
+- A clustering problem
+- A dimensionality reduction problem
+:::
+
+::: {.sb-quiz-explain}
+The target (a price) is a continuous number: it is a **regression**. Classification predicts a category, clustering and dimensionality reduction are unsupervised (there is no target).
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** Why do we split the data into a training set and a test set?
+
+::: {.sb-quiz-options}
+- To train the model faster
+- To measure how the model performs on data it has never seen
+- Because scikit-learn requires it
+- To remove the outliers
+:::
+
+::: {.sb-quiz-explain}
+The test set plays the role of new data. A score computed on the training data is too optimistic: the model has already seen these examples.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**3.** Which preprocessing steps must be **fitted** on the training set only?
+
+::: {.sb-quiz-options}
+- None: they don't learn anything
+- Only the model
+- The imputer, the scaler and the encoder, like the model
+- Only the encoder
+:::
+
+::: {.sb-quiz-explain}
+An imputer learns means or medians, a scaler learns means and standard deviations, an encoder learns categories. Fitting them on the test set would leak information from the test set: use `fit_transform` on the training set and `transform` on the test set.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**4.** A column `Country` contains `France`, `Spain` and `Germany`. What does a `OneHotEncoder(drop='first')` produce?
+
+::: {.sb-quiz-options}
+- One column with the values 0, 1 and 2
+- Three columns of 0s and 1s
+- Two columns of 0s and 1s
+- Nothing: text columns must be removed
+:::
+
+::: {.sb-quiz-explain}
+One-hot encoding creates one 0/1 column per category. With `drop='first'`, the first category is dropped: it is implied when all the other columns are 0, and it avoids perfectly correlated columns.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** Why should the target **never** be imputed?
+
+::: {.sb-quiz-options}
+- Because scikit-learn can't do it
+- Because the model would learn from values we invented
+- Because it would make the dataset too small
+- It can be imputed, like any other column
+:::
+
+::: {.sb-quiz-explain}
+An imputed target is a made-up answer: the model would learn it and the evaluation would measure it. Rows with a missing target are dropped.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** After `preprocessor.fit_transform(X_train)`, why does `X_train.head()` fail?
+
+::: {.sb-quiz-options}
+- Because the preprocessing failed
+- Because the result is a NumPy array, not a pandas DataFrame
+- Because `head` needs a number
+- Because the data is now empty
+:::
+
+::: {.sb-quiz-explain}
+`ColumnTransformer` returns a NumPy array: pandas methods are not available anymore. Use `X_train[0:5]`, or get the column names with `get_feature_names_out()`.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Preprocessing exercises →](../exercises/titanic.ipynb)**
+:::

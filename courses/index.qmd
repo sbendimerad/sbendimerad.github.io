@@ -31,14 +31,15 @@ page-layout: custom
     </div>
     <span class="go">Start →</span>
   </a>
-  <div class="sb-course soon">
+  <a class="sb-course" href="ml/index.html">
     <span class="num">03</span>
     <div>
       <h2>Machine Learning</h2>
-      <p>Supervised and unsupervised learning: regression, classification, trees, clustering, PCA.</p>
-      <span class="meta">Coming soon</span>
+      <p>Supervised learning: regression, classification, trees and boosting, time series, and two projects. Unsupervised learning coming soon.</p>
+      <span class="meta">10 sections · after Math for AI</span>
     </div>
-  </div>
+    <span class="go">Start →</span>
+  </a>
   <div class="sb-course soon">
     <span class="num">04</span>
     <div>

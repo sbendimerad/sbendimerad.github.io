@@ -1,0 +1,110 @@
+---
+title: "Time series: quiz"
+subtitle: "Machine Learning · Section 8 · Quiz"
+description: "Check what you learned: Smoothing, stationarity and autocorrelation, then forecasting with Prophet."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/time-series.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** Why can't we split a time series into a training and a test set at random?
+
+::: {.sb-quiz-options}
+- Because the data is too small
+- Because the model would learn from the future to predict the past
+- Because scikit-learn doesn't allow it
+- We can, it works as usual
+:::
+
+::: {.sb-quiz-explain}
+A forecast uses the past to predict the future. With a random split, the training set contains days after the test days: the score would be unrealistically good. Train on the past, test on what comes after.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** What does a moving average of order 7 do?
+
+::: {.sb-quiz-options}
+- It predicts the next 7 values
+- It replaces each value by the mean of the last 7 values
+- It removes the first 7 values
+- It multiplies the series by 7
+:::
+
+::: {.sb-quiz-explain}
+A moving average smooths the series: the random variations cancel out and the trend appears. The larger the window, the smoother, and the more lagged, the curve.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** What is a stationary time series?
+
+::: {.sb-quiz-options}
+- A series that doesn't change at all
+- A series whose mean, variance and autocorrelation don't change over time
+- A series with a strong trend
+- A series without missing values
+:::
+
+::: {.sb-quiz-explain}
+Many classical models assume stationarity. A series with a trend is not stationary; differencing it ($X_t - X_{t-1}$) often makes it stationary.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** What are the components of a Prophet model?
+
+::: {.sb-quiz-options}
+- Only a trend
+- A trend, seasonalities (daily, weekly, yearly) and holiday effects
+- An autoregressive part and a moving average
+- A neural network
+:::
+
+::: {.sb-quiz-explain}
+$y(t) = g(t) + s(t) + h(t) + \varepsilon_t$: trend, seasonality and holidays, plus noise. `plot_components` shows each of them.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** In the Netflix project, the model retrained one month into the Covid crisis is **worse** than the one trained before. Why?
+
+::: {.sb-quiz-options}
+- Because it has less data
+- Because it has just seen a sudden drop and a rebound, and can't tell which one will last
+- Because Prophet can't handle stock prices
+- Because of a bug in the code
+:::
+
+::: {.sb-quiz-explain}
+Right after a shock, the recent data is contradictory. The model needs some time, that is, data, to learn the new situation: with two months of crisis data, the error falls to about 4%.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** You want to add the temperature as a regressor to forecast electricity consumption. What do you need?
+
+::: {.sb-quiz-options}
+- Nothing more: Prophet finds it
+- The temperature for the future dates too, for example from the weather forecast
+- Only the past temperatures
+- The temperature of the test set, measured afterwards
+:::
+
+::: {.sb-quiz-explain}
+A regressor must be known when the forecast is made. Using values measured afterwards (or the real future price of another stock) is leakage: the score would be too optimistic.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Time series exercises →](../exercises/electricity.ipynb)**
+:::

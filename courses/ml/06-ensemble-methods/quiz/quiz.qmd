@@ -1,0 +1,110 @@
+---
+title: "Ensemble methods: quiz"
+subtitle: "Machine Learning · Section 6 · Quiz"
+description: "Check what you learned: Boosting (AdaBoost, gradient boosting, XGBoost), voting and stacking."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/boosting.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What is the main idea of boosting?
+
+::: {.sb-quiz-options}
+- Training many independent models in parallel and averaging them
+- Training models one after the other, each one focusing on the errors of the previous ones
+- Training one very deep tree
+- Choosing the best model among several
+:::
+
+::: {.sb-quiz-explain}
+Boosting is **sequential**: AdaBoost gives more weight to the misclassified examples, gradient boosting fits each new tree to the residual errors. Bagging (random forest) trains independent models in parallel.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** Which kind of base model is usually boosted?
+
+::: {.sb-quiz-options}
+- Very deep trees
+- Shallow trees (weak learners)
+- Linear regressions
+- Neural networks
+:::
+
+::: {.sb-quiz-explain}
+Boosting combines many **weak** learners, often trees of depth 1 to 5, that each correct a little of the remaining error. Deep trees would overfit from the first rounds.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** What does the learning rate of gradient boosting control?
+
+::: {.sb-quiz-options}
+- The number of trees
+- How much each new tree contributes to the prediction
+- The depth of the trees
+- The share of the data used by each tree
+:::
+
+::: {.sb-quiz-explain}
+A small learning rate makes each tree contribute a little: the model needs more trees but generalizes better. Learning rate and number of trees must be tuned together.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** In a voting classifier with **soft** voting, how is the final class chosen?
+
+::: {.sb-quiz-options}
+- By the majority of the predicted classes
+- By averaging the predicted probabilities of the models
+- By the best model only
+- At random among the models
+:::
+
+::: {.sb-quiz-explain}
+Hard voting counts the predicted classes. Soft voting averages the probabilities, which takes into account how confident each model is.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** How is stacking different from voting?
+
+::: {.sb-quiz-options}
+- It uses only one model
+- A final model learns how to combine the predictions of the base models
+- It averages the probabilities
+- It trains the models one after the other on the errors
+:::
+
+::: {.sb-quiz-explain}
+In stacking, the predictions of the base models become the features of a meta-model (often a logistic regression), which learns how much to trust each of them.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** In the SDSS exercise, why are `plate`, `mjd` and `fiberid` left out of the features?
+
+::: {.sb-quiz-options}
+- Because they are categorical
+- Because they describe how the spectrum was recorded, not the object: it would be data leakage
+- Because they have missing values
+- Because XGBoost can't use them
+:::
+
+::: {.sb-quiz-explain}
+These columns only exist for objects that have a spectrum, and they say how it was taken. The goal is to classify objects from their images: these columns would not exist for new objects, and they leak information about the target.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Ensemble methods exercises →](../exercises/titanic.ipynb)**
+:::

@@ -1,0 +1,110 @@
+---
+title: "Logistic regression: quiz"
+subtitle: "Machine Learning · Section 4 · Quiz"
+description: "Check what you learned: Predict a category with probabilities, and evaluate a classifier: confusion matrix, precision, recall, ROC."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/logistic-regression.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What does a logistic regression predict, before a decision is made?
+
+::: {.sb-quiz-options}
+- A class directly
+- A probability between 0 and 1
+- A distance to the boundary
+- A value between -1 and 1
+:::
+
+::: {.sb-quiz-explain}
+The sigmoid function turns a linear combination of the features into a probability. `predict` then applies a threshold (0.5 by default), and `predict_proba` gives the probabilities.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** Only 4% of the visitors of a website subscribe. A model always predicts "no subscription". What is its accuracy?
+
+::: {.sb-quiz-options}
+- 4%
+- 50%
+- 96%
+- It can't be computed
+:::
+
+::: {.sb-quiz-explain}
+The model is right for the 96% who don't subscribe, and useless. With a rare class, accuracy is misleading: use the F1-score, precision and recall.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** What does the **recall** of the positive class measure?
+
+::: {.sb-quiz-options}
+- The share of positive predictions that are correct
+- The share of real positives that the model finds
+- The share of correct predictions
+- The share of negative predictions
+:::
+
+::: {.sb-quiz-explain}
+Recall = TP / (TP + FN): among the real positives, how many did we find? Precision = TP / (TP + FP): among our positive predictions, how many are right?
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** In the conversion rate challenge, why can a threshold lower than 0.5 improve the F1-score?
+
+::: {.sb-quiz-options}
+- Because a lower threshold always improves every metric
+- Because with a rare class, it finds many more positives for only a few more false alarms
+- Because the model is badly trained
+- Because the F1-score ignores false positives
+:::
+
+::: {.sb-quiz-explain}
+With a rare class, the probabilities of the positives are often below 0.5. Lowering the threshold increases the recall a lot while the precision decreases a little: the F1-score, which balances both, can go up. Choose the threshold with cross-validation, not on the test set.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** Why use `stratify=y` in `train_test_split` for a classification problem?
+
+::: {.sb-quiz-options}
+- To shuffle the data
+- To keep the same share of each class in the training and test sets
+- To balance the classes
+- To make the split faster
+:::
+
+::: {.sb-quiz-explain}
+Stratification keeps the class proportions in both sets. It matters most with rare classes: otherwise, the test set could have almost no positive example.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** What does the ROC curve show?
+
+::: {.sb-quiz-options}
+- The accuracy for each number of features
+- The true positive rate against the false positive rate, for every threshold
+- The loss during training
+- The probability of each class
+:::
+
+::: {.sb-quiz-explain}
+Each point of the ROC curve is a threshold. The area under the curve (AUC) summarizes it: 1 is a perfect model, 0.5 is random guessing.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Logistic regression exercises →](../exercises/first-classification.ipynb)**
+:::

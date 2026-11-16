@@ -191,3 +191,231 @@ website:
                       href: courses/math/14-ab-testing/solutions/airbnb.ipynb
                     - text: "Call-to-action button (Vinted)"
                       href: courses/math/14-ab-testing/solutions/vinted.ipynb
+    - id: ml
+      title: "03 · Machine Learning"
+      style: floating
+      contents:
+        - text: "← All courses"
+          href: courses/index.qmd
+        - text: "Overview"
+          href: courses/ml/index.qmd
+        - section: "Foundations"
+          contents:
+            - section: "1. Preprocessing"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "What is machine learning?"
+                      href: courses/ml/01-preprocessing/lessons/what-is-machine-learning.ipynb
+                    - text: "Preprocessing with pandas"
+                      href: courses/ml/01-preprocessing/lessons/preprocessing-with-pandas.ipynb
+                    - text: "Preprocessing with scikit-learn"
+                      href: courses/ml/01-preprocessing/lessons/preprocessing-with-scikit-learn.ipynb
+                - text: "Quiz"
+                  href: courses/ml/01-preprocessing/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "Titanic"
+                      href: courses/ml/01-preprocessing/exercises/titanic.ipynb
+                    - text: "Advanced preprocessing (optional)"
+                      href: courses/ml/01-preprocessing/exercises/advanced-preprocessing.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Titanic"
+                      href: courses/ml/01-preprocessing/solutions/titanic.ipynb
+                    - text: "Advanced preprocessing (optional)"
+                      href: courses/ml/01-preprocessing/solutions/advanced-preprocessing.ipynb
+        - section: "Regression"
+          contents:
+            - section: "2. Linear regression"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Linear regression"
+                      href: courses/ml/02-linear-regression/lessons/linear-regression.ipynb
+                    - text: "Performance and feature selection"
+                      href: courses/ml/02-linear-regression/lessons/performance-and-feature-selection.ipynb
+                    - text: "Optional: maximum likelihood"
+                      href: courses/ml/02-linear-regression/lessons/maximum-likelihood.ipynb
+                    - text: "Linear regression with scikit-learn"
+                      href: courses/ml/02-linear-regression/lessons/workflow.ipynb
+                    - text: "Optional: computing the metrics"
+                      href: courses/ml/02-linear-regression/lessons/computing-metrics.ipynb
+                - text: "Quiz"
+                  href: courses/ml/02-linear-regression/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "California housing"
+                      href: courses/ml/02-linear-regression/exercises/california-housing.ipynb
+                    - text: "Feature engineering"
+                      href: courses/ml/02-linear-regression/exercises/feature-engineering.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "California housing"
+                      href: courses/ml/02-linear-regression/solutions/california-housing.ipynb
+                    - text: "Feature engineering"
+                      href: courses/ml/02-linear-regression/solutions/feature-engineering.ipynb
+            - section: "3. Regularization"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Ridge and Lasso"
+                      href: courses/ml/03-regularization/lessons/regularization.ipynb
+                    - text: "Cross-validation and grid search"
+                      href: courses/ml/03-regularization/lessons/cross-validation-and-grid-search.ipynb
+                    - text: "Regularization with scikit-learn"
+                      href: courses/ml/03-regularization/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/ml/03-regularization/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "Ridge vs. Lasso (gene expression)"
+                      href: courses/ml/03-regularization/exercises/ridge-vs-lasso.ipynb
+                    - text: "Handling overfitting"
+                      href: courses/ml/03-regularization/exercises/handling-overfitting.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Ridge vs. Lasso (gene expression)"
+                      href: courses/ml/03-regularization/solutions/ridge-vs-lasso.ipynb
+                    - text: "Handling overfitting"
+                      href: courses/ml/03-regularization/solutions/handling-overfitting.ipynb
+        - section: "Classification"
+          contents:
+            - section: "4. Logistic regression"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Logistic regression"
+                      href: courses/ml/04-logistic-regression/lessons/logistic-regression.ipynb
+                    - text: "Classification with scikit-learn"
+                      href: courses/ml/04-logistic-regression/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/ml/04-logistic-regression/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "First classification"
+                      href: courses/ml/04-logistic-regression/exercises/first-classification.ipynb
+                    - text: "Vinho verde"
+                      href: courses/ml/04-logistic-regression/exercises/vinho-verde.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "First classification"
+                      href: courses/ml/04-logistic-regression/solutions/first-classification.ipynb
+                    - text: "Vinho verde"
+                      href: courses/ml/04-logistic-regression/solutions/vinho-verde.ipynb
+            - section: "5. Decision trees and random forests"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Decision trees"
+                      href: courses/ml/05-trees-and-forests/lessons/decision-trees.ipynb
+                    - text: "Random forests"
+                      href: courses/ml/05-trees-and-forests/lessons/random-forest.ipynb
+                    - text: "Trees and forests with scikit-learn"
+                      href: courses/ml/05-trees-and-forests/lessons/workflow.ipynb
+                    - text: "Summary: decision trees"
+                      href: courses/ml/05-trees-and-forests/lessons/summary-decision-trees.ipynb
+                    - text: "Summary: random forests"
+                      href: courses/ml/05-trees-and-forests/lessons/summary-random-forest.ipynb
+                - text: "Quiz"
+                  href: courses/ml/05-trees-and-forests/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "Build a decision tree"
+                      href: courses/ml/05-trees-and-forests/exercises/build-a-decision-tree.ipynb
+                    - text: "Uber fares"
+                      href: courses/ml/05-trees-and-forests/exercises/uber-fares.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Build a decision tree"
+                      href: courses/ml/05-trees-and-forests/solutions/build-a-decision-tree.ipynb
+                    - text: "Uber fares"
+                      href: courses/ml/05-trees-and-forests/solutions/uber-fares.ipynb
+            - section: "6. Ensemble methods"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Boosting"
+                      href: courses/ml/06-ensemble-methods/lessons/boosting.ipynb
+                    - text: "Voting and stacking"
+                      href: courses/ml/06-ensemble-methods/lessons/voting-and-stacking.ipynb
+                    - text: "Summary: boosting"
+                      href: courses/ml/06-ensemble-methods/lessons/summary-of-boosting.ipynb
+                    - text: "Ensemble methods with scikit-learn"
+                      href: courses/ml/06-ensemble-methods/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/ml/06-ensemble-methods/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "Titanic"
+                      href: courses/ml/06-ensemble-methods/exercises/titanic.ipynb
+                    - text: "Airbnb prices"
+                      href: courses/ml/06-ensemble-methods/exercises/airbnb.ipynb
+                    - text: "Stars, galaxies and quasars"
+                      href: courses/ml/06-ensemble-methods/exercises/stars-and-galaxies.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Titanic"
+                      href: courses/ml/06-ensemble-methods/solutions/titanic.ipynb
+                    - text: "Airbnb prices"
+                      href: courses/ml/06-ensemble-methods/solutions/airbnb.ipynb
+                    - text: "Stars, galaxies and quasars"
+                      href: courses/ml/06-ensemble-methods/solutions/stars-and-galaxies.ipynb
+            - section: "7. Naive Bayes"
+              contents:
+                - text: "Lesson"
+                  href: courses/ml/07-naive-bayes/lessons/naive-bayes.ipynb
+                - text: "Quiz"
+                  href: courses/ml/07-naive-bayes/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "Diabetes"
+                      href: courses/ml/07-naive-bayes/exercises/diabetes.ipynb
+                    - text: "Fraud detection"
+                      href: courses/ml/07-naive-bayes/exercises/fraud-detection.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Diabetes"
+                      href: courses/ml/07-naive-bayes/solutions/diabetes.ipynb
+                    - text: "Fraud detection"
+                      href: courses/ml/07-naive-bayes/solutions/fraud-detection.ipynb
+        - section: "Time series"
+          contents:
+            - section: "8. Time series"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Time series analysis"
+                      href: courses/ml/08-time-series/lessons/time-series.ipynb
+                    - text: "Forecasting with Prophet"
+                      href: courses/ml/08-time-series/lessons/prophet.ipynb
+                - text: "Quiz"
+                  href: courses/ml/08-time-series/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "Electricity consumption"
+                      href: courses/ml/08-time-series/exercises/electricity.ipynb
+                    - text: "Netflix and the Covid crisis"
+                      href: courses/ml/08-time-series/exercises/netflix-and-covid.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Electricity consumption"
+                      href: courses/ml/08-time-series/solutions/electricity.ipynb
+                    - text: "Netflix and the Covid crisis"
+                      href: courses/ml/08-time-series/solutions/netflix-and-covid.ipynb
+        - section: "Projects"
+          contents:
+            - section: "9. Project: Walmart sales"
+              contents:
+                - text: "Lesson"
+                  href: courses/ml/09-walmart-sales/lessons/walmart-sales.ipynb
+                - text: "Solution"
+                  href: courses/ml/09-walmart-sales/solutions/walmart-sales.ipynb
+            - section: "10. Challenge: predict conversions"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "The challenge"
+                      href: courses/ml/10-conversion-challenge/lessons/the-challenge.ipynb
+                    - text: "Starter notebook"
+                      href: courses/ml/10-conversion-challenge/lessons/starter-notebook.ipynb

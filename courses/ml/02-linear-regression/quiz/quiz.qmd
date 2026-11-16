@@ -1,0 +1,110 @@
+---
+title: "Linear regression: quiz"
+subtitle: "Machine Learning · Section 2 · Quiz"
+description: "Check what you learned: Simple and multiple linear regression, R², feature selection, and the full workflow in scikit-learn."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/linear-regression.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What does the $R^2$ score measure?
+
+::: {.sb-quiz-options}
+- The average error of the model, in the unit of the target
+- The share of the variance of the target explained by the model
+- The number of features used
+- The correlation between two features
+:::
+
+::: {.sb-quiz-explain}
+$R^2 = 1 - SSR/SST$: 1 means perfect predictions, 0 means no better than always predicting the mean. It can even be negative on a test set, when the model is worse than the mean.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** A model has $R^2 = 0.97$ on the training set and $0.62$ on the test set. What is happening?
+
+::: {.sb-quiz-options}
+- The model underfits
+- The model overfits
+- The test set is too large
+- Everything is fine
+:::
+
+::: {.sb-quiz-explain}
+A large gap between the training and test scores is the sign of overfitting: the model has learned details of the training data that don't generalize.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** In the California housing exercise, two features (the nearest big city and the distance to it) improve the model as much as 40 polynomial features. What does it show?
+
+::: {.sb-quiz-options}
+- Polynomial features are useless
+- Features that bring knowledge about the problem are worth more than many mechanical ones
+- Distances always improve models
+- Linear regression can't use categorical features
+:::
+
+::: {.sb-quiz-explain}
+Prices depend on **where** a district is, close to a big city or not. Encoding this knowledge directly is more effective than hoping the model finds it in powers of the latitude.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** The features of a linear regression have been standardized. How can we compare their importance?
+
+::: {.sb-quiz-options}
+- With the raw values of the coefficients
+- With the absolute values of the coefficients
+- With the p-values only
+- We can't compare them
+:::
+
+::: {.sb-quiz-explain}
+On standardized features, a coefficient is the effect of a change of one standard deviation: their **absolute values** can be compared. A large negative coefficient is as important as a large positive one.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** What does forward selection do?
+
+::: {.sb-quiz-options}
+- It removes the feature with the highest p-value at each step
+- It starts with no feature and adds, at each step, the one that improves the model the most
+- It tries every possible subset of features
+- It creates new features
+:::
+
+::: {.sb-quiz-explain}
+Forward selection adds features one by one (`SequentialFeatureSelector` in scikit-learn). Backward elimination does the opposite: it starts with all the features and removes them one by one.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** Why can't we plot a linear regression with three features and the target?
+
+::: {.sb-quiz-options}
+- Because the model is not linear anymore
+- Because we would need four dimensions
+- Because plotly can't plot regressions
+- We can, with a scatter matrix
+:::
+
+::: {.sb-quiz-explain}
+Three features plus the target make four dimensions. That's why metrics like $R^2$ are essential: most of the time we can't see the model.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Linear regression exercises →](../exercises/california-housing.ipynb)**
+:::

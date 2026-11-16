@@ -160,6 +160,153 @@ COURSES = {
                             "solution": "03_statistics/solutions/S5_ab_testing_part2_solution.ipynb"}]},
         ],
     },
+    "ml": {
+        "title": "Machine Learning",
+        "number": "03",
+        "subtitle": "Course 03 · after Math for AI",
+        "intro": "Supervised learning: predict a number or a category from data. Preprocessing, linear and "
+                 "logistic regression, regularization, trees, forests and boosting, Naive Bayes and time series, "
+                 "then two projects. Each section has **lessons**, a **quiz**, **exercises** and their "
+                 "**solutions**. Unsupervised learning (clustering, PCA) is coming soon.",
+        "sections": [
+            {"part": "Foundations", "slug": "preprocessing", "title": "Preprocessing",
+             "description": "What machine learning is, and how to prepare data for a model with pandas and scikit-learn.",
+             "lessons": [{"slug": "what-is-machine-learning", "title": "What is machine learning?",
+                          "path": "supervised/01_preprocessing/course/01-introduction_to_machine_learning.ipynb"},
+                         {"slug": "preprocessing-with-pandas", "title": "Preprocessing with pandas",
+                          "path": "supervised/01_preprocessing/course/02-what_is_preprocessing.ipynb"},
+                         {"slug": "preprocessing-with-scikit-learn", "title": "Preprocessing with scikit-learn",
+                          "path": "supervised/01_preprocessing/course/03-preprocessing_with_scikit_learn.ipynb"}],
+             "exercises": [{"slug": "titanic", "title": "Titanic",
+                            "exercise": "supervised/01_preprocessing/exercises/01-preprocessing_titanic.ipynb",
+                            "solution": "supervised/01_preprocessing/solutions/01-preprocessing_titanic_solution.ipynb"},
+                           {"slug": "advanced-preprocessing", "title": "Advanced preprocessing (optional)",
+                            "exercise": "supervised/01_preprocessing/exercises/02-advanced_preprocessing.ipynb",
+                            "solution": "supervised/01_preprocessing/solutions/02-advanced_preprocessing_solution.ipynb"}],
+             "quiz": "supervised/01_preprocessing/quiz/preprocessing_quiz.md"},
+            {"part": "Regression", "slug": "linear-regression", "title": "Linear regression",
+             "description": "Simple and multiple linear regression, R², feature selection, and the full workflow in scikit-learn.",
+             "lessons": [{"slug": "linear-regression", "title": "Linear regression",
+                          "path": "supervised/02_linear_regression/course/01-linear_regression.ipynb"},
+                         {"slug": "performance-and-feature-selection", "title": "Performance and feature selection",
+                          "path": "supervised/02_linear_regression/course/02-performance_and_feature_selection.ipynb"},
+                         {"slug": "maximum-likelihood", "title": "Optional: maximum likelihood",
+                          "path": "supervised/02_linear_regression/course/03-optional_maximum_likelihood.ipynb"},
+                         {"slug": "workflow", "title": "Linear regression with scikit-learn",
+                          "path": "supervised/02_linear_regression/course/04-linear_regression_workflow.ipynb"},
+                         {"slug": "computing-metrics", "title": "Optional: computing the metrics",
+                          "path": "supervised/02_linear_regression/course/05-optional_computing_metrics.ipynb"}],
+             "exercises": [{"slug": "california-housing", "title": "California housing",
+                            "exercise": "supervised/02_linear_regression/exercises/01-california_housing.ipynb",
+                            "solution": "supervised/02_linear_regression/solutions/01-california_housing_solution.ipynb"},
+                           {"slug": "feature-engineering", "title": "Feature engineering",
+                            "exercise": "supervised/02_linear_regression/exercises/02-feature_engineering.ipynb",
+                            "solution": "supervised/02_linear_regression/solutions/02-feature_engineering_solution.ipynb"}],
+             "quiz": "supervised/02_linear_regression/quiz/linear_regression_quiz.md"},
+            {"part": "Regression", "slug": "regularization", "title": "Regularization",
+             "description": "Fight overfitting with Ridge and Lasso, and tune hyperparameters with cross-validation and grid search.",
+             "lessons": [{"slug": "regularization", "title": "Ridge and Lasso",
+                          "path": "supervised/03_regularization/course/01-regularization.ipynb"},
+                         {"slug": "cross-validation-and-grid-search", "title": "Cross-validation and grid search",
+                          "path": "supervised/03_regularization/course/02-cross_validation_and_grid_search.ipynb"},
+                         {"slug": "workflow", "title": "Regularization with scikit-learn",
+                          "path": "supervised/03_regularization/course/03-regularization_workflow.ipynb"}],
+             "exercises": [{"slug": "ridge-vs-lasso", "title": "Ridge vs. Lasso (gene expression)",
+                            "exercise": "supervised/03_regularization/exercises/01-ridge_vs_lasso.ipynb",
+                            "solution": "supervised/03_regularization/solutions/01-ridge_vs_lasso_solution.ipynb"},
+                           {"slug": "handling-overfitting", "title": "Handling overfitting",
+                            "exercise": "supervised/03_regularization/exercises/02-handling_overfitting.ipynb",
+                            "solution": "supervised/03_regularization/solutions/02-handling_overfitting_solution.ipynb"}],
+             "quiz": "supervised/03_regularization/quiz/regularization_quiz.md"},
+            {"part": "Classification", "slug": "logistic-regression", "title": "Logistic regression",
+             "description": "Predict a category with probabilities, and evaluate a classifier: confusion matrix, precision, recall, ROC.",
+             "lessons": [{"slug": "logistic-regression", "title": "Logistic regression",
+                          "path": "supervised/04_logistic_regression/course/01-logistic_regression.ipynb"},
+                         {"slug": "workflow", "title": "Classification with scikit-learn",
+                          "path": "supervised/04_logistic_regression/course/02-classification_workflow.ipynb"}],
+             "exercises": [{"slug": "first-classification", "title": "First classification",
+                            "exercise": "supervised/04_logistic_regression/exercises/01-first_classification.ipynb",
+                            "solution": "supervised/04_logistic_regression/solutions/01-first_classification_solution.ipynb"},
+                           {"slug": "vinho-verde", "title": "Vinho verde",
+                            "exercise": "supervised/04_logistic_regression/exercises/02-vinho_verde.ipynb",
+                            "solution": "supervised/04_logistic_regression/solutions/02-vinho_verde_solution.ipynb"}],
+             "quiz": "supervised/04_logistic_regression/quiz/logistic_regression_quiz.md"},
+            {"part": "Classification", "slug": "trees-and-forests", "title": "Decision trees and random forests",
+             "description": "How a tree splits the data, why it overfits, and how a forest of trees fixes it.",
+             "lessons": [{"slug": "decision-trees", "title": "Decision trees",
+                          "path": "supervised/05_trees_and_forests/course/01-decision_trees.ipynb"},
+                         {"slug": "random-forest", "title": "Random forests",
+                          "path": "supervised/05_trees_and_forests/course/02-random_forest.ipynb"},
+                         {"slug": "workflow", "title": "Trees and forests with scikit-learn",
+                          "path": "supervised/05_trees_and_forests/course/03-trees_and_forests_workflow.ipynb"},
+                         {"slug": "summary-decision-trees", "title": "Summary: decision trees",
+                          "path": "supervised/05_trees_and_forests/course/04-summary_decision_trees.ipynb"},
+                         {"slug": "summary-random-forest", "title": "Summary: random forests",
+                          "path": "supervised/05_trees_and_forests/course/05-summary_random_forest.ipynb"}],
+             "exercises": [{"slug": "build-a-decision-tree", "title": "Build a decision tree",
+                            "exercise": "supervised/05_trees_and_forests/exercises/01-build_a_decision_tree.ipynb",
+                            "solution": "supervised/05_trees_and_forests/solutions/01-build_a_decision_tree_solution.ipynb"},
+                           {"slug": "uber-fares", "title": "Uber fares",
+                            "exercise": "supervised/05_trees_and_forests/exercises/02-uber_fares.ipynb",
+                            "solution": "supervised/05_trees_and_forests/solutions/02-uber_fares_solution.ipynb"}],
+             "quiz": "supervised/05_trees_and_forests/quiz/trees_and_forests_quiz.md"},
+            {"part": "Classification", "slug": "ensemble-methods", "title": "Ensemble methods",
+             "description": "Boosting (AdaBoost, gradient boosting, XGBoost), voting and stacking.",
+             "lessons": [{"slug": "boosting", "title": "Boosting",
+                          "path": "supervised/06_ensemble_methods/course/01-boosting.ipynb"},
+                         {"slug": "voting-and-stacking", "title": "Voting and stacking",
+                          "path": "supervised/06_ensemble_methods/course/02-voting_and_stacking.ipynb"},
+                         {"slug": "summary-of-boosting", "title": "Summary: boosting",
+                          "path": "supervised/06_ensemble_methods/course/03-summary_of_boosting.ipynb"},
+                         {"slug": "workflow", "title": "Ensemble methods with scikit-learn",
+                          "path": "supervised/06_ensemble_methods/course/04-ensemble_methods_workflow.ipynb"}],
+             "exercises": [{"slug": "titanic", "title": "Titanic",
+                            "exercise": "supervised/06_ensemble_methods/exercises/01-ensembles_titanic.ipynb",
+                            "solution": "supervised/06_ensemble_methods/solutions/01-ensembles_titanic_solution.ipynb"},
+                           {"slug": "airbnb", "title": "Airbnb prices",
+                            "exercise": "supervised/06_ensemble_methods/exercises/02-ensembles_airbnb.ipynb",
+                            "solution": "supervised/06_ensemble_methods/solutions/02-ensembles_airbnb_solution.ipynb"},
+                           {"slug": "stars-and-galaxies", "title": "Stars, galaxies and quasars",
+                            "exercise": "supervised/06_ensemble_methods/exercises/03-sdss_boosting.ipynb",
+                            "solution": "supervised/06_ensemble_methods/solutions/03-sdss_boosting_solution.ipynb"}],
+             "quiz": "supervised/06_ensemble_methods/quiz/ensemble_methods_quiz.md"},
+            {"part": "Classification", "slug": "naive-bayes", "title": "Naive Bayes",
+             "description": "Bayes' theorem and the Naive Bayes classifier, then fraud detection.",
+             "lessons": [{"path": "supervised/08_naive_bayes/course/01-naive_bayes.ipynb"}],
+             "exercises": [{"slug": "diabetes", "title": "Diabetes",
+                            "exercise": "supervised/08_naive_bayes/exercises/01-diabetes.ipynb",
+                            "solution": "supervised/08_naive_bayes/solutions/01-diabetes_solution.ipynb"},
+                           {"slug": "fraud-detection", "title": "Fraud detection",
+                            "exercise": "supervised/08_naive_bayes/exercises/02-fraud_detection.ipynb",
+                            "solution": "supervised/08_naive_bayes/solutions/02-fraud_detection_solution.ipynb"}],
+             "quiz": "supervised/08_naive_bayes/quiz/naive_bayes_quiz.md"},
+            {"part": "Time series", "slug": "time-series", "title": "Time series",
+             "description": "Smoothing, stationarity and autocorrelation, then forecasting with Prophet.",
+             "lessons": [{"slug": "time-series", "title": "Time series analysis",
+                          "path": "supervised/07_time_series/course/01-time_series.ipynb"},
+                         {"slug": "prophet", "title": "Forecasting with Prophet",
+                          "path": "supervised/07_time_series/course/02-prophet.ipynb"}],
+             "exercises": [{"slug": "electricity", "title": "Electricity consumption",
+                            "exercise": "supervised/07_time_series/exercises/01-energy_consumption_prophet.ipynb",
+                            "solution": "supervised/07_time_series/solutions/01-energy_consumption_prophet_solution.ipynb"},
+                           {"slug": "netflix-and-covid", "title": "Netflix and the Covid crisis",
+                            "exercise": "supervised/07_time_series/exercises/02-netflix_vs_covid.ipynb",
+                            "solution": "supervised/07_time_series/solutions/02-netflix_vs_covid_solution.ipynb"}],
+             "quiz": "supervised/07_time_series/quiz/time_series_quiz.md"},
+            {"part": "Projects", "slug": "walmart-sales", "title": "Project: Walmart sales",
+             "description": "Predict the weekly sales of stores with linear models, and fight overfitting.",
+             "lessons": [{"path": "supervised/projects/walmart_sales/walmart_sales.ipynb"}],
+             "exercises": [{"slug": "walmart-sales", "title": "Walmart sales",
+                            "solution": "supervised/projects/walmart_sales/walmart_sales_solution.ipynb"}]},
+            {"part": "Projects", "slug": "conversion-challenge", "title": "Challenge: predict conversions",
+             "description": "A competition: predict who subscribes to a newsletter, submit your predictions, climb the leaderboard.",
+             "lessons": [{"slug": "the-challenge", "title": "The challenge",
+                          "path": "supervised/projects/conversion_rate_challenge/conversion_rate_challenge.ipynb"},
+                         {"slug": "starter-notebook", "title": "Starter notebook",
+                          "path": "supervised/projects/conversion_rate_challenge/conversion_rate_template.ipynb"}],
+             "exercises": []},
+        ],
+    },
 }
 
 BLOCKED_HOSTS = ("jedha", "fullstack-assets", "full-stack-assets", "essentials-assets")
@@ -175,7 +322,7 @@ HINT_START = re.compile(r"^\s*(💡|\*\*(hints?|tip)\b|(hints?|tip)\s*:)", re.I)
 EMAIL_RE = re.compile(r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@(?!example\.com)[A-Za-z0-9.-]+\.[a-z]{2,}")
 PRIVACY = re.compile(r"(jedha|" + EMAIL_RE.pattern + r"|api[_-]?key\s*=\s*['\"][A-Za-z0-9]{12,}"
                      r"|bucket-jedha|hntran|huynam)", re.I)
-DATA_RE = re.compile(r"""['"](\.\./data/[^'"]+)['"]""")
+DATA_RE = re.compile(r"""['"]((?:\.\./)?data/[^'"]+)['"]""")
 
 log = []
 _fig = [0]
@@ -202,7 +349,18 @@ def convert_notes(text):
     def repl(m):
         kind = CALLOUT.get(m.group(1).strip().lower(), "note")
         return f"\n::: {{.callout-{kind}}}\n{m.group(2).strip()}\n:::\n"
-    return re.sub(r'<Note\s+type\s*=\s*"([^"]+)"\s*>(.*?)</Note>', repl, text, flags=re.S | re.I)
+    text = re.sub(r'<Note\s+type\s*=\s*"([^"]+)"\s*>(.*?)</Note>', repl, text, flags=re.S | re.I)
+
+    # Docusaurus admonitions: ":::tip Optional title" ... ":::"
+    def admonition(m):
+        kind = CALLOUT.get(m.group(1).lower(), "note")
+        title, body = (m.group(2) or "").strip(), (m.group(3) or "").strip()
+        if not body:  # everything on the first line: it is the content, not a title
+            title, body = "", title
+        attrs = f".callout-{kind}" + (f' title="{title.replace(chr(34), chr(39))}"' if title else "")
+        return f"\n\n::: {{{attrs}}}\n{body}\n:::\n\n"
+    return re.sub(r"^[ \t]*:::[ \t]*([A-Za-z]+)[ \t]*([^\n]*)\n(?:(.*?)\n)?[ \t]*:::[ \t]*$", admonition, text,
+                  flags=re.S | re.M)
 
 
 def drop_blocked(text, where):
@@ -487,10 +645,10 @@ def notebook_assets(nb_path):
     and local helper modules it imports. Returns (data, siblings, helpers) as lists of Paths;
     data items are (absolute path, path relative to the data folder)."""
     code = "\n".join(src(c) for c in load(nb_path)["cells"] if c["cell_type"] == "code")
-    data_root = (nb_path.parent / "../data").resolve()
     data = []
     for d in sorted(set(DATA_RE.findall(code))):
         f = (nb_path.parent / d).resolve()
+        data_root = (nb_path.parent / ("../data" if d.startswith("../") else "data")).resolve()
         if f.exists():
             data.append((f, f.relative_to(data_root)))
         else:
@@ -633,7 +791,10 @@ def build_course(key, course, repo):
         sdir = out_dir / name
         img_dir = sdir / "img"
         zip_href = f"../../files/{name}.zip"
-        first_ex = f"../exercises/{exercises[0]['slug']}.ipynb" if exercises else None
+        solution_only = bool(exercises) and "exercise" not in exercises[0]
+        first_ex = (f"../{'solutions' if solution_only else 'exercises'}/{exercises[0]['slug']}.ipynb"
+                    if exercises else None)
+        ex_word = "solution" if solution_only else "exercises"
         quiz_src = repo / sec["quiz"] if sec.get("quiz") else None
         if quiz_src is not None and not quiz_src.exists():
             log.append(f"BROKEN quiz file {sec['quiz']}"); quiz_src = None
@@ -646,7 +807,7 @@ def build_course(key, course, repo):
             cells = prepare(load(path)["cells"], path, name, img_dir, "../img")
             cells = shift_all(drop_title(cells), top_level=2)
             nxt = (f"../lessons/{lessons[k + 1]['slug']}.ipynb", f"Next: {lessons[k + 1]['title']} →") if k + 1 < len(lessons) \
-                else ((first_ex, f"Your turn: {sec['title']} exercises →") if exercises else
+                else ((first_ex, f"Your turn: {sec['title']} {ex_word} →") if exercises else
                       ((quiz_href, f"Your turn: {sec['title']} quiz →") if quiz_href else (None, None)))
             title = les["title"] if multi_l else sec["title"]
             sub = f"{course['title']} · Section {n} · Lesson" + (f" {k + 1} of {len(lessons)}" if multi_l else "")
@@ -654,21 +815,32 @@ def build_course(key, course, repo):
             dl = publish_downloads(sdir, path, f"lesson-{les['slug']}.ipynb")
             write_nb(sdir / "lessons" / f"{les['slug']}.ipynb",
                      [front_matter(title, sec["description"], sub),
-                      md(links_block(("Exercises →", first_ex), ("Quiz →", quiz_href), ("All files of this section (zip)", zip_href))),
+                      md(links_block((f"{ex_word.capitalize()} →", first_ex), ("Quiz →", quiz_href), ("All files of this section (zip)", zip_href))),
                       md(dl)]
                      + cells + tail)
 
         if quiz_src:
             nq = write_quiz(sdir, sec, course, n, quiz_src, f"../lessons/{lessons[0]['slug']}.ipynb",
-                            (first_ex, f"Next: {sec['title']} exercises →") if first_ex else None)
+                            (first_ex, f"Next: {sec['title']} {ex_word} →") if first_ex else None)
             log.append(f"{name}: quiz with {nq} questions")
 
         # exercises and solutions (separate pages)
         for k, ex in enumerate(exercises):
-            ex_path, sol_path = repo / ex["exercise"], repo / ex["solution"]
+            sol_path = repo / ex["solution"]
             sol_page = f"../solutions/{ex['slug']}.ipynb"
             sol_cells = prepare(load(sol_path)["cells"], sol_path, name, img_dir, "../img", hints=True)
             sol_cells = shift_all(drop_title(sol_cells), top_level=2)
+            if "exercise" not in ex:  # project: the brief is the lesson, then one solution page
+                write_nb(sdir / "solutions" / f"{ex['slug']}.ipynb",
+                         [front_matter(f"{sec['title']}: a solution", f"A solution: {sec['description']}",
+                                       f"{course['title']} · Section {n} · Solution"),
+                          md(publish_downloads(sdir, sol_path, f"solution-{ex['slug']}.ipynb")),
+                          md(links_block(("← Back to the project", f"../lessons/{lessons[0]['slug']}.ipynb"))
+                             + "\n\n::: {.callout-tip}\nWork on the project on your own first: "
+                               "you learn much more by searching than by reading a solution.\n:::")]
+                         + sol_cells)
+                continue
+            ex_path = repo / ex["exercise"]
             ex_cells = prepare(load(ex_path)["cells"], ex_path, name, img_dir, "../img", hints=True)
             ex_cells = shift_all(drop_title(ex_cells), top_level=2)
             level = exercise_level(ex_cells)
@@ -709,7 +881,8 @@ def build_course(key, course, repo):
         with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
             # flat: the notebooks, their data/ folder and helper files, exactly like the page downloads
             ddir = sdir / "downloads"
-            wanted = [f"lesson-{l['slug']}.ipynb" for l in lessons] + [f"exercises-{e['slug']}.ipynb" for e in exercises]
+            wanted = [f"lesson-{l['slug']}.ipynb" for l in lessons] + [f"exercises-{e['slug']}.ipynb" for e in exercises
+                                                                       if "exercise" in e]
             for f in sorted(ddir.rglob("*")):
                 if f.is_file() and (not f.name.endswith(".ipynb") or f.name in wanted):
                     z.write(f, f"{name}/{f.relative_to(ddir).as_posix()}")
@@ -737,12 +910,13 @@ def write_overview(key, course, plan):
         if sec.get("part") and sec["part"] != part:
             part = sec["part"]
             lines += ["", f"## {part}", ""]
-        links = [f"[Lesson]({name}/lessons/{lessons[0]['slug']}.ipynb)"]
+        links = [f"[{'Lesson' if len(lessons) == 1 else 'Lessons'}]({name}/lessons/{lessons[0]['slug']}.ipynb)"]
         if sec.get("quiz"):
             links.append(f"[Quiz]({name}/quiz/quiz.qmd)")
+        if exercises and "exercise" in exercises[0]:
+            links.append(f"[Exercises]({name}/exercises/{exercises[0]['slug']}.ipynb)")
         if exercises:
-            links += [f"[Exercises]({name}/exercises/{exercises[0]['slug']}.ipynb)",
-                      f"[Solutions]({name}/solutions/{exercises[0]['slug']}.ipynb)"]
+            links.append(f"[Solution{'s' if 'exercise' in exercises[0] else ''}]({name}/solutions/{exercises[0]['slug']}.ipynb)")
         lines.append(f"{n}. **{sec['title']}**: {sec['description']} " + " · ".join(links))
     (SITE / "courses" / key / "index.qmd").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -777,9 +951,12 @@ def write_sidebars():
                          [(l["title"], f"{base}/lessons/{l['slug']}.ipynb") for l in lessons])
             if sec.get("quiz"):
                 out += [f"{i2}- text: \"Quiz\"", f"{i2}  href: {base}/quiz/quiz.qmd"]
+            with_ex = [e for e in exercises if "exercise" in e]
+            if with_ex:
+                out += group("Exercises", [(e["title"], f"{base}/exercises/{e['slug']}.ipynb") for e in with_ex])
             if exercises:
-                out += group("Exercises", [(e["title"], f"{base}/exercises/{e['slug']}.ipynb") for e in exercises])
-                out += group("Solutions", [(e["title"], f"{base}/solutions/{e['slug']}.ipynb") for e in exercises])
+                out += group("Solutions" if with_ex else "Solution",
+                             [(e["title"], f"{base}/solutions/{e['slug']}.ipynb") for e in exercises])
     (SITE / "courses" / "_sidebars.yml").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 

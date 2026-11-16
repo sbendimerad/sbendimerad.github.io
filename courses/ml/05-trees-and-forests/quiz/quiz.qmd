@@ -1,0 +1,110 @@
+---
+title: "Decision trees and random forests: quiz"
+subtitle: "Machine Learning · Section 5 · Quiz"
+description: "Check what you learned: How a tree splits the data, why it overfits, and how a forest of trees fixes it."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/decision-trees.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** How does a decision tree choose a split?
+
+::: {.sb-quiz-options}
+- At random
+- It tries the possible splits and keeps the one that makes the groups purest (or reduces the error the most)
+- It always splits on the first feature
+- It splits each feature in the middle
+:::
+
+::: {.sb-quiz-explain}
+For classification, the purity is measured with the Gini index or the entropy; for regression, with the variance (squared error). The best split is the one that reduces it the most.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** A decision tree with no maximum depth is often...
+
+::: {.sb-quiz-options}
+- Underfitting
+- Overfitting
+- Perfectly balanced
+- Impossible to train
+:::
+
+::: {.sb-quiz-explain}
+Without limits, a tree keeps splitting until each leaf is pure: it learns the training data by heart (100% training accuracy) and generalizes badly. `max_depth` and `min_samples_leaf` limit this.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** Why don't decision trees need standardized features?
+
+::: {.sb-quiz-options}
+- Because they standardize the features themselves
+- Because a split only compares a feature to a threshold
+- Because they only use categorical features
+- They do need standardized features
+:::
+
+::: {.sb-quiz-explain}
+A rule like `age < 30` gives the same groups whatever the scale of `age`. Linear models and distance-based models are sensitive to the scale; trees are not.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** What makes a random forest better than a single tree?
+
+::: {.sb-quiz-options}
+- It uses deeper trees
+- It averages many trees trained on different bootstrap samples and random subsets of features
+- It uses a single, very large tree
+- It trains on the test set
+:::
+
+::: {.sb-quiz-explain}
+Each tree overfits differently. Averaging many diverse trees (thanks to bootstrap samples and random features) reduces the variance: this is **bagging**.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** In the Uber fares exercise, why does the linear regression get $R^2 \approx 0$, while the random forest does well?
+
+::: {.sb-quiz-options}
+- Linear regression can't predict prices
+- A few rides have impossible GPS coordinates, which ruin the linear model but not the forest
+- The random forest uses more features
+- The data is too large for a linear regression
+:::
+
+::: {.sb-quiz-explain}
+Some rides have coordinates at 0 or swapped, giving distances of thousands of km. A linear model tries to fit them; a tree isolates them in a few leaves. Once the 3% of wrong rows are removed, the linear model reaches $R^2 \approx 0.77$, like the forest.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** What does the feature importance of a random forest tell you?
+
+::: {.sb-quiz-options}
+- The sign of the effect of each feature
+- How much each feature reduces the impurity, on average over the trees
+- The p-value of each feature
+- The coefficient of each feature
+:::
+
+::: {.sb-quiz-explain}
+Feature importances say **how much** a feature is used, not in which direction it pushes the prediction. A feature can be important and have a complex, non-monotonic effect.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Decision trees and random forests exercises →](../exercises/build-a-decision-tree.ipynb)**
+:::

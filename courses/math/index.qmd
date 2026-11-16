@@ -19,7 +19,7 @@ Each section has a zip with the lessons, the exercises and the data, so you can 
 4. **Matrix multiplication**: The definition, how to compute it with NumPy, and broadcasting. [Lesson](04-matrix-multiplication/lessons/matrix-multiplication.ipynb) · [Quiz](04-matrix-multiplication/quiz/quiz.qmd)
 5. **Vector operations**: Scalar multiplication, sum of vectors, norm and dot product, and why vectorised code is faster. [Lesson](05-vector-operations/lessons/vector-operations.ipynb) · [Quiz](05-vector-operations/quiz/quiz.qmd)
 6. **Linear transformations**: What makes a transformation linear, and how matrices move the plane. [Lesson](06-linear-transformations/lessons/linear-transformations.ipynb) · [Quiz](06-linear-transformations/quiz/quiz.qmd)
-7. **Principal component analysis (PCA)**: Reduce the number of columns while keeping most of the information. [Lesson](07-pca/lessons/pca-introduction.ipynb) · [Exercises](07-pca/exercises/house-prices.ipynb) · [Solutions](07-pca/solutions/house-prices.ipynb)
+7. **Principal component analysis (PCA)**: Reduce the number of columns while keeping most of the information. [Lessons](07-pca/lessons/pca-introduction.ipynb) · [Exercises](07-pca/exercises/house-prices.ipynb) · [Solutions](07-pca/solutions/house-prices.ipynb)
 
 ## Calculus
 
@@ -30,6 +30,6 @@ Each section has a zip with the lessons, the exercises and the data, so you can 
 ## Statistics
 
 11. **Statistics basics**: Data types, centre and spread of a distribution, the normal distribution. [Lesson](11-statistics-basics/lessons/statistics-basics.ipynb) · [Quiz](11-statistics-basics/quiz/quiz.qmd)
-12. **Confidence intervals**: Estimate a population mean from a sample, and visualise the uncertainty. [Lesson](12-confidence-intervals/lessons/confidence-intervals.ipynb) · [Exercises](12-confidence-intervals/exercises/estimates-and-sampling.ipynb) · [Solutions](12-confidence-intervals/solutions/estimates-and-sampling.ipynb)
+12. **Confidence intervals**: Estimate a population mean from a sample, and visualise the uncertainty. [Lessons](12-confidence-intervals/lessons/confidence-intervals.ipynb) · [Exercises](12-confidence-intervals/exercises/estimates-and-sampling.ipynb) · [Solutions](12-confidence-intervals/solutions/estimates-and-sampling.ipynb)
 13. **Hypothesis testing**: H₀ and H₁, z-scores, p-values, and one- or two-tailed tests. [Lesson](13-hypothesis-testing/lessons/hypothesis-testing.ipynb) · [Exercises](13-hypothesis-testing/exercises/loan-control.ipynb) · [Solutions](13-hypothesis-testing/solutions/loan-control.ipynb)
 14. **A/B testing**: Design an A/B test and decide with a statistical test. [Lesson](14-ab-testing/lessons/ab-testing.ipynb) · [Exercises](14-ab-testing/exercises/airbnb.ipynb) · [Solutions](14-ab-testing/solutions/airbnb.ipynb)
