@@ -8,3 +8,4 @@ site-build-brief.md
 __pycache__/
 Report_Internship2025_*.pdf
 _review_*
+courses/**/*_files/

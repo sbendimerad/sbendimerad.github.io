@@ -44,12 +44,13 @@ notebook is re-run before pushing. The website only reads that branch:
 
 ```bash
 gh repo clone sbendimerad/python-course-instructor /tmp/pci -- --branch website
-python3 tools/build_courses.py python /tmp/pci
+python3 tools/build_courses.py python /tmp/pci          # add: math /tmp/math  (each course repo, website branch)
 quarto preview
 ```
 
-The script makes, per section, a lesson page and an exercises page (hints and solutions folded),
-plus a zip of the notebooks and data. It also generates the course overview and the sidebar
+The script makes, per section, one page per **lesson**, per **exercise** notebook (hints folded,
+a "Solution →" link after each exercise) and per **solution** notebook, plus a zip of the lessons,
+exercises and data (never the solutions). It also generates the course overview and the sidebar
 (`courses/_sidebars.yml`), and runs a privacy scan (emails, keys, Jedha links) that stops the
 build if anything is found. New section: add it to `COURSES` at the top of the script.
 

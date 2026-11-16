@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
-"""Build the course pages from a course repo.
+"""Build the course pages from the course repos.
 
 Usage:
-    python3 tools/build_courses.py python <path-to-course-repo>
+    python3 tools/build_courses.py python <path-to-python-repo> [math <path-to-math-repo> ...]
 
-The course repo is the source of truth: content fixes (translation, images, bugs) are made
-there, on its `website` branch, and every notebook is executed before it is pushed.
-This script only reads it (never writes to it) and generates, for each section:
+Each course repo is the source of truth: content fixes are made there, on its `website`
+branch, and every notebook is run (tools/run_notebooks.py) before it is pushed.
+This script only reads the repos and generates, for each section of a course:
 
-  courses/<course>/<NN-slug>.ipynb             lesson page
-  courses/<course>/<NN-slug>-exercises.ipynb   exercises page: hints and solutions folded
-  courses/<course>/files/<NN-slug>.zip         lesson + exercise notebooks + data, to download
-  courses/<course>/img/...                     local images used by the notebooks
-  courses/<course>/index.qmd                   course overview
-  courses/_sidebars.yml                        sidebar for every course (loaded by _quarto.yml)
+  courses/<course>/<NN-section>/lessons/<slug>.ipynb      one page per lesson notebook
+  courses/<course>/<NN-section>/exercises/<slug>.ipynb    one page per exercise notebook, hints folded,
+                                                         a "Solution →" link after each exercise
+  courses/<course>/<NN-section>/solutions/<slug>.ipynb    the matching solutions
+  courses/<course>/<NN-section>/img/                       images used by the notebooks
+  courses/<course>/files/<NN-section>.zip                  lessons + exercises + data (never solutions)
+  courses/<course>/index.qmd                               course overview
+  courses/_sidebars.yml                                    sidebar of every built course
 
 Safety nets on the published copy: Jedha links / Jedha-hosted images dropped, outputs with
 email addresses dropped, unclosed code blocks closed, very long outputs shortened, saved
-Plotly figures redrawn from their data. A privacy scan runs at the end and fails the build.
+Plotly figures redrawn from their data. A privacy scan and a solution-link check run at the
+end and fail the build.
 """
 import copy, difflib, json, re, shutil, sys, zipfile
 from pathlib import Path
@@ -30,53 +33,121 @@ COURSES = {
         "number": "01",
         "subtitle": "Course 01 · no prerequisites",
         "intro": "From your first variable to calling an API, in five sections. Each section has a "
-                 "**lesson** to read and an **exercises** page: try on your own first, open a hint "
-                 "if you are stuck, then compare with the solution.",
+                 "**lesson** to read, **exercises** to try on your own (with hints if you are stuck) "
+                 "and their **solutions**.",
         "sections": [
-            {
-                "slug": "python-basics",
-                "title": "Python basics",
-                "description": "Types, operators, strings, data structures, conditions, loops and functions.",
-                "lesson": "P01_python_basics/course/S1_python_basics_course.ipynb",
-                "exercises": [("P01_python_basics/exercises/S1_python_basics_exercises.ipynb",
-                               "P01_python_basics/solutions/S1_python_basics_solutions.ipynb")],
-            },
-            {
-                "slug": "numpy-pandas",
-                "title": "NumPy and pandas",
-                "description": "Arrays with NumPy, then loading, cleaning, combining and reshaping tables with pandas.",
-                "lesson": "P02_eda_viz/course/S2_numpy_pandas_course.ipynb",
-                "exercises": [("P02_eda_viz/exercises/S2_numpy_exercises.ipynb",
-                               "P02_eda_viz/solutions/S2_numpy_solutions.ipynb"),
-                              ("P02_eda_viz/exercises/S2_pandas_exercises.ipynb",
-                               "P02_eda_viz/solutions/S2_pandas_solutions.ipynb"),
-                              ("P02_eda_viz/exercises/S2_datetime.ipynb",
-                               "P02_eda_viz/solutions/S2_datetime_solutions.ipynb")],
-            },
-            {
-                "slug": "data-visualization",
-                "title": "Data visualisation",
-                "description": "Exploring a dataset with Plotly Express: distributions, comparisons, relationships.",
-                "lesson": "P02_eda_viz/course/S3_visualization_course.ipynb",
-                "exercises": [("P02_eda_viz/exercises/S3_visualization_exercises.ipynb",
-                               "P02_eda_viz/solutions/S3_visualization_solutions.ipynb")],
-            },
-            {
-                "slug": "interactive-charts",
-                "title": "Interactive charts",
-                "description": "Subplots, sliders, dropdowns and animations with plotly.graph_objects.",
-                "lesson": "P02_eda_viz/course/S3_visualization_advanced_course.ipynb",
-                "exercises": [("P02_eda_viz/exercises/S3_visualization_advanced_exercises.ipynb",
-                               "P02_eda_viz/solutions/S3_visualization_advanced_solutions.ipynb")],
-            },
-            {
-                "slug": "apis",
-                "title": "Working with APIs",
-                "description": "What an API is, and how to call one from Python with requests.",
-                "lesson": "P03_api/course/S4_api_course.ipynb",
-                "exercises": [("P03_api/exercises/S4_api_exercises.ipynb",
-                               "P03_api/solutions/S4_api_solutions.ipynb")],
-            },
+            {"slug": "python-basics", "title": "Python basics",
+             "description": "Types, operators, strings, data structures, conditions, loops and functions.",
+             "lessons": [{"path": "P01_python_basics/course/S1_python_basics_course.ipynb"}],
+             "exercises": [{"slug": "python-basics", "title": "Python basics",
+                            "exercise": "P01_python_basics/exercises/S1_python_basics_exercises.ipynb",
+                            "solution": "P01_python_basics/solutions/S1_python_basics_solutions.ipynb"}]},
+            {"slug": "numpy-pandas", "title": "NumPy and pandas",
+             "description": "Arrays with NumPy, then loading, cleaning, combining and reshaping tables with pandas.",
+             "lessons": [{"path": "P02_eda_viz/course/S2_numpy_pandas_course.ipynb"}],
+             "exercises": [{"slug": "numpy", "title": "NumPy",
+                            "exercise": "P02_eda_viz/exercises/S2_numpy_exercises.ipynb",
+                            "solution": "P02_eda_viz/solutions/S2_numpy_solutions.ipynb"},
+                           {"slug": "house-market", "title": "House market (pandas)",
+                            "exercise": "P02_eda_viz/exercises/S2_pandas_exercises.ipynb",
+                            "solution": "P02_eda_viz/solutions/S2_pandas_solutions.ipynb"},
+                           {"slug": "starbucks-reviews", "title": "Starbucks reviews (dates)",
+                            "exercise": "P02_eda_viz/exercises/S2_datetime.ipynb",
+                            "solution": "P02_eda_viz/solutions/S2_datetime_solutions.ipynb"}]},
+            {"slug": "data-visualization", "title": "Data visualisation",
+             "description": "Exploring a dataset with Plotly Express: distributions, comparisons, relationships.",
+             "lessons": [{"path": "P02_eda_viz/course/S3_visualization_course.ipynb"}],
+             "exercises": [{"slug": "ibm-employees", "title": "IBM employees",
+                            "exercise": "P02_eda_viz/exercises/S3_visualization_exercises.ipynb",
+                            "solution": "P02_eda_viz/solutions/S3_visualization_solutions.ipynb"}]},
+            {"slug": "interactive-charts", "title": "Interactive charts",
+             "description": "Subplots, sliders, dropdowns and animations with plotly.graph_objects.",
+             "lessons": [{"path": "P02_eda_viz/course/S3_visualization_advanced_course.ipynb"}],
+             "exercises": [{"slug": "earthquakes", "title": "Earthquakes",
+                            "exercise": "P02_eda_viz/exercises/S3_visualization_advanced_exercises.ipynb",
+                            "solution": "P02_eda_viz/solutions/S3_visualization_advanced_solutions.ipynb"}]},
+            {"slug": "apis", "title": "Working with APIs",
+             "description": "What an API is, and how to call one from Python with requests.",
+             "lessons": [{"path": "P03_api/course/S4_api_course.ipynb"}],
+             "exercises": [{"slug": "bitcoin", "title": "Bitcoin prices",
+                            "exercise": "P03_api/exercises/S4_api_exercises.ipynb",
+                            "solution": "P03_api/solutions/S4_api_solutions.ipynb"}]},
+        ],
+    },
+    "math": {
+        "title": "Math for AI",
+        "number": "02",
+        "subtitle": "Course 02 · after Python",
+        "intro": "The mathematics behind machine learning, with Python: linear algebra, derivatives and "
+                 "gradient descent, then statistics. Each section has a **lesson**; many also have "
+                 "**exercises** and their **solutions**.",
+        "sections": [
+            {"part": "Linear algebra", "slug": "numpy-arrays", "title": "NumPy arrays",
+             "description": "Create, index, reshape and combine arrays: the building block of linear algebra in Python.",
+             "lessons": [{"path": "01_linear_algebra/course/S1_numpy_arrays.ipynb"}], "exercises": []},
+            {"part": "Linear algebra", "slug": "linear-systems-2", "title": "Linear systems in 2 variables",
+             "description": "Write a system as a matrix, compute its determinant, solve it by elimination.",
+             "lessons": [{"path": "01_linear_algebra/course/S2_solving_linear_systems_2_variables.ipynb"}], "exercises": []},
+            {"part": "Linear algebra", "slug": "linear-systems-3", "title": "Linear systems in 3 variables",
+             "description": "The same tools in three dimensions, with row reduction.",
+             "lessons": [{"path": "01_linear_algebra/course/S3_solving_linear_systems_3_variables.ipynb"}], "exercises": []},
+            {"part": "Linear algebra", "slug": "matrix-multiplication", "title": "Matrix multiplication",
+             "description": "The definition, how to compute it with NumPy, and broadcasting.",
+             "lessons": [{"path": "01_linear_algebra/course/S4_matrix_multiplication.ipynb"}], "exercises": []},
+            {"part": "Linear algebra", "slug": "vector-operations", "title": "Vector operations",
+             "description": "Scalar multiplication, sum of vectors, norm and dot product, and why vectorised code is faster.",
+             "lessons": [{"path": "01_linear_algebra/course/S5_vector_operations.ipynb"}], "exercises": []},
+            {"part": "Linear algebra", "slug": "linear-transformations", "title": "Linear transformations",
+             "description": "What makes a transformation linear, and how matrices move the plane.",
+             "lessons": [{"path": "01_linear_algebra/course/S6_linear_transformations.ipynb"}], "exercises": []},
+            {"part": "Linear algebra", "slug": "pca", "title": "Principal component analysis (PCA)",
+             "description": "Reduce the number of columns while keeping most of the information.",
+             "lessons": [{"slug": "pca-introduction", "title": "PCA: the idea",
+                          "path": "01_linear_algebra/course/S7_pca_introduction.ipynb"},
+                         {"slug": "pca-with-scikit-learn", "title": "PCA with scikit-learn",
+                          "path": "01_linear_algebra/course/S7_pca_sklearn.ipynb"}],
+             "exercises": [{"slug": "house-prices", "title": "House prices",
+                            "exercise": "01_linear_algebra/exercises/S7_pca_exercice.ipynb",
+                            "solution": "01_linear_algebra/solutions/S7_pca_solution.ipynb"}]},
+            {"part": "Calculus", "slug": "derivatives", "title": "Derivatives in Python",
+             "description": "Symbolic, numerical and automatic differentiation, and their limits.",
+             "lessons": [{"path": "02_calculus/course/S1_differentiation_in_python.ipynb"}], "exercises": []},
+            {"part": "Calculus", "slug": "gradient-descent-1d", "title": "Gradient descent in one variable",
+             "description": "Find the minimum of a function step by step, and see what the learning rate changes.",
+             "lessons": [{"path": "02_calculus/course/S2_optimization_gradient_gescent_one_variables.ipynb"}], "exercises": []},
+            {"part": "Calculus", "slug": "gradient-descent-2d", "title": "Gradient descent in two variables",
+             "description": "The same method on surfaces, with local and global minima.",
+             "lessons": [{"path": "02_calculus/course/S3_optimization_gradient_gescent_two_variables.ipynb"}], "exercises": []},
+            {"part": "Statistics", "slug": "statistics-basics", "title": "Statistics basics",
+             "description": "Data types, centre and spread of a distribution, the normal distribution.",
+             "lessons": [{"path": "03_statistics/course/S1_statistics_intro.ipynb"}], "exercises": []},
+            {"part": "Statistics", "slug": "confidence-intervals", "title": "Confidence intervals",
+             "description": "Estimate a population mean from a sample, and visualise the uncertainty.",
+             "lessons": [{"slug": "confidence-intervals", "title": "Confidence intervals",
+                          "path": "03_statistics/course/S2_confidence_intervals.ipynb"},
+                         {"slug": "visualise-with-seaborn", "title": "Visualise them with seaborn",
+                          "path": "03_statistics/course/S3_visualize_confidence_intervals_seaborn.ipynb"}],
+             "exercises": [{"slug": "estimates-and-sampling", "title": "Estimates and sampling",
+                            "exercise": "03_statistics/exercises/S2_confidence_intervals.ipynb",
+                            "solution": "03_statistics/solutions/S2_confidence_intervals_solution.ipynb"}]},
+            {"part": "Statistics", "slug": "hypothesis-testing", "title": "Hypothesis testing",
+             "description": "H₀ and H₁, z-scores, p-values, and one- or two-tailed tests.",
+             "lessons": [{"path": "03_statistics/course/S4_hypothesis_testing.ipynb"}],
+             "exercises": [{"slug": "loan-control", "title": "Loan control (Qonto)",
+                            "exercise": "03_statistics/exercises/S4_hypothesis_testing_part1.ipynb",
+                            "solution": "03_statistics/solutions/S4_hypothesis_testing_part1_solution_solution.ipynb"},
+                           {"slug": "useless-card", "title": "The most useless card (Swile)",
+                            "exercise": "03_statistics/exercises/S3_hypothesis_testing_part2.ipynb",
+                            "solution": "03_statistics/solutions/S3_hypothesis_testing_part2_solution.ipynb"}]},
+            {"part": "Statistics", "slug": "ab-testing", "title": "A/B testing",
+             "description": "Design an A/B test and decide with a statistical test.",
+             "lessons": [{"path": "03_statistics/course/S5_ab_testing.ipynb"}],
+             "exercises": [{"slug": "airbnb", "title": "Homepage background (Airbnb)",
+                            "exercise": "03_statistics/exercises/S5_ab_testing_part1.ipynb",
+                            "solution": "03_statistics/solutions/S5_ab_testing_part1_solution.ipynb"},
+                           {"slug": "vinted", "title": "Call-to-action button (Vinted)",
+                            "exercise": "03_statistics/exercises/S5_ab_testing_part2.ipynb",
+                            "solution": "03_statistics/solutions/S5_ab_testing_part2_solution.ipynb"}]},
         ],
     },
 }
@@ -84,8 +155,9 @@ COURSES = {
 BLOCKED_HOSTS = ("jedha", "fullstack-assets", "full-stack-assets", "essentials-assets")
 MAX_TEXT_LINES = 40
 MAX_HTML_BYTES = 1_000_000
-# Self-hosted (assets/js); course pages live two levels down: courses/<course>/<page>.html
-PLOTLY_JS = "../../assets/js/plotly-2.35.2.min.js"
+# Self-hosted; every course page lives four levels down: courses/<course>/<section>/<kind>/<page>.html
+TO_ROOT = "../../../../"
+PLOTLY_JS = TO_ROOT + "assets/js/plotly-2.35.2.min.js"
 CALLOUT = {"hint": "tip", "tip": "tip", "note": "note", "important": "important",
            "warning": "warning", "caution": "caution", "info": "note"}
 HINT_START = re.compile(r"^\s*(💡|\*\*(hints?|tip)\b|(hints?|tip)\s*:)", re.I)
@@ -280,6 +352,9 @@ def prepare(cells, nb_path, where, img_dir, img_rel, top_level=None, hints=False
 
 
 def drop_title(cells):
+    """Remove the notebook's own title: its first heading, only if it is a level-1 heading
+    in the original notebook (the page has its own title). Notebooks without a title keep
+    their first heading."""
     for i, c in enumerate(cells):
         if c["cell_type"] == "markdown" and src(c).strip():
             lines = src(c).split("\n")
@@ -290,23 +365,58 @@ def drop_title(cells):
     return cells
 
 
-def merge_solutions(ex_cells, sol_cells):
-    """Exercise cells in order; cells only in the solution notebook go in a collapsed callout."""
-    def key(c, side, i):
-        body = src(c).strip()
-        if c["cell_type"] == "code" and (not body or body.startswith("# put your code here") and len(body) < 30):
-            return f"{side}{i}:empty"  # empty answer cells never act as anchors
-        return c["cell_type"] + "\x00" + body
-    a = [key(c, "e", i) for i, c in enumerate(ex_cells)]
-    b = [key(c, "s", j) for j, c in enumerate(sol_cells)]
-    out = []
-    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
-        out += ex_cells[i1:i2]
-        extra = [c for c in sol_cells[j1:j2] if src(c).strip()]
-        if op != "equal" and extra:
-            out.append(md('::: {.callout-note collapse="true" title="Show solution"}'))
-            out += extra
-            out.append(md(":::"))
+def slugify(text):
+    text = re.sub(r"\{#[^}]*\}", "", text)
+    text = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    return text or "section"
+
+
+def exercise_level(cells):
+    """The heading level that splits a notebook into exercises: the most frequent one (ties: the larger)."""
+    from collections import Counter
+    counts = Counter(heading_levels(cells))
+    if not counts:
+        return None
+    top = max(counts.values())
+    return min(l for l, c in counts.items() if c == top)
+
+
+def add_heading_ids(cells, level=2, prefix="ex-"):
+    """Give every heading of `level` an explicit id (same text -> same id on both pages)."""
+    seen, ids = {}, []
+    for c in cells:
+        if c["cell_type"] != "markdown":
+            continue
+        out, fence = [], False
+        for line in src(c).split("\n"):
+            if line.lstrip().startswith("```"):
+                fence = not fence
+            m = None if fence else re.match(r"^(#{%d})\s+(.*?)\s*$" % level, line)
+            if m and "{#" not in m.group(2):
+                base = prefix + slugify(m.group(2))
+                seen[base] = seen.get(base, 0) + 1
+                hid = base if seen[base] == 1 else f"{base}-{seen[base]}"
+                ids.append(hid)
+                line = f"{m.group(1)} {m.group(2)} {{#{hid}}}"
+            out.append(line)
+        c["source"] = "\n".join(out)
+    return cells, ids
+
+
+def add_solution_links(cells, solution_page, solution_ids, level=2):
+    """After each exercise block (a heading of `level`), link to the same block on the solutions page."""
+    out, current = [], None
+    def link():
+        if current and current in solution_ids:
+            out.append(md(f"[Solution →]({solution_page}#{current}){{.sb-sol-link}}"))
+    for c in cells:
+        if c["cell_type"] == "markdown":
+            m = re.search(r"^#{%d}\s+.*\{#([^}]+)\}" % level, src(c), re.M)
+            if m:
+                link()
+                current = m.group(1)
+        out.append(c)
+    link()
     return out
 
 
@@ -360,93 +470,170 @@ def student_copy(nb_path, name, img_dir):
 
 # ---------- build ----------
 
-def build_course(key, course, repo):
-    out_dir = SITE / "courses" / key
-    for sub in ("img", "files"):
-        shutil.rmtree(out_dir / sub, ignore_errors=True)
-    for old in out_dir.glob("[0-9][0-9]-*.ipynb"):
-        old.unlink()
-    pages = []
+def section_plan(course):
+    """Pages of every section: [(n, sec, name, lessons, exercises)] with resolved slugs and titles."""
+    plan = []
     for n, sec in enumerate(course["sections"], 1):
         name = f"{n:02d}-{sec['slug']}"
-        img_dir, img_rel = out_dir / "img" / name, f"img/{name}"
-        where = name
-        links = (f"::: {{.sb-lesson-links}}\n[Exercises →]({name}-exercises.ipynb)\n"
-                 f"[Download notebooks and data (zip)](files/{name}.zip)\n:::")
-        ex_links = (f"::: {{.sb-lesson-links}}\n[← Lesson]({name}.ipynb)\n"
-                    f"[Download notebooks and data (zip)](files/{name}.zip)\n:::")
+        lessons = [dict(slug=l.get("slug", sec["slug"]), title=l.get("title", sec["title"]), path=l["path"])
+                   for l in sec["lessons"]]
+        plan.append((n, sec, name, lessons, sec.get("exercises", [])))
+    return plan
 
-        lesson_path = repo / sec["lesson"]
-        lesson = prepare(load(lesson_path)["cells"], lesson_path, where, img_dir, img_rel, top_level=1)
-        lesson = shift_all(drop_title(lesson), top_level=2)
-        write_nb(out_dir / f"{name}.ipynb",
-                 [front_matter(sec["title"], sec["description"], f"{course['title']} · Section {n} · Lesson"),
-                  md(links)] + lesson +
-                 [md(f"::: {{.sb-next}}\n**Your turn:** [{sec['title']}: exercises →]({name}-exercises.ipynb)\n:::")])
 
-        ex_cells = []
-        for ex_rel, sol_rel in sec["exercises"]:
-            ex_path, sol_path = repo / ex_rel, repo / sol_rel
-            ex = prepare(load(ex_path)["cells"], ex_path, where, img_dir, img_rel, top_level=2, hints=True)
-            sol = prepare(load(sol_path)["cells"], sol_path, where, img_dir, img_rel, top_level=2, hints=True)
-            ex_cells += merge_solutions(ex, sol)
-        write_nb(out_dir / f"{name}-exercises.ipynb",
-                 [front_matter(f"{sec['title']}: exercises", f"Exercises with hints and solutions: {sec['description']}",
-                               f"{course['title']} · Section {n} · Exercises"),
-                  md(ex_links + "\n\nTry each exercise on your own first. Open a **hint** if you are stuck, "
-                     "then compare with the **solution**.")] + ex_cells)
+def links_block(*items):
+    return "::: {.sb-lesson-links}\n" + "\n".join(f"[{t}]({h})" for t, h in items if h) + "\n:::"
 
-        # download bundle: lesson + exercise notebooks (no solutions) + data + images
+
+def build_course(key, course, repo):
+    out_dir = SITE / "courses" / key
+    for old in list(out_dir.glob("[0-9][0-9]-*")) + [out_dir / "img", out_dir / "files"]:
+        shutil.rmtree(old, ignore_errors=True) if old.is_dir() else old.unlink(missing_ok=True)
+    plan = section_plan(course)
+    link_checks = []
+    for n, sec, name, lessons, exercises in plan:
+        sdir = out_dir / name
+        img_dir = sdir / "img"
+        zip_href = f"../../files/{name}.zip"
+        first_ex = f"../exercises/{exercises[0]['slug']}.ipynb" if exercises else None
+        multi_l, multi_e = len(lessons) > 1, len(exercises) > 1
+
+        # lessons
+        for k, les in enumerate(lessons):
+            path = repo / les["path"]
+            cells = prepare(load(path)["cells"], path, name, img_dir, "../img")
+            cells = shift_all(drop_title(cells), top_level=2)
+            nxt = (f"../lessons/{lessons[k + 1]['slug']}.ipynb", f"Next: {lessons[k + 1]['title']} →") if k + 1 < len(lessons) \
+                else ((first_ex, f"Your turn: {sec['title']} exercises →") if exercises else (None, None))
+            title = les["title"] if multi_l else sec["title"]
+            sub = f"{course['title']} · Section {n} · Lesson" + (f" {k + 1} of {len(lessons)}" if multi_l else "")
+            tail = [md(f"::: {{.sb-next}}\n**[{nxt[1]}]({nxt[0]})**\n:::")] if nxt[0] else []
+            write_nb(sdir / "lessons" / f"{les['slug']}.ipynb",
+                     [front_matter(title, sec["description"], sub),
+                      md(links_block(("Exercises →", first_ex), ("Download notebooks and data (zip)", zip_href)))]
+                     + cells + tail)
+
+        # exercises and solutions (separate pages)
+        for k, ex in enumerate(exercises):
+            ex_path, sol_path = repo / ex["exercise"], repo / ex["solution"]
+            sol_page = f"../solutions/{ex['slug']}.ipynb"
+            sol_cells = prepare(load(sol_path)["cells"], sol_path, name, img_dir, "../img", hints=True)
+            sol_cells = shift_all(drop_title(sol_cells), top_level=2)
+            ex_cells = prepare(load(ex_path)["cells"], ex_path, name, img_dir, "../img", hints=True)
+            ex_cells = shift_all(drop_title(ex_cells), top_level=2)
+            level = exercise_level(ex_cells)
+            sol_ids = []
+            if level:
+                sol_cells, sol_ids = add_heading_ids(sol_cells, level)
+                ex_cells, _ = add_heading_ids(ex_cells, level)
+                ex_cells = add_solution_links(ex_cells, sol_page, set(sol_ids), level)
+            if not any("sb-sol-link" in src(c) for c in ex_cells):
+                ex_cells.append(md(f"[See the solutions →]({sol_page}){{.sb-sol-link}}"))
+            link_checks += [(sdir / "solutions" / f"{ex['slug']}.ipynb", hid)
+                            for hid in re.findall(r"\]\([^)#]*#([^)]+)\)\{\.sb-sol-link\}", "".join(src(c) for c in ex_cells))]
+            title = f"{sec['title']}: exercises" if not multi_e else f"Exercises: {ex['title']}"
+            sub = f"{course['title']} · Section {n} · Exercises" + (f" {k + 1} of {len(exercises)}" if multi_e else "")
+            nxt = [md(f"::: {{.sb-next}}\n**[Next exercises: {exercises[k + 1]['title']} →](../exercises/{exercises[k + 1]['slug']}.ipynb)**\n:::")] \
+                if k + 1 < len(exercises) else []
+            write_nb(sdir / "exercises" / f"{ex['slug']}.ipynb",
+                     [front_matter(title, f"Exercises with hints: {sec['description']}", sub),
+                      md(links_block(("← Lesson", f"../lessons/{lessons[0]['slug']}.ipynb"), ("Solutions →", sol_page),
+                                     ("Download notebooks and data (zip)", zip_href))
+                         + "\n\nTry each exercise on your own first. Stuck? Open a **hint**. "
+                           "Done? Compare with the **solution** at the end of each exercise.")]
+                     + ex_cells + nxt)
+            stitle = f"{sec['title']}: solutions" if not multi_e else f"Solutions: {ex['title']}"
+            write_nb(sdir / "solutions" / f"{ex['slug']}.ipynb",
+                     [front_matter(stitle, f"Solutions: {sec['description']}",
+                                   f"{course['title']} · Section {n} · Solutions"),
+                      md(links_block(("← Back to the exercises", f"../exercises/{ex['slug']}.ipynb"))
+                         + "\n\n::: {.callout-tip}\nTry the exercises on your own first: "
+                           "you learn much more by searching than by reading a solution.\n:::")]
+                     + sol_cells)
+
+        # download bundle: lessons + exercise notebooks + data + images. Never the solutions.
         zpath = out_dir / "files" / f"{name}.zip"
         zpath.parent.mkdir(parents=True, exist_ok=True)
+        sources = [repo / l["path"] for l in lessons] + [repo / e["exercise"] for e in exercises]
         with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
             nbdir = f"{name}/notebooks"
-            z.writestr(f"{nbdir}/lesson.ipynb", student_copy(lesson_path, where, img_dir))
-            for ex_rel, _ in sec["exercises"]:
-                z.writestr(f"{nbdir}/{Path(ex_rel).name}", student_copy(repo / ex_rel, where, img_dir))
-            used = set()
-            for p in [lesson_path] + [repo / e for e, s in sec["exercises"]] + [repo / s for e, s in sec["exercises"]]:
-                used |= set(DATA_RE.findall("\n".join(src(c) for c in load(p)["cells"] if c["cell_type"] == "code")))
-            data_root = (lesson_path.parent / "../data").resolve()
-            for d in sorted(used):
-                f = (lesson_path.parent / d).resolve()
+            for pth in sources:
+                z.writestr(f"{nbdir}/{pth.name}", student_copy(pth, name, img_dir))
+            used = {}
+            for pth in sources + [repo / e["solution"] for e in exercises]:
+                for d in DATA_RE.findall("\n".join(src(c) for c in load(pth)["cells"] if c["cell_type"] == "code")):
+                    used[(pth.parent / d).resolve()] = (pth.parent / "../data").resolve()
+            for f, data_root in sorted(used.items()):
                 if f.exists():
                     z.write(f, f"{name}/data/{f.relative_to(data_root)}")
                 else:
-                    log.append(f"{name}: data file not found {d}")
+                    log.append(f"{name}: data file not found {f}")
             if img_dir.exists():
                 for f in sorted(img_dir.iterdir()):
                     z.write(f, f"{nbdir}/img/{f.name}")
-        pages.append((n, sec, name))
-        log.append(f"{name}: built lesson + exercises (zip {zpath.stat().st_size // 1024} KB)")
-    write_overview(key, course, pages)
+        log.append(f"{name}: {len(lessons)} lesson(s), {len(exercises)} exercise page(s) + solutions, "
+                   f"zip {zpath.stat().st_size // 1024} KB")
+
+    # every "Solution →" link must point to an anchor that exists
+    for page, hid in link_checks:
+        if f"{{#{hid}}}" not in page.read_text(encoding="utf-8"):
+            log.append(f"BROKEN solution anchor #{hid} in {page.relative_to(SITE)}")
+    write_overview(key, course, plan)
     return out_dir
 
 
-def write_overview(key, course, pages):
+def write_overview(key, course, plan):
     lines = ["---", f"title: {json.dumps(course['title'])}", f"subtitle: {json.dumps(course['subtitle'])}",
-             f"description: {json.dumps('Free ' + course['title'] + ' course: ' + '; '.join(s['title'] for _, s, _ in pages) + '. Lessons, exercises, hints and solutions.')}",
+             f"description: {json.dumps('Free ' + course['title'] + ' course: lessons, exercises with hints, and solutions.')}",
              "---", "", "<!-- Generated by tools/build_courses.py: edit the COURSES config there. -->", "",
              course["intro"], "",
-             "Each section comes with a zip of the notebooks and the data, so you can run everything "
-             "on your computer (Python 3 with Jupyter, or [Anaconda](https://www.anaconda.com/download)).", ""]
-    for n, sec, name in pages:
-        lines.append(f"{n}. **[{sec['title']}]({name}.ipynb)**: {sec['description']} "
-                     f"[Exercises →]({name}-exercises.ipynb)")
+             "Each section has a zip with the lessons, the exercises and the data, so you can run everything "
+             "on your computer (Python 3 with Jupyter, or [Anaconda](https://www.anaconda.com/download)). "
+             "Solutions stay on this site.", ""]
+    part = None
+    for n, sec, name, lessons, exercises in plan:
+        if sec.get("part") and sec["part"] != part:
+            part = sec["part"]
+            lines += ["", f"## {part}", ""]
+        links = [f"[Lesson]({name}/lessons/{lessons[0]['slug']}.ipynb)"]
+        if exercises:
+            links += [f"[Exercises]({name}/exercises/{exercises[0]['slug']}.ipynb)",
+                      f"[Solutions]({name}/solutions/{exercises[0]['slug']}.ipynb)"]
+        lines.append(f"{n}. **{sec['title']}**: {sec['description']} " + " · ".join(links))
     (SITE / "courses" / key / "index.qmd").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def write_sidebars(built):
+def write_sidebars():
+    """Sidebar for every course that has been built (courses/<key>/index.qmd exists)."""
     out = ["# Generated by tools/build_courses.py — do not edit by hand.", "website:", "  sidebar:"]
-    for key, course, pages in built:
+    for key, course in COURSES.items():
+        if not (SITE / "courses" / key / "index.qmd").exists():
+            continue
         out += [f"    - id: {key}", f"      title: \"{course['number']} · {course['title']}\"",
                 "      style: floating", "      contents:",
                 "        - text: \"← All courses\"", "          href: courses/index.qmd",
                 "        - text: \"Overview\"", f"          href: courses/{key}/index.qmd"]
-        for n, sec, name in pages:
-            out += [f"        - section: \"{n}. {sec['title']}\"", "          contents:",
-                    "            - text: \"Lesson\"", f"              href: courses/{key}/{name}.ipynb",
-                    "            - text: \"Exercises\"", f"              href: courses/{key}/{name}-exercises.ipynb"]
+        part, ind = None, "        "
+        for n, sec, name, lessons, exercises in section_plan(course):
+            if sec.get("part") and sec["part"] != part:
+                part = sec["part"]
+                out += [f"        - section: \"{part}\"", "          contents:"]
+                ind = "            "
+            base = f"courses/{key}/{name}"
+            out += [f"{ind}- section: \"{n}. {sec['title']}\"", f"{ind}  contents:"]
+            i2 = ind + "    "
+            def group(label, items):
+                if len(items) == 1:
+                    return [f"{i2}- text: \"{label}\"", f"{i2}  href: {items[0][1]}"]
+                rows = [f"{i2}- section: \"{label}\"", f"{i2}  contents:"]
+                for t, h in items:
+                    rows += [f"{i2}    - text: {json.dumps(t, ensure_ascii=False)}", f"{i2}      href: {h}"]
+                return rows
+            out += group("Lesson" if len(lessons) == 1 else "Lessons",
+                         [(l["title"], f"{base}/lessons/{l['slug']}.ipynb") for l in lessons])
+            if exercises:
+                out += group("Exercises", [(e["title"], f"{base}/exercises/{e['slug']}.ipynb") for e in exercises])
+                out += group("Solutions", [(e["title"], f"{base}/solutions/{e['slug']}.ipynb") for e in exercises])
     (SITE / "courses" / "_sidebars.yml").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
@@ -466,19 +653,23 @@ def privacy_scan(paths):
 
 
 def main():
-    if len(sys.argv) != 3 or sys.argv[1] not in COURSES:
+    args = sys.argv[1:]
+    if not args or len(args) % 2 or any(k not in COURSES for k in args[::2]):
         sys.exit(__doc__)
-    key, repo = sys.argv[1], Path(sys.argv[2]).resolve()
-    course = COURSES[key]
-    out = build_course(key, course, repo)
-    pages = [(n, s, f"{n:02d}-{s['slug']}") for n, s in enumerate(course["sections"], 1)]
-    write_sidebars([(key, course, pages)])
-    print("\n".join(dict.fromkeys(log)))
-    problems = privacy_scan(list(out.glob("*.ipynb")) + list((out / "files").glob("*.zip")))
-    if problems:
-        print("\nPRIVACY SCAN FAILED:\n  " + "\n  ".join(sorted(set(problems))))
-        sys.exit(1)
-    print(f"\n{key}: privacy scan clean.")
+    failed = False
+    for key, repo in zip(args[::2], args[1::2]):
+        log.clear()
+        out = build_course(key, COURSES[key], Path(repo).resolve())
+        print("\n".join(dict.fromkeys(log)))
+        problems = privacy_scan(list(out.rglob("*.ipynb")) + list((out / "files").glob("*.zip")))
+        broken = [l for l in log if l.startswith("BROKEN")]
+        if problems:
+            print("\nPRIVACY SCAN FAILED:\n  " + "\n  ".join(sorted(set(problems))))
+        print(f"{key}: privacy scan {'FAILED' if problems else 'clean'}; solution links "
+              f"{'BROKEN' if broken else 'ok'}.\n")
+        failed |= bool(problems or broken)
+    write_sidebars()
+    sys.exit(1 if failed else 0)
 
 
 if __name__ == "__main__":

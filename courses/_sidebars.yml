@@ -12,30 +12,52 @@ website:
         - section: "1. Python basics"
           contents:
             - text: "Lesson"
-              href: courses/python/01-python-basics.ipynb
+              href: courses/python/01-python-basics/lessons/python-basics.ipynb
             - text: "Exercises"
-              href: courses/python/01-python-basics-exercises.ipynb
+              href: courses/python/01-python-basics/exercises/python-basics.ipynb
+            - text: "Solutions"
+              href: courses/python/01-python-basics/solutions/python-basics.ipynb
         - section: "2. NumPy and pandas"
           contents:
             - text: "Lesson"
-              href: courses/python/02-numpy-pandas.ipynb
-            - text: "Exercises"
-              href: courses/python/02-numpy-pandas-exercises.ipynb
+              href: courses/python/02-numpy-pandas/lessons/numpy-pandas.ipynb
+            - section: "Exercises"
+              contents:
+                - text: "NumPy"
+                  href: courses/python/02-numpy-pandas/exercises/numpy.ipynb
+                - text: "House market (pandas)"
+                  href: courses/python/02-numpy-pandas/exercises/house-market.ipynb
+                - text: "Starbucks reviews (dates)"
+                  href: courses/python/02-numpy-pandas/exercises/starbucks-reviews.ipynb
+            - section: "Solutions"
+              contents:
+                - text: "NumPy"
+                  href: courses/python/02-numpy-pandas/solutions/numpy.ipynb
+                - text: "House market (pandas)"
+                  href: courses/python/02-numpy-pandas/solutions/house-market.ipynb
+                - text: "Starbucks reviews (dates)"
+                  href: courses/python/02-numpy-pandas/solutions/starbucks-reviews.ipynb
         - section: "3. Data visualisation"
           contents:
             - text: "Lesson"
-              href: courses/python/03-data-visualization.ipynb
+              href: courses/python/03-data-visualization/lessons/data-visualization.ipynb
             - text: "Exercises"
-              href: courses/python/03-data-visualization-exercises.ipynb
+              href: courses/python/03-data-visualization/exercises/ibm-employees.ipynb
+            - text: "Solutions"
+              href: courses/python/03-data-visualization/solutions/ibm-employees.ipynb
         - section: "4. Interactive charts"
           contents:
             - text: "Lesson"
-              href: courses/python/04-interactive-charts.ipynb
+              href: courses/python/04-interactive-charts/lessons/interactive-charts.ipynb
             - text: "Exercises"
-              href: courses/python/04-interactive-charts-exercises.ipynb
+              href: courses/python/04-interactive-charts/exercises/earthquakes.ipynb
+            - text: "Solutions"
+              href: courses/python/04-interactive-charts/solutions/earthquakes.ipynb
         - section: "5. Working with APIs"
           contents:
             - text: "Lesson"
-              href: courses/python/05-apis.ipynb
+              href: courses/python/05-apis/lessons/apis.ipynb
             - text: "Exercises"
-              href: courses/python/05-apis-exercises.ipynb
+              href: courses/python/05-apis/exercises/bitcoin.ipynb
+            - text: "Solutions"
+              href: courses/python/05-apis/solutions/bitcoin.ipynb
