@@ -22,7 +22,7 @@ email addresses dropped, unclosed code blocks closed, very long outputs shortene
 Plotly figures redrawn from their data. A privacy scan and a solution-link check run at the
 end and fail the build.
 """
-import copy, difflib, json, re, shutil, sys, zipfile
+import base64, copy, difflib, json, re, shutil, sys, zipfile
 from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent
@@ -84,7 +84,8 @@ COURSES = {
         "sections": [
             {"part": "Linear algebra", "slug": "numpy-arrays", "title": "NumPy arrays",
              "description": "Create, index, reshape and combine arrays: the building block of linear algebra in Python.",
-             "lessons": [{"path": "01_linear_algebra/course/S1_numpy_arrays.ipynb"}], "exercises": []},
+             "lessons": [{"path": "01_linear_algebra/course/S1_numpy_arrays.ipynb"}], "exercises": [],
+             "quiz": "01_linear_algebra/quiz/S1_numpy_arrays_quiz.md"},
             {"part": "Linear algebra", "slug": "linear-systems-2", "title": "Linear systems in 2 variables",
              "description": "Write a system as a matrix, compute its determinant, solve it by elimination.",
              "lessons": [{"path": "01_linear_algebra/course/S2_solving_linear_systems_2_variables.ipynb"}], "exercises": []},
@@ -114,7 +115,8 @@ COURSES = {
              "lessons": [{"path": "02_calculus/course/S1_differentiation_in_python.ipynb"}], "exercises": []},
             {"part": "Calculus", "slug": "gradient-descent-1d", "title": "Gradient descent in one variable",
              "description": "Find the minimum of a function step by step, and see what the learning rate changes.",
-             "lessons": [{"path": "02_calculus/course/S2_optimization_gradient_gescent_one_variables.ipynb"}], "exercises": []},
+             "lessons": [{"path": "02_calculus/course/S2_optimization_gradient_gescent_one_variables.ipynb"}], "exercises": [],
+             "quiz": "02_calculus/quiz/S2_gradient_descent_one_variable_quiz.md"},
             {"part": "Calculus", "slug": "gradient-descent-2d", "title": "Gradient descent in two variables",
              "description": "The same method on surfaces, with local and global minima.",
              "lessons": [{"path": "02_calculus/course/S3_optimization_gradient_gescent_two_variables.ipynb"}], "exercises": []},
@@ -468,6 +470,134 @@ def student_copy(nb_path, name, img_dir):
                                                    "name": "python3"}}}, ensure_ascii=False, indent=1)
 
 
+MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".gif": "image/gif",
+        ".svg": "image/svg+xml", ".webp": "image/webp"}
+
+
+def notebook_assets(nb_path):
+    """What a notebook needs next to it: data files (../data/...), files it opens by bare name,
+    and local helper modules it imports. Returns (data, siblings, helpers) as lists of Paths;
+    data items are (absolute path, path relative to the data folder)."""
+    code = "\n".join(src(c) for c in load(nb_path)["cells"] if c["cell_type"] == "code")
+    data_root = (nb_path.parent / "../data").resolve()
+    data = []
+    for d in sorted(set(DATA_RE.findall(code))):
+        f = (nb_path.parent / d).resolve()
+        if f.exists():
+            data.append((f, f.relative_to(data_root)))
+        else:
+            log.append(f"BROKEN data file {d} in {nb_path.name}")
+    siblings = sorted({nb_path.parent / n for n in re.findall(r"""["']([\w.-]+\.(?:csv|json|txt|xlsx))["']""", code)
+                       if (nb_path.parent / n).exists()})
+    helpers = sorted({nb_path.parent / f"{m}.py" for m in re.findall(r"^\s*(?:from|import)\s+([A-Za-z_]\w*)", code, re.M)
+                      if (nb_path.parent / f"{m}.py").exists()})
+    return data, siblings, helpers
+
+
+def embed_images(text, nb_path):
+    """Replace local image paths by data: URIs so a downloaded notebook shows its images anywhere."""
+    def inline(path):
+        if re.match(r"^(https?:|data:|attachment:)", path):
+            return path
+        f = (nb_path.parent / path).resolve()
+        if not f.exists() or f.suffix.lower() not in MIME:
+            return path
+        return f"data:{MIME[f.suffix.lower()]};base64," + base64.b64encode(f.read_bytes()).decode()
+    text = re.sub(r"(!\[[^\]]*\]\()([^)\s]+)", lambda m: m.group(1) + inline(m.group(2)), text)
+    return re.sub(r'(<img[^>]*\bsrc\s*=\s*")([^"]+)', lambda m: m.group(1) + inline(m.group(2)), text)
+
+
+def download_copy(nb_path):
+    """The notebook as learners download it: repo content and outputs, images embedded,
+    data read from a `data` folder next to the notebook."""
+    cells = copy.deepcopy(load(nb_path)["cells"])
+    for c in cells:
+        c["metadata"] = {}
+        c.pop("id", None)
+        t = src(c).replace("../data/", "data/")
+        if c["cell_type"] == "markdown":
+            t = embed_images(t, nb_path)
+        c["source"] = t.splitlines(keepends=True)
+    return json.dumps({"cells": cells, "nbformat": 4, "nbformat_minor": 5,
+                       "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
+                                                   "name": "python3"}}}, ensure_ascii=False, indent=1)
+
+
+def publish_downloads(sdir, nb_path, filename, also_from=None):
+    """Write the downloadable notebook and its files into <section>/downloads/; return the header block.
+    `also_from`: another notebook whose files are needed too (an exercise needs what its solution loads)."""
+    ddir = sdir / "downloads"
+    ddir.mkdir(parents=True, exist_ok=True)
+    (ddir / filename).write_text(download_copy(nb_path), encoding="utf-8")
+    data, siblings, helpers = notebook_assets(nb_path)
+    if also_from is not None:
+        d2, s2, h2 = notebook_assets(also_from)
+        data = sorted(set(data) | set(d2), key=lambda x: str(x[1]))
+        siblings, helpers = sorted(set(siblings) | set(s2)), sorted(set(helpers) | set(h2))
+    for f, rel in data:
+        (ddir / "data" / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(f, ddir / "data" / rel)
+    for f in siblings + helpers:
+        shutil.copy2(f, ddir / f.name)
+    items = [f"[Download this notebook](../downloads/{filename}){{download=\"{filename}\"}}"]
+    if data:
+        items.append("Data: " + " · ".join(f"[{rel.as_posix()}](../downloads/data/{rel.as_posix()}){{download=\"{rel.name}\"}}"
+                                            for _, rel in data))
+    if siblings + helpers:
+        items.append("Also needed: " + " · ".join(f"[{f.name}](../downloads/{f.name}){{download=\"{f.name}\"}}"
+                                                   for f in siblings + helpers))
+    note = ("\n\nPut the data files in a folder named `data` next to the notebook"
+            + (", and the other files next to the notebook." if siblings + helpers else ".")) if data else (
+            "\n\nPut these files next to the notebook." if siblings + helpers else "")
+    return "::: {.sb-downloads}\n" + "  \n".join(items) + note + "\n:::"
+
+
+def parse_quiz(path):
+    """Read a quiz file: '## question', '- [ ]' / '- [x]' options, '> explanation'."""
+    title, questions, cur = None, [], None
+    text = re.sub(r"<!--.*?-->", "", path.read_text(encoding="utf-8"), flags=re.S)
+    for line in text.splitlines():
+        if line.startswith("# ") and title is None:
+            title = line[2:].strip()
+        elif line.startswith("## "):
+            cur = {"q": line[3:].strip(), "options": [], "answer": None, "explain": []}
+            questions.append(cur)
+        elif cur is not None and re.match(r"^- \[( |x|X)\] ", line):
+            if line[3].lower() == "x":
+                if cur["answer"] is not None:
+                    log.append(f"BROKEN quiz {path.name}: two right answers in '{cur['q'][:50]}'")
+                cur["answer"] = len(cur["options"])
+            cur["options"].append(line[6:].strip())
+        elif cur is not None and line.startswith(">"):
+            cur["explain"].append(line[1:].strip())
+    for q in questions:
+        if q["answer"] is None or len(q["options"]) < 2:
+            log.append(f"BROKEN quiz {path.name}: no right answer or fewer than 2 options in '{q['q'][:50]}'")
+    return title, questions
+
+
+def write_quiz(sdir, sec, course, n, quiz_path, lesson_href, next_link):
+    title, questions = parse_quiz(quiz_path)
+    body = ["---", f"title: {json.dumps(sec['title'] + ': quiz', ensure_ascii=False)}",
+            f"subtitle: {json.dumps(course['title'] + f' · Section {n} · Quiz', ensure_ascii=False)}",
+            f"description: {json.dumps('Check what you learned: ' + sec['description'], ensure_ascii=False)}",
+            "include-after-body:", f"  text: '<script src=\"{TO_ROOT}assets/js/quiz.js\"></script>'", "---", "",
+            links_block(("← Lesson", lesson_href)), "",
+            f"{len(questions)} questions. Click an answer to check it: you will see right away whether it is "
+            "correct, with a short explanation. Nothing is saved.", ""]
+    for i, q in enumerate(questions, 1):
+        body += [f'::: {{.sb-quiz-q data-answer="{q["answer"]}"}}', f"**{i}.** {q['q']}", "",
+                 "::: {.sb-quiz-options}"] + [f"- {o}" for o in q["options"]] + [":::", "",
+                 "::: {.sb-quiz-explain}", " ".join(q["explain"]), ":::", ":::", ""]
+    body += ["::: {.sb-quiz-score}", ":::", ""]
+    if next_link:
+        body += [f"::: {{.sb-next}}\n**[{next_link[1]}]({next_link[0]})**\n:::", ""]
+    out = sdir / "quiz" / "quiz.qmd"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("\n".join(body), encoding="utf-8")
+    return len(questions)
+
+
 # ---------- build ----------
 
 def section_plan(course):
@@ -487,7 +617,7 @@ def links_block(*items):
 
 def build_course(key, course, repo):
     out_dir = SITE / "courses" / key
-    for old in list(out_dir.glob("[0-9][0-9]-*")) + [out_dir / "img", out_dir / "files"]:
+    for old in list(out_dir.glob("[0-9][0-9]-*")) + [out_dir / "img", out_dir / "files"]:  # incl. quiz/
         shutil.rmtree(old, ignore_errors=True) if old.is_dir() else old.unlink(missing_ok=True)
     plan = section_plan(course)
     link_checks = []
@@ -496,6 +626,10 @@ def build_course(key, course, repo):
         img_dir = sdir / "img"
         zip_href = f"../../files/{name}.zip"
         first_ex = f"../exercises/{exercises[0]['slug']}.ipynb" if exercises else None
+        quiz_src = repo / sec["quiz"] if sec.get("quiz") else None
+        if quiz_src is not None and not quiz_src.exists():
+            log.append(f"BROKEN quiz file {sec['quiz']}"); quiz_src = None
+        quiz_href = "../quiz/quiz.qmd" if quiz_src else None
         multi_l, multi_e = len(lessons) > 1, len(exercises) > 1
 
         # lessons
@@ -504,14 +638,22 @@ def build_course(key, course, repo):
             cells = prepare(load(path)["cells"], path, name, img_dir, "../img")
             cells = shift_all(drop_title(cells), top_level=2)
             nxt = (f"../lessons/{lessons[k + 1]['slug']}.ipynb", f"Next: {lessons[k + 1]['title']} →") if k + 1 < len(lessons) \
-                else ((first_ex, f"Your turn: {sec['title']} exercises →") if exercises else (None, None))
+                else ((first_ex, f"Your turn: {sec['title']} exercises →") if exercises else
+                      ((quiz_href, f"Your turn: {sec['title']} quiz →") if quiz_href else (None, None)))
             title = les["title"] if multi_l else sec["title"]
             sub = f"{course['title']} · Section {n} · Lesson" + (f" {k + 1} of {len(lessons)}" if multi_l else "")
             tail = [md(f"::: {{.sb-next}}\n**[{nxt[1]}]({nxt[0]})**\n:::")] if nxt[0] else []
+            dl = publish_downloads(sdir, path, f"lesson-{les['slug']}.ipynb")
             write_nb(sdir / "lessons" / f"{les['slug']}.ipynb",
                      [front_matter(title, sec["description"], sub),
-                      md(links_block(("Exercises →", first_ex), ("Download notebooks and data (zip)", zip_href)))]
+                      md(links_block(("Exercises →", first_ex), ("Quiz →", quiz_href), ("All files of this section (zip)", zip_href))),
+                      md(dl)]
                      + cells + tail)
+
+        if quiz_src:
+            nq = write_quiz(sdir, sec, course, n, quiz_src, f"../lessons/{lessons[0]['slug']}.ipynb",
+                            (first_ex, f"Next: {sec['title']} exercises →") if first_ex else None)
+            log.append(f"{name}: quiz with {nq} questions")
 
         # exercises and solutions (separate pages)
         for k, ex in enumerate(exercises):
@@ -537,8 +679,9 @@ def build_course(key, course, repo):
                 if k + 1 < len(exercises) else []
             write_nb(sdir / "exercises" / f"{ex['slug']}.ipynb",
                      [front_matter(title, f"Exercises with hints: {sec['description']}", sub),
+                      md(publish_downloads(sdir, ex_path, f"exercises-{ex['slug']}.ipynb", also_from=sol_path)),
                       md(links_block(("← Lesson", f"../lessons/{lessons[0]['slug']}.ipynb"), ("Solutions →", sol_page),
-                                     ("Download notebooks and data (zip)", zip_href))
+                                     ("All files of this section (zip)", zip_href))
                          + "\n\nTry each exercise on your own first. Stuck? Open a **hint**. "
                            "Done? Compare with the **solution** at the end of each exercise.")]
                      + ex_cells + nxt)
@@ -546,6 +689,7 @@ def build_course(key, course, repo):
             write_nb(sdir / "solutions" / f"{ex['slug']}.ipynb",
                      [front_matter(stitle, f"Solutions: {sec['description']}",
                                    f"{course['title']} · Section {n} · Solutions"),
+                      md(publish_downloads(sdir, sol_path, f"solutions-{ex['slug']}.ipynb")),
                       md(links_block(("← Back to the exercises", f"../exercises/{ex['slug']}.ipynb"))
                          + "\n\n::: {.callout-tip}\nTry the exercises on your own first: "
                            "you learn much more by searching than by reading a solution.\n:::")]
@@ -555,29 +699,12 @@ def build_course(key, course, repo):
         zpath = out_dir / "files" / f"{name}.zip"
         zpath.parent.mkdir(parents=True, exist_ok=True)
         with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
-            # same layout as the repos: lessons/ and exercises/ next to data/, so ../data/ paths work
-            kinds = [("lessons", repo / l["path"]) for l in lessons] + [("exercises", repo / e["exercise"]) for e in exercises]
-            for kind, pth in kinds:
-                z.writestr(f"{name}/{kind}/{pth.name}", student_copy(pth, name, img_dir))
-                # local helper modules the notebook imports (e.g. gd_tools.py next to it)
-                code = "\n".join(src(c) for c in load(pth)["cells"] if c["cell_type"] == "code")
-                for mod in set(re.findall(r"^\s*(?:from|import)\s+([A-Za-z_]\w*)", code, re.M)):
-                    helper = pth.parent / f"{mod}.py"
-                    if helper.exists() and f"{name}/{kind}/{helper.name}" not in z.namelist():
-                        z.write(helper, f"{name}/{kind}/{helper.name}")
-            used = {}
-            for pth in [p for _, p in kinds] + [repo / e["solution"] for e in exercises]:
-                for d in DATA_RE.findall("\n".join(src(c) for c in load(pth)["cells"] if c["cell_type"] == "code")):
-                    used[(pth.parent / d).resolve()] = (pth.parent / "../data").resolve()
-            for f, data_root in sorted(used.items()):
-                if f.exists():
-                    z.write(f, f"{name}/data/{f.relative_to(data_root)}")
-                else:
-                    log.append(f"BROKEN data file {f.name} in {name}")
-            if img_dir.exists():
-                for kind in sorted({k for k, _ in kinds}):
-                    for f in sorted(img_dir.iterdir()):
-                        z.write(f, f"{name}/{kind}/img/{f.name}")
+            # flat: the notebooks, their data/ folder and helper files, exactly like the page downloads
+            ddir = sdir / "downloads"
+            wanted = [f"lesson-{l['slug']}.ipynb" for l in lessons] + [f"exercises-{e['slug']}.ipynb" for e in exercises]
+            for f in sorted(ddir.rglob("*")):
+                if f.is_file() and (not f.name.endswith(".ipynb") or f.name in wanted):
+                    z.write(f, f"{name}/{f.relative_to(ddir).as_posix()}")
         log.append(f"{name}: {len(lessons)} lesson(s), {len(exercises)} exercise page(s) + solutions, "
                    f"zip {zpath.stat().st_size // 1024} KB")
 
@@ -603,6 +730,8 @@ def write_overview(key, course, plan):
             part = sec["part"]
             lines += ["", f"## {part}", ""]
         links = [f"[Lesson]({name}/lessons/{lessons[0]['slug']}.ipynb)"]
+        if sec.get("quiz"):
+            links.append(f"[Quiz]({name}/quiz/quiz.qmd)")
         if exercises:
             links += [f"[Exercises]({name}/exercises/{exercises[0]['slug']}.ipynb)",
                       f"[Solutions]({name}/solutions/{exercises[0]['slug']}.ipynb)"]
@@ -638,6 +767,8 @@ def write_sidebars():
                 return rows
             out += group("Lesson" if len(lessons) == 1 else "Lessons",
                          [(l["title"], f"{base}/lessons/{l['slug']}.ipynb") for l in lessons])
+            if sec.get("quiz"):
+                out += [f"{i2}- text: \"Quiz\"", f"{i2}  href: {base}/quiz/quiz.qmd"]
             if exercises:
                 out += group("Exercises", [(e["title"], f"{base}/exercises/{e['slug']}.ipynb") for e in exercises])
                 out += group("Solutions", [(e["title"], f"{base}/solutions/{e['slug']}.ipynb") for e in exercises])

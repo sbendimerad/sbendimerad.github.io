@@ -7,12 +7,14 @@ project:
   render:
     - "*.qmd"
     - "courses/**/*.ipynb"
+    - "!courses/**/downloads/"
     - "!mockup/"
     - "!README.md"
   resources:
     - assets/
     - robots.txt
     - courses/*/files/*.zip
+    - courses/*/*/downloads/
 
 execute:
   enabled: false

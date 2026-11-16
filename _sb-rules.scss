@@ -488,6 +488,65 @@ body.sb-hide-title #title-block-header { display: none; }
 #quarto-sidebar .sidebar-item a { font-size: 15px; }
 #quarto-sidebar .sidebar-link.active { font-weight: 600; color: $sb-text; }
 .callout { border-radius: 10px; }
+.sb-quiz-q {
+  margin: 28px 0;
+  padding: 20px 22px;
+  border: 1px solid $sb-border;
+  border-radius: 14px;
+  > p:first-child { font-size: 17px; margin-bottom: 12px; }
+}
+.sb-quiz-options ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.sb-quiz-options li {
+  padding: 10px 14px;
+  border: 1px solid $sb-border-2;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+  p { margin: 0; }
+  &:hover, &:focus-visible { border-color: $sb-accent; outline: none; }
+  &[aria-disabled="true"] { cursor: default; }
+  &.is-right { border-color: #2E7D4F; background: rgba(46, 125, 79, 0.10); }
+  &.is-wrong { border-color: #C0392B; background: rgba(192, 57, 43, 0.10); }
+  &.is-right::after { content: "  ✓"; color: #2E7D4F; font-weight: 700; }
+  &.is-wrong::after { content: "  ✗"; color: #C0392B; font-weight: 700; }
+}
+.sb-quiz-explain {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: $sb-surface;
+  font-size: 15px;
+  p { margin: 0; display: inline; }
+}
+.sb-quiz-score {
+  margin: 32px 0;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: $sb-surface;
+  font-size: 16px;
+}
+.sb-quiz-again {
+  margin-left: 12px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid $sb-border-2;
+  background: transparent;
+  color: $sb-text;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.sb-downloads {
+  margin: 4px 0 20px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: $sb-surface;
+  font-size: 15px;
+  line-height: 1.9;
+  p { margin: 0; }
+  p + p { margin-top: 6px; font-size: 14px; color: $sb-text-3; }
+  a { font-weight: 600; text-decoration: none; }
+}
 p:has(> a.sb-sol-link) { text-align: right; margin: 4px 0 36px; }
 a.sb-sol-link {
   display: inline-block;
