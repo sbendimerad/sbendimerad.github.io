@@ -164,7 +164,7 @@ HINT_START = re.compile(r"^\s*(💡|\*\*(hints?|tip)\b|(hints?|tip)\s*:)", re.I)
 # anchored at the start of a word so long base64 runs (Plotly data) stay linear-time
 EMAIL_RE = re.compile(r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@(?!example\.com)[A-Za-z0-9.-]+\.[a-z]{2,}")
 PRIVACY = re.compile(r"(jedha|" + EMAIL_RE.pattern + r"|api[_-]?key\s*=\s*['\"][A-Za-z0-9]{12,}"
-                     r"|bucket-|hntran|huynam)", re.I)
+                     r"|bucket-jedha|hntran|huynam)", re.I)
 DATA_RE = re.compile(r"""['"](\.\./data/[^'"]+)['"]""")
 
 log = []
@@ -273,13 +273,13 @@ def copy_local_images(text, nb_path, img_dir, img_rel):
             return path
         source = (nb_path.parent / path).resolve()
         if not source.exists():
-            log.append(f"{nb_path.name}: missing image {path}")
+            log.append(f"BROKEN image {path} in {nb_path.name}")
             return path
         img_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, img_dir / source.name)
         return f"{img_rel}/{source.name}"
     text = re.sub(r"(!\[[^\]]*\]\()([^)\s]+)", lambda m: m.group(1) + fix(m.group(2)), text)
-    return re.sub(r'(<img[^>]*\bsrc=")([^"]+)', lambda m: m.group(1) + fix(m.group(2)), text)
+    return re.sub(r'(<img[^>]*\bsrc\s*=\s*")([^"]+)', lambda m: m.group(1) + fix(m.group(2)), text)
 
 
 # ---------- outputs ----------
@@ -554,23 +554,30 @@ def build_course(key, course, repo):
         # download bundle: lessons + exercise notebooks + data + images. Never the solutions.
         zpath = out_dir / "files" / f"{name}.zip"
         zpath.parent.mkdir(parents=True, exist_ok=True)
-        sources = [repo / l["path"] for l in lessons] + [repo / e["exercise"] for e in exercises]
         with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
-            nbdir = f"{name}/notebooks"
-            for pth in sources:
-                z.writestr(f"{nbdir}/{pth.name}", student_copy(pth, name, img_dir))
+            # same layout as the repos: lessons/ and exercises/ next to data/, so ../data/ paths work
+            kinds = [("lessons", repo / l["path"]) for l in lessons] + [("exercises", repo / e["exercise"]) for e in exercises]
+            for kind, pth in kinds:
+                z.writestr(f"{name}/{kind}/{pth.name}", student_copy(pth, name, img_dir))
+                # local helper modules the notebook imports (e.g. gd_tools.py next to it)
+                code = "\n".join(src(c) for c in load(pth)["cells"] if c["cell_type"] == "code")
+                for mod in set(re.findall(r"^\s*(?:from|import)\s+([A-Za-z_]\w*)", code, re.M)):
+                    helper = pth.parent / f"{mod}.py"
+                    if helper.exists() and f"{name}/{kind}/{helper.name}" not in z.namelist():
+                        z.write(helper, f"{name}/{kind}/{helper.name}")
             used = {}
-            for pth in sources + [repo / e["solution"] for e in exercises]:
+            for pth in [p for _, p in kinds] + [repo / e["solution"] for e in exercises]:
                 for d in DATA_RE.findall("\n".join(src(c) for c in load(pth)["cells"] if c["cell_type"] == "code")):
                     used[(pth.parent / d).resolve()] = (pth.parent / "../data").resolve()
             for f, data_root in sorted(used.items()):
                 if f.exists():
                     z.write(f, f"{name}/data/{f.relative_to(data_root)}")
                 else:
-                    log.append(f"{name}: data file not found {f}")
+                    log.append(f"BROKEN data file {f.name} in {name}")
             if img_dir.exists():
-                for f in sorted(img_dir.iterdir()):
-                    z.write(f, f"{nbdir}/img/{f.name}")
+                for kind in sorted({k for k, _ in kinds}):
+                    for f in sorted(img_dir.iterdir()):
+                        z.write(f, f"{name}/{kind}/img/{f.name}")
         log.append(f"{name}: {len(lessons)} lesson(s), {len(exercises)} exercise page(s) + solutions, "
                    f"zip {zpath.stat().st_size // 1024} KB")
 
