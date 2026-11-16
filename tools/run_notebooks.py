@@ -10,10 +10,13 @@ Usage:
 During the run only, input() is replaced by a fake keyboard that answers
 12, 7, 0, 1, 2, 3, 4, 5, 6, 8, 9 in turn (and echoes "prompt + answer"), so notebooks
 that ask the user for values do not block. Plotly figures are saved as JSON. The
-injected setup cell is removed before saving. Exit code 1 if any notebook fails.
+injected setup cell is removed before saving, and outputs containing email
+addresses are never saved (privacy). Exit code 1 if any notebook fails.
 
 Needs: nbclient, nbformat, ipykernel (pip install nbclient nbformat ipykernel).
 """
+import json
+import re
 import sys
 import time
 
@@ -33,6 +36,10 @@ SETUP = nbformat.v4.new_code_cell(
     "except ImportError:\n"
     "    pass\n"
     "import matplotlib; matplotlib.use('module://matplotlib_inline.backend_inline')\n")
+
+
+# Outputs that contain email addresses are never saved (privacy): the code stays, the output is cleared.
+EMAIL = re.compile(r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@(?!example\.com)[A-Za-z0-9.-]+\.[a-z]{2,}")
 
 
 def run(path, save, allow):
@@ -59,6 +66,13 @@ def run(path, save, allow):
                 if "execution_count" in o:
                     o["execution_count"] = None
     if save and ok and status == "OK":
+        cleared = 0
+        for c in nb.cells:
+            if c.cell_type == "code" and any(EMAIL.search(json.dumps(o)) for o in c.get("outputs", [])):
+                c.outputs = []
+                cleared += 1
+        if cleared:
+            status += f" (outputs with email addresses not saved: {cleared} cells)"
         nbformat.write(nb, path)
     return ok, status
 
