@@ -30,30 +30,34 @@ image: assets/photo.jpg
 
 <section style="margin-top:36px">
   <h2 class="sb-h2" style="font-size:26px">Path</h2>
-  <!-- TODO(Sabrine): add years. Put them in <span class="y">2014–2017</span> above each .w line. -->
   <div class="sb-path">
     <div>
+      <span class="y">2016</span>
       <span class="w">Engineering degree in applied mathematics, Télécom Paris</span>
       <span class="d">The foundation.</span>
     </div>
     <div>
+      <span class="y">2017 – 2022</span>
       <span class="w">AI R&amp;D, energy</span>
       <span class="d">Research projects taken to production.</span>
     </div>
     <div>
+      <span class="y">2022 – 2023</span>
       <span class="w">AI R&amp;D, water networks</span>
       <span class="d">Leak prediction; contributor to a patent.</span>
     </div>
     <div>
-      <span class="w">Master's (M2) in Computational Neuroscience and Neuroengineering, Université Paris-Saclay / CentraleSupélec</span>
-      <span class="d">The step towards health.</span>
-    </div>
-    <div>
+      <span class="y">2024 – 2025</span>
       <span class="w">Biosignals &amp; medical imaging, AI startups</span>
       <span class="d">Pipelines between research and product.</span>
     </div>
+    <div>
+      <span class="y">2024 – 2025</span>
+      <span class="w">Master's (M2) in Computational Neuroscience and Neuroengineering, Université Paris-Saclay / CentraleSupélec</span>
+      <span class="d">The step towards health, alongside my work.</span>
+    </div>
     <div class="now">
-      <span class="y">Now</span>
+      <span class="y">Now · since 2025</span>
       <span class="w">Research engineer, health AI</span>
       <span class="d">Multimodal brain imaging: MEG, fMRI, structural MRI.</span>
     </div>
