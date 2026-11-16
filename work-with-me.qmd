@@ -1,5 +1,5 @@
 ---
-pagetitle: "Work with me — Sabrine Bendimerad"
+pagetitle: "Work with me"
 description: "Training, talks and consulting to take AI from prototype to production. In English, French and Arabic, on-site or remote."
 page-layout: custom
 ---

@@ -1,5 +1,5 @@
 ---
-pagetitle: "Free courses — Sabrine Bendimerad"
+pagetitle: "Free courses"
 description: "Free AI courses: Python, Math for AI, Machine Learning and Deep Learning. Every section has a notebook, exercises and solutions."
 page-layout: custom
 ---

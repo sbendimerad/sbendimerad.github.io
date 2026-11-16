@@ -1,5 +1,5 @@
 ---
-pagetitle: "About — Sabrine Bendimerad"
+pagetitle: "About"
 description: "Applied mathematics engineer (Télécom Paris), 10 years in AI R&D, now building multimodal brain imaging pipelines in health AI."
 page-layout: custom
 image: assets/photo.jpg

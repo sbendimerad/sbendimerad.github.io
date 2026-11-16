@@ -1,5 +1,5 @@
 ---
-pagetitle: "Projects — Sabrine Bendimerad"
+pagetitle: "Projects"
 description: "Open-source and research projects in signal processing, fMRI and brain connectivity."
 page-layout: custom
 ---

@@ -1,5 +1,5 @@
 ---
-pagetitle: "Sabrine Bendimerad — I take AI from research to production"
+pagetitle: "I take AI from research to production"
 description: "Senior AI/ML engineer taking AI from research to production, now in health AI. Writing, projects, free courses, training and consulting."
 page-layout: custom
 section-divs: false
