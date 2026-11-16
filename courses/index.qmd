@@ -22,14 +22,15 @@ page-layout: custom
     </div>
     <span class="go">Start →</span>
   </a>
-  <div class="sb-course soon">
+  <a class="sb-course" href="math/index.html">
     <span class="num">02</span>
     <div>
       <h2>Math for AI</h2>
-      <p>Linear algebra, derivatives, probability and statistics, worked by hand on small numbers.</p>
-      <span class="meta">Coming soon</span>
+      <p>Linear algebra, derivatives and gradient descent, probability and statistics, with Python.</p>
+      <span class="meta">14 sections · after Python</span>
     </div>
-  </div>
+    <span class="go">Start →</span>
+  </a>
   <div class="sb-course soon">
     <span class="num">03</span>
     <div>

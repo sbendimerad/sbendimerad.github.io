@@ -1,0 +1,106 @@
+---
+title: "Gradient descent in one variable: quiz"
+subtitle: "Math for AI · Section 9 · Quiz"
+description: "Check what you learned: Find the minimum of a function step by step, and see what the learning rate changes."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/gradient-descent-1d.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** Which formula gives the next point in gradient descent?
+
+::: {.sb-quiz-options}
+- $x_1 = x_0 + \alpha \frac{df}{dx}(x_0)$
+- $x_1 = x_0 - \alpha \frac{df}{dx}(x_0)$
+- $x_1 = \alpha \, x_0 - \frac{df}{dx}(x_0)$
+- $x_1 = x_0 - \frac{df}{dx}(\alpha)$
+:::
+
+::: {.sb-quiz-explain}
+We move in the direction **opposite** to the derivative ("down the hill"), with a step scaled by the learning rate $\alpha$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** $f(x) = x^2$, start at $x_0 = 3$, learning rate $\alpha = 0.1$. What is $x_1$?
+
+::: {.sb-quiz-options}
+- $3.6$
+- $2.9$
+- $2.4$
+- $0.6$
+:::
+
+::: {.sb-quiz-explain}
+The derivative is $f'(x) = 2x$, so $f'(3) = 6$ and $x_1 = 3 - 0.1 \times 6 = 2.4$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** Why use gradient descent to minimise $f(x) = e^x - \log(x)$?
+
+::: {.sb-quiz-options}
+- Because the function has no minimum
+- Because the equation $\frac{df}{dx} = 0$, that is $e^x = \frac{1}{x}$, cannot be solved with a simple formula
+- Because gradient descent always finds the exact answer in one step
+- Because the derivative cannot be computed
+:::
+
+::: {.sb-quiz-explain}
+The minimum exists (around $x = 0.567$), but there is no closed-form solution, so we approach it step by step.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** In the lesson, the learning rate goes from `0.1` to `0.5`. What happens?
+
+::: {.sb-quiz-options}
+- It converges faster to the same minimum
+- The steps are too large: the method does not converge any more
+- Nothing changes
+- It finds a better minimum
+:::
+
+::: {.sb-quiz-explain}
+A larger step is faster only up to a point. With `0.5`, the steps overshoot the minimum and the method diverges.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** With a very small learning rate (`0.04`) and only 25 iterations, what is the risk?
+
+::: {.sb-quiz-options}
+- Diverging
+- Stopping before reaching the minimum
+- Finding a maximum instead of a minimum
+- None: smaller is always better
+:::
+
+::: {.sb-quiz-explain}
+Small steps are safe but slow: after 25 steps you are still at about $0.575$ instead of $0.567$. You need more iterations.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**6.** A function has several minima. What decides which one gradient descent finds?
+
+::: {.sb-quiz-options}
+- Nothing: it always finds the global minimum
+- Only the number of iterations
+- Mostly the starting point (and the learning rate)
+- The sign of the function
+:::
+
+::: {.sb-quiz-explain}
+Starting from `x = 1.3` the lesson reaches the global minimum; starting from `x = 0.25` it gets stuck in a local one.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::

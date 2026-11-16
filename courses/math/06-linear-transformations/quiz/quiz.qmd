@@ -1,0 +1,106 @@
+---
+title: "Linear transformations: quiz"
+subtitle: "Math for AI · Section 6 · Quiz"
+description: "Check what you learned: What makes a transformation linear, and how matrices move the plane."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/linear-transformations.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="0"}
+**1.** Which property must every linear transformation $T$ have?
+
+::: {.sb-quiz-options}
+- $T(u + v) = T(u) + T(v)$ and $T(kv) = k\,T(v)$
+- $T(v)$ always has the same length as $v$
+- $T(v) = v + b$ for a fixed vector $b$
+- $T$ must go from $\mathbb{R}^2$ to $\mathbb{R}^2$
+:::
+
+::: {.sb-quiz-explain}
+Additivity and scaling. A consequence: a linear transformation always keeps the origin in place ($T(0) = 0$), so adding a fixed $b$ is **not** linear.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** For a 2×2 matrix $A$, what is its first column?
+
+::: {.sb-quiz-options}
+- The determinant of $A$
+- Where $A$ sends the basis vector $e_1 = [1, 0]$
+- Where $A$ sends $e_2 = [0, 1]$
+- An eigenvector of $A$
+:::
+
+::: {.sb-quiz-explain}
+$A e_1$ is the first column and $A e_2$ the second. Knowing where $e_1$ and $e_2$ go tells you the whole transformation.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** The shear $\begin{bmatrix}1 & 0.5\\ 0 & 1\end{bmatrix}$ has determinant 1. What does it do to areas?
+
+::: {.sb-quiz-options}
+- Doubles them
+- Keeps them unchanged
+- Sets them to zero
+- Flips their sign only
+:::
+
+::: {.sb-quiz-explain}
+$|\det(A)|$ is the factor by which areas are scaled. A determinant of 1 means areas are preserved, even though the squares are tilted.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**4.** A matrix has determinant 0. What happens?
+
+::: {.sb-quiz-options}
+- Nothing special
+- It is a rotation
+- The plane collapses onto a line (or a point): the matrix is not invertible
+- Areas are doubled
+:::
+
+::: {.sb-quiz-explain}
+The columns are collinear, so all of the plane is squeezed onto a line. That is why $Ax = b$ has no unique solution.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**5.** Which transformation has **no** real eigenvector?
+
+::: {.sb-quiz-options}
+- Scaling the x-axis by 2
+- Reflection about the y-axis
+- Rotation by 90°
+- The identity
+:::
+
+::: {.sb-quiz-explain}
+An eigenvector keeps its direction. A 90° rotation turns **every** direction, so no real vector stays on its own line.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** You apply $A$ first, then $B$. Which matrix does the whole thing?
+
+::: {.sb-quiz-options}
+- $AB$
+- $BA$
+- $A + B$
+- Both $AB$ and $BA$, they are always equal
+:::
+
+::: {.sb-quiz-explain}
+The matrix closest to the vector acts first: $B(Av) = (BA)v$. In general $AB \neq BA$: the order matters.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::

@@ -1,0 +1,106 @@
+---
+title: "Statistics basics: quiz"
+subtitle: "Math for AI · Section 11 · Quiz"
+description: "Check what you learned: Data types, centre and spread of a distribution, the normal distribution."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/statistics-basics.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="0"}
+**1.** The number of people in a class (15, never 15.3) is which type of data?
+
+::: {.sb-quiz-options}
+- Quantitative discrete
+- Quantitative continuous
+- Qualitative ordinal
+- Qualitative nominal
+:::
+
+::: {.sb-quiz-explain}
+It is a number that can only take specific values in an interval.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** Survey answers "Perfect", "Good", "Not bad", "Can do better" are:
+
+::: {.sb-quiz-options}
+- Quantitative continuous
+- Qualitative nominal
+- Qualitative ordinal
+- Not data at all
+:::
+
+::: {.sb-quiz-explain}
+They are categories that can be **ordered**. Country or eye colour would be **nominal**: no order.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** Mary got 17/20, Roman 14/20 and Michael 15/20. What is the mean?
+
+::: {.sb-quiz-options}
+- 15
+- 15.33
+- 14.5
+- 46
+:::
+
+::: {.sb-quiz-explain}
+$(17 + 14 + 15) / 3 = 46 / 3 \approx 15.33$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** What is the median of 2, 3, 3, 5, 7, 10?
+
+::: {.sb-quiz-options}
+- 3
+- 4
+- 5
+- 5.33
+:::
+
+::: {.sb-quiz-explain}
+The values are sorted and there is an even number of them, so the median is the average of the two middle values: $(3 + 5) / 2 = 4$. The mode is 3, the mean is 5.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** In Paris in 1993, the lowest temperature was -5 °C and the highest 33 °C. What is the interval (range)?
+
+::: {.sb-quiz-options}
+- 28 degrees
+- 38 degrees
+- 33 degrees
+- 14 degrees
+:::
+
+::: {.sb-quiz-explain}
+Largest minus smallest: $33 - (-5) = 38$. Simple, but very sensitive to extreme values.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** A company studies 1,000 customers to learn about all its customers. The 1,000 customers are:
+
+::: {.sb-quiz-options}
+- The population
+- A sample
+- A census
+- A parameter
+:::
+
+::: {.sb-quiz-explain}
+A census studies the whole population, which is expensive. A representative **sample** is used instead, and a **parameter** describes the population (for example its average age).
+:::
+:::
+
+::: {.sb-quiz-score}
+:::

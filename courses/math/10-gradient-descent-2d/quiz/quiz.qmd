@@ -1,0 +1,91 @@
+---
+title: "Gradient descent in two variables: quiz"
+subtitle: "Math for AI · Section 10 · Quiz"
+description: "Check what you learned: The same method on surfaces, with local and global minima."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/gradient-descent-2d.ipynb)
+:::
+
+5 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="0"}
+**1.** How do you update $(x, y)$ in gradient descent?
+
+::: {.sb-quiz-options}
+- $x_1 = x_0 - \alpha \frac{\partial f}{\partial x}(x_0, y_0)$ and $y_1 = y_0 - \alpha \frac{\partial f}{\partial y}(x_0, y_0)$
+- Update $x$ first until it converges, then $y$
+- $x_1 = x_0 + \alpha \frac{\partial f}{\partial x}$ and $y_1 = y_0 + \alpha \frac{\partial f}{\partial y}$
+- $x_1 = x_0 - \alpha$ and $y_1 = y_0 - \alpha$
+:::
+
+::: {.sb-quiz-explain}
+Both coordinates move at the same time, each with its own partial derivative.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** In which direction does each step go?
+
+::: {.sb-quiz-options}
+- Along the gradient vector
+- Opposite to the gradient vector
+- Always towards the origin
+- In a random direction
+:::
+
+::: {.sb-quiz-explain}
+The gradient points uphill (steepest increase), so we step the other way, scaled by the learning rate $\alpha$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** $f(x, y) = x^2 + y^2$, start at $(1, 2)$ with $\alpha = 0.1$. Where are you after one step?
+
+::: {.sb-quiz-options}
+- $(0.9, 1.9)$
+- $(0.8, 1.6)$
+- $(1.2, 2.4)$
+- $(0, 0)$
+:::
+
+::: {.sb-quiz-explain}
+The partial derivatives are $2x = 2$ and $2y = 4$, so $x_1 = 1 - 0.1 \times 2 = 0.8$ and $y_1 = 2 - 0.1 \times 4 = 1.6$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** The surface has one global minimum and two local minima. Starting from different points, what happens?
+
+::: {.sb-quiz-options}
+- You always reach the global minimum
+- Depending on the starting point, you can end up in a local minimum
+- You always end up in a local minimum
+- Gradient descent stops working
+:::
+
+::: {.sb-quiz-explain}
+In the lesson, starting at $(0.5, 3)$ reaches the global minimum, while $(2, 3)$ or $(4, 0.5)$ end in local minima.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** What is the contour plot in the lesson?
+
+::: {.sb-quiz-options}
+- A 3D view of the surface
+- A top view where each line joins points with the same value of $f$
+- The graph of the gradient
+- The path of the learning rate
+:::
+
+::: {.sb-quiz-explain}
+Like the contour lines of a hiking map. The gradient descent steps cross them, going down towards the minimum.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::

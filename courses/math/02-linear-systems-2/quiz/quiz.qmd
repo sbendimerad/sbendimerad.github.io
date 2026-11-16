@@ -1,0 +1,106 @@
+---
+title: "Linear systems in 2 variables: quiz"
+subtitle: "Math for AI · Section 2 · Quiz"
+description: "Check what you learned: Write a system as a matrix, compute its determinant, solve it by elimination."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/linear-systems-2.ipynb)
+:::
+
+6 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="0"}
+**1.** For the system $-x_1 + 3x_2 = 7$ and $3x_1 + 2x_2 = 1$, what is the matrix $A$ you give to `np.linalg.solve(A, b)`?
+
+::: {.sb-quiz-options}
+- `[[-1, 3], [3, 2]]`
+- `[[-1, 3], [7, 1]]`
+- `[[-1, 3, 7], [3, 2, 1]]`
+- `[[7], [1]]`
+:::
+
+::: {.sb-quiz-explain}
+Each row of $A$ is one equation, each column one variable. The right-hand side `[7, 1]` goes in `b`.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** What is the solution $(x_1, x_2)$ of this system?
+
+::: {.sb-quiz-options}
+- $(1, 2)$
+- $(-1, 2)$
+- $(2, -1)$
+- $(7, 1)$
+:::
+
+::: {.sb-quiz-explain}
+Check: $-(-1) + 3 \times 2 = 7$ and $3 \times (-1) + 2 \times 2 = 1$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="0"}
+**3.** The determinant of $A$ is $-11$. What does that tell you?
+
+::: {.sb-quiz-options}
+- The system has exactly one solution
+- The system has no solution
+- The system has infinitely many solutions
+- Nothing: the determinant only matters for 3×3 matrices
+:::
+
+::: {.sb-quiz-explain}
+A square system has one unique solution if and only if the determinant is **not zero**.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** In the elimination method, you multiply the first equation by 3 and add it to the second. You get $11x_2 = 22$. Why does this work?
+
+::: {.sb-quiz-options}
+- Because 3 is the determinant
+- Because it eliminates $x_1$: $-3x_1 + 3x_1 = 0$
+- Because it eliminates $x_2$
+- It does not work: you may only add equations, not multiply them
+:::
+
+::: {.sb-quiz-explain}
+Multiplying an equation by a non-zero number and adding equations do not change the solutions. Here $x_1$ disappears, so $x_2 = 2$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**5.** After elimination, the last row reads $0 = 22$. What can you conclude?
+
+::: {.sb-quiz-options}
+- $x_2 = 22$
+- There are infinitely many solutions
+- The system has no solution
+- You made a calculation mistake
+:::
+
+::: {.sb-quiz-explain}
+$0 = 22$ is impossible, so no pair $(x_1, x_2)$ satisfies both equations: the two lines are parallel.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** And if the last row reads $0 = 0$?
+
+::: {.sb-quiz-options}
+- The system has no solution
+- The system has infinitely many solutions
+- The system has exactly one solution
+- $x_1 = x_2 = 0$
+:::
+
+::: {.sb-quiz-explain}
+The second equation brings no new information: the two equations describe the same line, and every point of it is a solution.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::

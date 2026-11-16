@@ -61,3 +61,133 @@ website:
               href: courses/python/05-apis/exercises/bitcoin.ipynb
             - text: "Solutions"
               href: courses/python/05-apis/solutions/bitcoin.ipynb
+    - id: math
+      title: "02 · Math for AI"
+      style: floating
+      contents:
+        - text: "← All courses"
+          href: courses/index.qmd
+        - text: "Overview"
+          href: courses/math/index.qmd
+        - section: "Linear algebra"
+          contents:
+            - section: "1. NumPy arrays"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/01-numpy-arrays/lessons/numpy-arrays.ipynb
+                - text: "Quiz"
+                  href: courses/math/01-numpy-arrays/quiz/quiz.qmd
+            - section: "2. Linear systems in 2 variables"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/02-linear-systems-2/lessons/linear-systems-2.ipynb
+                - text: "Quiz"
+                  href: courses/math/02-linear-systems-2/quiz/quiz.qmd
+            - section: "3. Linear systems in 3 variables"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/03-linear-systems-3/lessons/linear-systems-3.ipynb
+                - text: "Quiz"
+                  href: courses/math/03-linear-systems-3/quiz/quiz.qmd
+            - section: "4. Matrix multiplication"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/04-matrix-multiplication/lessons/matrix-multiplication.ipynb
+                - text: "Quiz"
+                  href: courses/math/04-matrix-multiplication/quiz/quiz.qmd
+            - section: "5. Vector operations"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/05-vector-operations/lessons/vector-operations.ipynb
+                - text: "Quiz"
+                  href: courses/math/05-vector-operations/quiz/quiz.qmd
+            - section: "6. Linear transformations"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/06-linear-transformations/lessons/linear-transformations.ipynb
+                - text: "Quiz"
+                  href: courses/math/06-linear-transformations/quiz/quiz.qmd
+            - section: "7. Principal component analysis (PCA)"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "PCA: the idea"
+                      href: courses/math/07-pca/lessons/pca-introduction.ipynb
+                    - text: "PCA with scikit-learn"
+                      href: courses/math/07-pca/lessons/pca-with-scikit-learn.ipynb
+                - text: "Exercises"
+                  href: courses/math/07-pca/exercises/house-prices.ipynb
+                - text: "Solutions"
+                  href: courses/math/07-pca/solutions/house-prices.ipynb
+        - section: "Calculus"
+          contents:
+            - section: "8. Derivatives in Python"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/08-derivatives/lessons/derivatives.ipynb
+                - text: "Quiz"
+                  href: courses/math/08-derivatives/quiz/quiz.qmd
+            - section: "9. Gradient descent in one variable"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/09-gradient-descent-1d/lessons/gradient-descent-1d.ipynb
+                - text: "Quiz"
+                  href: courses/math/09-gradient-descent-1d/quiz/quiz.qmd
+            - section: "10. Gradient descent in two variables"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/10-gradient-descent-2d/lessons/gradient-descent-2d.ipynb
+                - text: "Quiz"
+                  href: courses/math/10-gradient-descent-2d/quiz/quiz.qmd
+        - section: "Statistics"
+          contents:
+            - section: "11. Statistics basics"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/11-statistics-basics/lessons/statistics-basics.ipynb
+                - text: "Quiz"
+                  href: courses/math/11-statistics-basics/quiz/quiz.qmd
+            - section: "12. Confidence intervals"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Confidence intervals"
+                      href: courses/math/12-confidence-intervals/lessons/confidence-intervals.ipynb
+                    - text: "Visualise them with seaborn"
+                      href: courses/math/12-confidence-intervals/lessons/visualise-with-seaborn.ipynb
+                - text: "Exercises"
+                  href: courses/math/12-confidence-intervals/exercises/estimates-and-sampling.ipynb
+                - text: "Solutions"
+                  href: courses/math/12-confidence-intervals/solutions/estimates-and-sampling.ipynb
+            - section: "13. Hypothesis testing"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/13-hypothesis-testing/lessons/hypothesis-testing.ipynb
+                - section: "Exercises"
+                  contents:
+                    - text: "Loan control (Qonto)"
+                      href: courses/math/13-hypothesis-testing/exercises/loan-control.ipynb
+                    - text: "The most useless card (Swile)"
+                      href: courses/math/13-hypothesis-testing/exercises/useless-card.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Loan control (Qonto)"
+                      href: courses/math/13-hypothesis-testing/solutions/loan-control.ipynb
+                    - text: "The most useless card (Swile)"
+                      href: courses/math/13-hypothesis-testing/solutions/useless-card.ipynb
+            - section: "14. A/B testing"
+              contents:
+                - text: "Lesson"
+                  href: courses/math/14-ab-testing/lessons/ab-testing.ipynb
+                - section: "Exercises"
+                  contents:
+                    - text: "Homepage background (Airbnb)"
+                      href: courses/math/14-ab-testing/exercises/airbnb.ipynb
+                    - text: "Call-to-action button (Vinted)"
+                      href: courses/math/14-ab-testing/exercises/vinted.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Homepage background (Airbnb)"
+                      href: courses/math/14-ab-testing/solutions/airbnb.ipynb
+                    - text: "Call-to-action button (Vinted)"
+                      href: courses/math/14-ab-testing/solutions/vinted.ipynb

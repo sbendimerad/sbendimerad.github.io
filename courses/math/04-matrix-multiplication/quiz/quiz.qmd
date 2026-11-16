@@ -1,0 +1,91 @@
+---
+title: "Matrix multiplication: quiz"
+subtitle: "Math for AI · Section 4 · Quiz"
+description: "Check what you learned: The definition, how to compute it with NumPy, and broadcasting."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/matrix-multiplication.ipynb)
+:::
+
+5 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="0"}
+**1.** $A$ is 3×3 and $B$ is 3×2. What is the shape of `A @ B`?
+
+::: {.sb-quiz-options}
+- 3×2
+- 3×3
+- 2×3
+- It is not defined
+:::
+
+::: {.sb-quiz-explain}
+An $m \times n$ matrix times an $n \times p$ matrix gives an $m \times p$ matrix: here 3×2.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** And `B @ A` (3×2 times 3×3)?
+
+::: {.sb-quiz-options}
+- 3×3
+- 2×2
+- It gives an error: the inner dimensions (2 and 3) do not match
+- The same as `A @ B`
+:::
+
+::: {.sb-quiz-explain}
+The number of **columns** of the first matrix must equal the number of **rows** of the second one.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** $P = \begin{bmatrix}1 & 2\\ 3 & 4\end{bmatrix}$, $Q = \begin{bmatrix}5 & 6\\ 7 & 8\end{bmatrix}$. What is the element in the first row, second column of $PQ$?
+
+::: {.sb-quiz-options}
+- 12
+- 22
+- 19
+- 50
+:::
+
+::: {.sb-quiz-explain}
+It is the dot product of row 1 of $P$ and column 2 of $Q$: $1 \times 6 + 2 \times 8 = 22$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** `x = np.array([1, -2, -5])` and `y = np.array([4, 3, -1])`. What does `np.matmul(x, y)` return?
+
+::: {.sb-quiz-options}
+- An error: two 3×1 matrices cannot be multiplied
+- `3`, the dot product
+- `[4, -6, 5]`
+- A 3×3 matrix
+:::
+
+::: {.sb-quiz-explain}
+For two 1-D arrays NumPy computes the dot product: $4 - 6 + 5 = 3$. With `reshape((3, 1))` on both, you would get an error.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** What does `A - 2` do when $A$ is a 3×3 array?
+
+::: {.sb-quiz-options}
+- It gives an error: you cannot subtract a number from a matrix
+- It subtracts 2 from every element (broadcasting)
+- It subtracts 2 from the diagonal only
+- It removes the last 2 rows
+:::
+
+::: {.sb-quiz-explain}
+Mathematically this is not defined, but NumPy **broadcasts** the scalar to a 3×3 array and subtracts element by element.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::

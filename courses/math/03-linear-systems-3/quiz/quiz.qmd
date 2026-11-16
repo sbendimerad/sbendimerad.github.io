@@ -1,0 +1,91 @@
+---
+title: "Linear systems in 3 variables: quiz"
+subtitle: "Math for AI · Section 3 · Quiz"
+description: "Check what you learned: The same tools in three dimensions, with row reduction."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/linear-systems-3.ipynb)
+:::
+
+5 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="3"}
+**1.** Which of these is **not** an elementary row operation (one that keeps the same solutions)?
+
+::: {.sb-quiz-options}
+- Swap two rows
+- Multiply a row by a non-zero number
+- Add a multiple of one row to another row
+- Multiply a row by 0
+:::
+
+::: {.sb-quiz-explain}
+Multiplying by 0 erases an equation, so you lose information. The three other operations keep the solutions unchanged.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** Why swap rows so that the first row starts with $-1$ (or $1$)?
+
+::: {.sb-quiz-options}
+- It changes the solution to a simpler one
+- It makes the next calculations easier by hand
+- It is required for the determinant to be non-zero
+- `np.linalg.solve` needs it
+:::
+
+::: {.sb-quiz-explain}
+It does not change the solutions; it only keeps the arithmetic simple when you eliminate the first variable from the other rows.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**3.** After row reduction, the last row is $-12x_3 = 24$. What is $x_3$?
+
+::: {.sb-quiz-options}
+- $2$
+- $-2$
+- $12$
+- $-12$
+:::
+
+::: {.sb-quiz-explain}
+$x_3 = 24 / (-12) = -2$. Then you substitute back to find $x_2$ and $x_1$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** The determinant of a 3×3 system is 0 and `np.linalg.solve` raises an error. What does this mean?
+
+::: {.sb-quiz-options}
+- The system has exactly one solution, but NumPy cannot find it
+- The system has either no solution or infinitely many solutions
+- The system always has no solution
+- You must use more decimals
+:::
+
+::: {.sb-quiz-explain}
+With a zero determinant there is no **unique** solution. Row reduction tells you which case you are in: a row $0 = -3$ (none) or $0 = 0$ (infinitely many).
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**5.** For infinitely many solutions, the lesson writes $x_1 = 1 - 4x_3$ and $x_2 = 1 + 3x_3$. What is $x_3$?
+
+::: {.sb-quiz-options}
+- It must be 0
+- It must be 1
+- Any real number
+- It does not exist
+:::
+
+::: {.sb-quiz-explain}
+$x_3$ is a free variable: each value of $x_3$ gives one solution. For example $x_3 = 0$ gives $(1, 1, 0)$.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::

@@ -1,0 +1,136 @@
+---
+title: "NumPy arrays: quiz"
+subtitle: "Math for AI · Section 1 · Quiz"
+description: "Check what you learned: Create, index, reshape and combine arrays: the building block of linear algebra in Python."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/numpy-arrays.ipynb)
+:::
+
+8 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What does `np.arange(1, 20, 3)` return?
+
+::: {.sb-quiz-options}
+- `[1, 4, 7, 10, 13, 16, 19, 22]`
+- `[1, 4, 7, 10, 13, 16, 19]`
+- `[1, 3, 6, 9, 12, 15, 18]`
+- `[3, 6, 9, 12, 15, 18]`
+:::
+
+::: {.sb-quiz-explain}
+`np.arange(start, stop, step)` starts at 1 and adds 3 each time. The stop value (20) is never included.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** What does `np.linspace(0, 100, 5)` return?
+
+::: {.sb-quiz-options}
+- `[0, 20, 40, 60, 80]`
+- `[0, 20, 40, 60, 80, 100]`
+- `[0., 25., 50., 75., 100.]`
+- `[0, 5, 10, ..., 100]`
+:::
+
+::: {.sb-quiz-explain}
+`np.linspace(start, stop, num)` gives `num` evenly spaced values, **including** the stop value. The values are floats by default (use `dtype=int` for integers).
+:::
+:::
+
+::: {.sb-quiz-q data-answer="0"}
+**3.** `m = np.reshape(np.array([1, 2, 3, 4, 5, 6]), (2, 3))`. What are `m.ndim`, `m.shape` and `m.size`?
+
+::: {.sb-quiz-options}
+- `2`, `(2, 3)`, `6`
+- `2`, `(3, 2)`, `6`
+- `6`, `(2, 3)`, `2`
+- `1`, `(6,)`, `6`
+:::
+
+::: {.sb-quiz-explain}
+2 dimensions (rows and columns), 2 rows and 3 columns, and 6 elements in total.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** With Python **lists**, what does `[2, 4, 6] + [1, 3, 5]` give?
+
+::: {.sb-quiz-options}
+- `[3, 7, 11]`
+- `[2, 4, 6, 1, 3, 5]`
+- an error
+- `[1, 2, 3, 4, 5, 6]`
+:::
+
+::: {.sb-quiz-explain}
+`+` joins two lists. With NumPy arrays, `np.array([2, 4, 6]) + np.array([1, 3, 5])` adds element by element and gives `[3, 7, 11]`.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="0"}
+**5.** `a = np.array([1, 2, 3, 4, 5])`. What is `a[::2]`?
+
+::: {.sb-quiz-options}
+- `[1, 3, 5]`
+- `[2, 4]`
+- `[1, 2]`
+- `[3, 4, 5]`
+:::
+
+::: {.sb-quiz-explain}
+`start:end:step` with no start and no end takes the whole array, and a step of 2 keeps every other element.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**6.** `two_dim = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])`. What is `two_dim[:, 1]`?
+
+::: {.sb-quiz-options}
+- `[4, 5, 6]`
+- `[2, 5, 8]`
+- `[1, 4, 7]`
+- `8`
+:::
+
+::: {.sb-quiz-explain}
+`:` keeps every row and `1` selects the second column (counting starts at 0).
+:::
+:::
+
+::: {.sb-quiz-q data-answer="0"}
+**7.** You stack two arrays of shape `(2, 2)` with `np.vstack`. What is the shape of the result?
+
+::: {.sb-quiz-options}
+- `(4, 2)`
+- `(2, 4)`
+- `(2, 2)`
+- `(8,)`
+:::
+
+::: {.sb-quiz-explain}
+`vstack` puts the second array **under** the first one: 4 rows and 2 columns. `hstack` would give `(2, 4)`.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**8.** Why does `np.array([1, 2]) * 1.6` work, even though `1.6` is not an array?
+
+::: {.sb-quiz-options}
+- NumPy converts the array into a list first
+- Broadcasting: NumPy applies the scalar to every element
+- It only multiplies the first element
+- It doesn't work: you need `np.multiply` and two arrays of the same shape
+:::
+
+::: {.sb-quiz-explain}
+This is **broadcasting**: the result is `[1.6, 3.2]`, for example to convert miles to kilometres.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
