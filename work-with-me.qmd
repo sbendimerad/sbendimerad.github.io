@@ -46,7 +46,7 @@ page-layout: custom
 
 <section class="sb-clients">
   <p class="k">I've trained and worked with</p>
-  <p class="v">Jedha · EFREI · PSB · Université Paris Cité · La Poste · Société Générale</p>
+  <p class="v">Jedha · EFREI · PSB · Université Paris Cité</p>
 </section>
 
 <section class="sb-contact">

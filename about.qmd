@@ -45,7 +45,7 @@ image: assets/photo.jpg
       <span class="d">Leak prediction; contributor to a patent.</span>
     </div>
     <div>
-      <span class="w">Master's (M2) in computational neuroscience, CentraleSupélec</span>
+      <span class="w">Master's (M2) in Computational Neuroscience and Neuroengineering, Université Paris-Saclay / CentraleSupélec</span>
       <span class="d">The step towards health.</span>
     </div>
     <div>
