@@ -9,7 +9,7 @@ page-layout: custom
 
 <section style="display:flex;flex-direction:column;gap:16px">
   <h1 class="sb-h1">Free courses</h1>
-  <p class="sb-lead">Not sure where to start with AI? Follow these four courses in order. Each one is a short list of sections. Every section has a notebook, exercises and their solutions. Nothing else.</p>
+  <p class="sb-lead">Not sure where to start with AI? Follow these courses in order. Each one is a short list of sections: lessons, exercises with hints, solutions and quizzes.</p>
 </section>
 
 <section class="sb-courses">
@@ -53,9 +53,10 @@ page-layout: custom
 <section style="margin-top:48px">
   <h2 class="sb-h2" style="font-size:22px;margin-bottom:20px">How every section works</h2>
   <div class="sb-steps">
-    <div><b>1. Notebook</b><span>Read the explanation and the code.</span></div>
-    <div><b>2. Exercises</b><span>Try them on your own first.</span></div>
-    <div><b>3. Solutions</b><span>Reveal them when you're done.</span></div>
+    <div><b>1. Lesson</b><span>Read the explanation and run the code.</span></div>
+    <div><b>2. Quiz</b><span>Check that you understood the key ideas.</span></div>
+    <div><b>3. Exercises</b><span>Try them on your own first. Stuck? Open a hint.</span></div>
+    <div><b>4. Solutions</b><span>Compare when you're done.</span></div>
   </div>
 </section>
 

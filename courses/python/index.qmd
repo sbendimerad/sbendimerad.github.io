@@ -1,6 +1,7 @@
 ---
 title: "Python"
 subtitle: "Course 01 \u00b7 no prerequisites"
+body-classes: sb-course-overview
 description: "Free Python course: lessons, exercises with hints, and solutions."
 ---
 

@@ -4,6 +4,7 @@ date: 2026-02-19
 categories: ["Production ML"]
 description: "A guide to AI knowledge bases for technical products. Written for kapa.ai."
 source: "kapa.ai"
+client: true
 external: https://www.kapa.ai/blog/ai-knowledge-base-for-technical-products-complete-guide-2026
 ---
 

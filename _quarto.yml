@@ -30,7 +30,7 @@ website:
   open-graph: true
   twitter-card: true
   page-navigation: true
-  search: false
+  search: true
   bread-crumbs: false
   navbar:
     background: light

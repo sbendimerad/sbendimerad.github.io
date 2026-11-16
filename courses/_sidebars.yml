@@ -5,7 +5,7 @@ website:
       title: "01 · Python"
       style: floating
       contents:
-        - text: "← All courses"
+        - text: "All courses"
           href: courses/index.qmd
         - text: "Overview"
           href: courses/python/index.qmd
@@ -65,7 +65,7 @@ website:
       title: "02 · Math for AI"
       style: floating
       contents:
-        - text: "← All courses"
+        - text: "All courses"
           href: courses/index.qmd
         - text: "Overview"
           href: courses/math/index.qmd
@@ -195,7 +195,7 @@ website:
       title: "03 · Machine Learning"
       style: floating
       contents:
-        - text: "← All courses"
+        - text: "All courses"
           href: courses/index.qmd
         - text: "Overview"
           href: courses/ml/index.qmd

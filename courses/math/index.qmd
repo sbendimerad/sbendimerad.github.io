@@ -1,6 +1,7 @@
 ---
 title: "Math for AI"
 subtitle: "Course 02 \u00b7 after Python"
+body-classes: sb-course-overview
 description: "Free Math for AI course: lessons, exercises with hints, and solutions."
 ---
 

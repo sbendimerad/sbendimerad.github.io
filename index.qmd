@@ -12,7 +12,7 @@ listing:
   template: _home-writing.ejs
   sort: "date desc"
   date-format: "MMM YYYY"
-  fields: [title, date, categories, description, source, external, featured, path]
+  fields: [title, date, categories, description, source, external, featured, client, path]
 ---
 
 ```{=html}

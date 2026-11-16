@@ -458,7 +458,7 @@ body.sb-hide-title #title-block-header { display: none; }
 }
 .sb-steps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   > div { display: flex; flex-direction: column; gap: 6px; }
   b { color: $sb-text; }
@@ -580,3 +580,8 @@ a.sb-sol-link {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* course sidebars: arrow before "All courses" (the text has none, so the page-bottom link shows one arrow) */
+#quarto-sidebar .sidebar-menu-container > ul > li:first-child .menu-text::before { content: "← "; }
+/* course overviews: the description is already the intro paragraph */
+.sb-course-overview #title-block-header .description { display: none; }

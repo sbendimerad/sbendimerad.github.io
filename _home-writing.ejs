@@ -1,6 +1,7 @@
 <%
 // Home page: "Start here" cards + Writing tabs, built from writing/*.qmd.
 // Items arrive sorted by date (newest first).
+items = items.filter(it => !it.client);  // client pieces (e.g. kapa.ai) are listed in Writing only
 const href = (it) => it.external || it.path;
 const featured = items.find(it => it.featured) || items[0];
 const latest = items.find(it => it !== featured) || items[0];
@@ -15,7 +16,7 @@ const cat = (it) => (it.categories && it.categories[0]) || "";
 <a class="sb-card" href="courses/index.html">
 <span class="sb-label">Free learning path</span>
 <h3>Not sure where to start?</h3>
-<p>Python, Math for AI, Machine Learning, Deep Learning. Free, with exercises and solutions.</p>
+<p>Python, Math for AI, Machine Learning, Deep Learning. Free, with exercises, solutions and quizzes.</p>
 </a>
 <a class="sb-card" href="<%= href(featured) %>">
 <span class="sb-label">Featured article</span>
