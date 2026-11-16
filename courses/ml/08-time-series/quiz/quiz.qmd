@@ -1,6 +1,6 @@
 ---
 title: "Time series: quiz"
-subtitle: "Machine Learning · Section 8 · Quiz"
+subtitle: "Supervised Machine Learning · Section 8 · Quiz"
 description: "Check what you learned: Smoothing, stationarity and autocorrelation, then forecasting with Prophet."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

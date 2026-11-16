@@ -1,6 +1,6 @@
 ---
 title: "Ensemble methods: quiz"
-subtitle: "Machine Learning · Section 6 · Quiz"
+subtitle: "Supervised Machine Learning · Section 6 · Quiz"
 description: "Check what you learned: Boosting (AdaBoost, gradient boosting, XGBoost), voting and stacking."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

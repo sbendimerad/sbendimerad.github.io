@@ -1,6 +1,6 @@
 ---
 title: "Logistic regression: quiz"
-subtitle: "Machine Learning · Section 4 · Quiz"
+subtitle: "Supervised Machine Learning · Section 4 · Quiz"
 description: "Check what you learned: Predict a category with probabilities, and evaluate a classifier: confusion matrix, precision, recall, ROC."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

@@ -1,6 +1,6 @@
 ---
 pagetitle: "Free courses"
-description: "Free AI courses: Python, Math for AI, Machine Learning and Deep Learning. Every section has a notebook, exercises and solutions."
+description: "Free AI courses: Python, Math for AI, supervised and unsupervised Machine Learning, and Deep Learning. Every section has a notebook, exercises and solutions."
 page-layout: custom
 ---
 
@@ -34,14 +34,22 @@ page-layout: custom
   <a class="sb-course" href="ml/index.html">
     <span class="num">03</span>
     <div>
-      <h2>Machine Learning</h2>
-      <p>Supervised learning: regression, classification, trees and boosting, time series, and two projects. Unsupervised learning coming soon.</p>
+      <h2>Supervised Machine Learning</h2>
+      <p>Regression, classification, trees and boosting, time series, and two projects.</p>
       <span class="meta">10 sections · after Math for AI</span>
     </div>
     <span class="go">Start →</span>
   </a>
   <div class="sb-course soon">
     <span class="num">04</span>
+    <div>
+      <h2>Unsupervised Machine Learning</h2>
+      <p>Clustering and dimensionality reduction: find structure in data without labels.</p>
+      <span class="meta">Coming soon</span>
+    </div>
+  </div>
+  <div class="sb-course soon">
+    <span class="num">05</span>
     <div>
       <h2>Deep Learning</h2>
       <p>Neural networks from scratch, then PyTorch.</p>

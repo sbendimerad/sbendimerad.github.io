@@ -1,6 +1,6 @@
 ---
 title: "Preprocessing: quiz"
-subtitle: "Machine Learning · Section 1 · Quiz"
+subtitle: "Supervised Machine Learning · Section 1 · Quiz"
 description: "Check what you learned: What machine learning is, and how to prepare data for a model with pandas and scikit-learn."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

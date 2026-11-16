@@ -161,13 +161,12 @@ COURSES = {
         ],
     },
     "ml": {
-        "title": "Machine Learning",
+        "title": "Supervised Machine Learning",
         "number": "03",
         "subtitle": "Course 03 · after Math for AI",
-        "intro": "Supervised learning: predict a number or a category from data. Preprocessing, linear and "
-                 "logistic regression, regularization, trees, forests and boosting, Naive Bayes and time series, "
-                 "then two projects. Each section has **lessons**, a **quiz**, **exercises** and their "
-                 "**solutions**. Unsupervised learning (clustering, PCA) is coming soon.",
+        "intro": "Predict a number or a category from data: preprocessing, linear and logistic regression, "
+                 "regularization, trees, forests and boosting, Naive Bayes and time series, then two projects. "
+                 "Each section has **lessons**, a **quiz**, **exercises** and their **solutions**.",
         "sections": [
             {"part": "Foundations", "slug": "preprocessing", "title": "Preprocessing",
              "description": "What machine learning is, and how to prepare data for a model with pandas and scikit-learn.",

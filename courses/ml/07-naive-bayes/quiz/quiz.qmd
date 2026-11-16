@@ -1,6 +1,6 @@
 ---
 title: "Naive Bayes: quiz"
-subtitle: "Machine Learning · Section 7 · Quiz"
+subtitle: "Supervised Machine Learning · Section 7 · Quiz"
 description: "Check what you learned: Bayes' theorem and the Naive Bayes classifier, then fraud detection."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

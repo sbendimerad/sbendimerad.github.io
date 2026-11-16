@@ -1,6 +1,6 @@
 ---
 title: "Linear regression: quiz"
-subtitle: "Machine Learning · Section 2 · Quiz"
+subtitle: "Supervised Machine Learning · Section 2 · Quiz"
 description: "Check what you learned: Simple and multiple linear regression, R², feature selection, and the full workflow in scikit-learn."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

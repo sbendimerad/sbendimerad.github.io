@@ -1,6 +1,6 @@
 ---
 title: "Regularization: quiz"
-subtitle: "Machine Learning · Section 3 · Quiz"
+subtitle: "Supervised Machine Learning · Section 3 · Quiz"
 description: "Check what you learned: Fight overfitting with Ridge and Lasso, and tune hyperparameters with cross-validation and grid search."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

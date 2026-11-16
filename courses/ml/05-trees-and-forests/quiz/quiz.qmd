@@ -1,6 +1,6 @@
 ---
 title: "Decision trees and random forests: quiz"
-subtitle: "Machine Learning · Section 5 · Quiz"
+subtitle: "Supervised Machine Learning · Section 5 · Quiz"
 description: "Check what you learned: How a tree splits the data, why it overfits, and how a forest of trees fixes it."
 include-after-body:
   text: '<script src="../../../../assets/js/quiz.js"></script>'

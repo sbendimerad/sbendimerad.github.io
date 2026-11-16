@@ -192,7 +192,7 @@ website:
                     - text: "Call-to-action button (Vinted)"
                       href: courses/math/14-ab-testing/solutions/vinted.ipynb
     - id: ml
-      title: "03 · Machine Learning"
+      title: "03 · Supervised Machine Learning"
       style: floating
       contents:
         - text: "All courses"
