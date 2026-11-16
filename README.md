@@ -53,6 +53,16 @@ plus a zip of the notebooks and data. It also generates the course overview and 
 (`courses/_sidebars.yml`), and runs a privacy scan (emails, keys, Jedha links) that stops the
 build if anything is found. New section: add it to `COURSES` at the top of the script.
 
+**Test the notebooks of a course** (do this before pushing a course branch)
+
+```bash
+pip install nbclient nbformat ipykernel   # once
+python3 tools/run_notebooks.py course/*.ipynb solutions/*.ipynb      # must all say OK
+python3 tools/run_notebooks.py --allow-errors exercises/*.ipynb      # blanks may fail
+```
+
+Add `--save` to store the fresh outputs in the notebooks. `input()` is answered automatically.
+
 **Publish**
 Commit and push to `main`. The site is live a minute or two later.
 
