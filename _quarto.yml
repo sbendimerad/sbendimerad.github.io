@@ -48,7 +48,7 @@ website:
       - href: work-with-me.qmd
         text: "Work with me →"
   page-footer:
-    left: "© Sabrine Bendimerad"
+    left: "© Sabrine Bendimerad · Courses under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
     right:
       - text: LinkedIn
         href: https://www.linkedin.com/in/sabrine-bendimerad-43570b107/

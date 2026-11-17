@@ -11,6 +11,8 @@ The mathematics behind machine learning, with Python: linear algebra, derivative
 
 Each section has a zip with the lessons, the exercises and the data, so you can run everything on your computer (Python 3 with Jupyter, or [Anaconda](https://www.anaconda.com/download)). Solutions stay on this site.
 
+© Sabrine Bendimerad. This course is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): you may share and adapt it with credit, for non-commercial use, under the same licence.
+
 
 ## Linear algebra
 

@@ -11,6 +11,8 @@ From your first variable to calling an API, in five sections. Each section has a
 
 Each section has a zip with the lessons, the exercises and the data, so you can run everything on your computer (Python 3 with Jupyter, or [Anaconda](https://www.anaconda.com/download)). Solutions stay on this site.
 
+© Sabrine Bendimerad. This course is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): you may share and adapt it with credit, for non-commercial use, under the same licence.
+
 1. **Python basics**: Types, operators, strings, data structures, conditions, loops and functions. [Lesson](01-python-basics/lessons/python-basics.ipynb) · [Exercises](01-python-basics/exercises/python-basics.ipynb) · [Solutions](01-python-basics/solutions/python-basics.ipynb)
 2. **NumPy and pandas**: Arrays with NumPy, then loading, cleaning, combining and reshaping tables with pandas. [Lesson](02-numpy-pandas/lessons/numpy-pandas.ipynb) · [Exercises](02-numpy-pandas/exercises/numpy.ipynb) · [Solutions](02-numpy-pandas/solutions/numpy.ipynb)
 3. **Data visualisation**: Exploring a dataset with Plotly Express: distributions, comparisons, relationships. [Lesson](03-data-visualization/lessons/data-visualization.ipynb) · [Exercises](03-data-visualization/exercises/ibm-employees.ipynb) · [Solutions](03-data-visualization/solutions/ibm-employees.ipynb)

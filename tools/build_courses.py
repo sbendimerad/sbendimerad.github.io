@@ -384,6 +384,18 @@ COURSES = {
     },
 }
 
+LICENSE_URL = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+LICENSE_NOTICE = ("*© Sabrine Bendimerad · [sbendimerad.github.io](https://sbendimerad.github.io) · "
+                  f"Licence [CC BY-NC-SA 4.0]({LICENSE_URL}): you may share and adapt this material with credit, "
+                  "for non-commercial use, under the same licence. Datasets keep their own licences.*")
+LICENSE_TXT = ("© Sabrine Bendimerad - https://sbendimerad.github.io\n\n"
+               "The lessons, exercises, solutions and code of this course are licensed under the Creative Commons\n"
+               "Attribution-NonCommercial-ShareAlike 4.0 International licence (CC BY-NC-SA 4.0):\n"
+               f"{LICENSE_URL}\n\n"
+               "You may share and adapt them, with credit to the author, for non-commercial purposes only,\n"
+               "and you must distribute your contributions under the same licence.\n"
+               "The datasets keep the licences of their sources.\n")
+
 BLOCKED_HOSTS = ("jedha", "fullstack-assets", "full-stack-assets", "essentials-assets")
 MAX_TEXT_LINES = 40
 MAX_HTML_BYTES = 1_000_000
@@ -752,6 +764,7 @@ def download_copy(nb_path):
     """The notebook as learners download it: repo content and outputs, images embedded,
     data read from a `data` folder next to the notebook."""
     cells = copy.deepcopy(load(nb_path)["cells"])
+    cells.insert(0, {"cell_type": "markdown", "metadata": {}, "source": LICENSE_NOTICE})
     for c in cells:
         c["metadata"] = {}
         c.pop("id", None)
@@ -978,6 +991,7 @@ def build_course(key, course, repo):
             for f in sorted(ddir.rglob("*")):
                 if f.is_file() and (not f.name.endswith(".ipynb") or f.name in wanted):
                     z.write(f, f"{name}/{f.relative_to(ddir).as_posix()}")
+            z.writestr(f"{name}/LICENSE.txt", LICENSE_TXT)
         log.append(f"{name}: {len(lessons)} lesson(s), {len(exercises)} exercise page(s) + solutions, "
                    f"zip {zpath.stat().st_size // 1024} KB")
 
@@ -997,7 +1011,9 @@ def write_overview(key, course, plan):
              course["intro"], "",
              "Each section has a zip with the lessons, the exercises and the data, so you can run everything "
              "on your computer (Python 3 with Jupyter, or [Anaconda](https://www.anaconda.com/download)). "
-             "Solutions stay on this site.", ""]
+             "Solutions stay on this site.", "",
+             f"© Sabrine Bendimerad. This course is licensed under [CC BY-NC-SA 4.0]({LICENSE_URL}): you may share "
+             "and adapt it with credit, for non-commercial use, under the same licence.", ""]
     part = None
     for n, sec, name, lessons, exercises in plan:
         if sec.get("part") and sec["part"] != part:

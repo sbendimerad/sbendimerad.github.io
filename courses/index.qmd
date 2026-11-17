@@ -69,7 +69,7 @@ page-layout: custom
   </div>
 </section>
 
-<p class="sb-note">Free to use and share. Every section comes with its notebooks and data to download.</p>
+<p class="sb-note">Every section comes with its notebooks and data to download. © Sabrine Bendimerad: the courses are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. You may share and adapt them with credit, for non-commercial use, under the same licence.</p>
 
 </div>
 ```
