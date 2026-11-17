@@ -1,0 +1,140 @@
+---
+title: "K-Means: quiz"
+subtitle: "Unsupervised Machine Learning · Section 1 · Quiz"
+description: "Check what you learned: Group similar observations: the K-Means algorithm step by step, then choosing the number of clusters."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/kmeans.ipynb)
+:::
+
+8 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What makes a problem "unsupervised"?
+
+::: {.sb-quiz-options}
+- The model is trained without a test set
+- There is no target variable: we only have the features X
+- Nobody checks the results
+- The data has missing values
+:::
+
+::: {.sb-quiz-explain}
+In supervised learning, each observation comes with a target Y that the model learns to predict. In unsupervised learning, there is no Y: we look for a structure inside X, for example groups of similar observations.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** What are the two steps repeated by the K-Means algorithm?
+
+::: {.sb-quiz-options}
+- Split the worst cluster in two, then merge the two closest clusters
+- Draw new random centres, then keep the best ones
+- Assign each point to its nearest centre, then move each centre to the mean of its points
+- Remove the outliers, then compute the mean of the data
+:::
+
+::: {.sb-quiz-explain}
+Step 1 (assignment) and step 2 (update) both lower the inertia. The loop stops when no point changes cluster.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="3"}
+**3.** The inertia of a K-Means clustering is...
+
+::: {.sb-quiz-options}
+- The number of iterations needed to converge
+- The mean distance between the centres
+- The silhouette score multiplied by K
+- The sum of the squared distances between each point and the centre of its cluster
+:::
+
+::: {.sb-quiz-explain}
+K-Means looks for the clusters with the smallest inertia (within-cluster sum of squares). It always decreases when K grows, so it cannot be used alone to choose K: look for the elbow of the curve.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** Two runs of K-Means on the same data give different clusters. Why?
+
+::: {.sb-quiz-options}
+- K-Means has a bug
+- The result depends on the initial centres: a run can stop in a local minimum
+- The data changes between two runs
+- K-Means is a supervised method
+:::
+
+::: {.sb-quiz-explain}
+K-Means only guarantees a local minimum of the inertia. The k-means++ start spreads the initial centres, and `n_init=10` runs the algorithm 10 times and keeps the run with the lowest inertia.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**5.** Why should you standardise the variables before K-Means?
+
+::: {.sb-quiz-options}
+- Because K-Means only accepts values between 0 and 1
+- To make the algorithm converge faster
+- Because K-Means uses distances: a variable with large values (an income in euros) would dominate a variable with small values (an age)
+- It is not needed for K-Means
+:::
+
+::: {.sb-quiz-explain}
+The Euclidean distance adds up the gaps of all the variables. Without scaling, the clusters only follow the variables measured in large numbers. `StandardScaler` gives every variable the same weight.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**6.** A point has a silhouette of -0.2. What does it mean?
+
+::: {.sb-quiz-options}
+- It is perfectly placed in its cluster
+- It is an outlier that K-Means removed
+- It is closer, on average, to the nearest other cluster than to its own: it is probably in the wrong cluster
+- The silhouette cannot be negative
+:::
+
+::: {.sb-quiz-explain}
+$s(i)=\frac{b(i)-a(i)}{\max(a(i),b(i))}$, where $a(i)$ is the mean distance to its own cluster and $b(i)$ the mean distance to the nearest other cluster. It is negative when $a(i) > b(i)$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="3"}
+**7.** The elbow method suggests K = 3 and the silhouette score is highest for K = 2. What should you do?
+
+::: {.sb-quiz-options}
+- Always follow the silhouette score
+- Take K = 2.5
+- Always follow the elbow method
+- Look at both clusterings, interpret them, and decide with your knowledge of the field
+:::
+
+::: {.sb-quiz-explain}
+These methods are guides, not judges. On the Iris flowers, K = 2 isolates one very clear species, and K = 3 also separates two species that look alike. Both are true; the use of the clusters decides.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**8.** On which data does K-Means struggle, even with a perfect initialisation?
+
+::: {.sb-quiz-options}
+- Round clusters of similar size, well separated
+- Clusters with non-convex shapes (like half-moons) or with very different sizes and densities
+- Data with more than 100 observations
+- Data with two variables
+:::
+
+::: {.sb-quiz-explain}
+Each point goes to its nearest centre, so the border between two clusters is a straight line halfway between the centres. K-Means builds round, convex clusters of similar width. DBSCAN, in the next section, handles other shapes.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: K-Means exercises →](../exercises/know-your-customers.ipynb)**
+:::

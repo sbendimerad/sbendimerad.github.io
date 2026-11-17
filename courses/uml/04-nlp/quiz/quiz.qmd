@@ -1,0 +1,140 @@
+---
+title: "Natural language processing: quiz"
+subtitle: "Unsupervised Machine Learning · Section 4 · Quiz"
+description: "Check what you learned: Turn texts into numbers: cleaning, tokens, lemmas, bag of words and TF-IDF."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/nlp-basics.ipynb)
+:::
+
+8 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What is the main difference between stemming and lemmatization?
+
+::: {.sb-quiz-options}
+- Stemming is slower but more accurate
+- Stemming chops word endings with simple rules; lemmatization finds the dictionary form of each word
+- Lemmatization removes the stop words, stemming does not
+- They always give the same result
+:::
+
+::: {.sb-quiz-explain}
+A stemmer turns "ponies" into "poni" and leaves "mice" unchanged. A lemmatizer such as spaCy's uses a vocabulary and the role of the word: "ponies" → "pony", "mice" → "mouse", "was" → "be".
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** Why can removing stop words be a bad idea for sentiment analysis?
+
+::: {.sb-quiz-options}
+- Because stop words are the most informative words
+- Because spaCy cannot remove them
+- Because the lists of stop words contain negations like "not", which can flip the meaning
+- Because it makes the vocabulary bigger
+:::
+
+::: {.sb-quiz-explain}
+"It was not the best soup" becomes "best soup" once the stop words are removed. A list of stop words is a choice: adapt it to your goal.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="0"}
+**3.** A word appears in every document of the corpus. With the textbook formula $\text{idf} = \ln(n / \text{df})$, what is its idf?
+
+::: {.sb-quiz-options}
+- 0
+- 1
+- $\ln(n)$
+- It depends on how many times it appears in each document
+:::
+
+::: {.sb-quiz-explain}
+$\text{df} = n$, so $\text{idf} = \ln(1) = 0$: the word cannot help to tell the documents apart. Scikit-learn's smooth idf, $\ln\frac{1+n}{1+\text{df}} + 1$, gives it 1, the smallest possible value, instead of 0.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** You fit a `TfidfVectorizer` on a list containing one single document (a whole article). What happens?
+
+::: {.sb-quiz-options}
+- The idf finds the rarest words of the article
+- Every word gets the same idf, so the tf-idf weights are just the normalized word counts
+- Scikit-learn raises an error
+- The stop words get an idf of 0
+:::
+
+::: {.sb-quiz-explain}
+With one document, every word has $\text{df} = n = 1$, so every idf is equal (1 with the smooth formula). The idf only makes sense with several documents: for an article, use each paragraph as a document.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**5.** What does `TfidfVectorizer` do to each row of the matrix by default (`norm="l2"`)?
+
+::: {.sb-quiz-options}
+- It divides each value by the number of documents
+- It subtracts the mean of the row
+- It divides the row by its Euclidean length, so that every document vector has a length of 1
+- It keeps only the 10 largest values
+:::
+
+::: {.sb-quiz-explain}
+After the L2 normalization, a long document and a short one are on the same scale, and the cosine similarity between two rows is simply the sum of the products of their values.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**6.** Document B is document A copied three times. Which statement is true (on word counts)?
+
+::: {.sb-quiz-options}
+- Their cosine similarity is 1/3
+- Their Euclidean distance is 0
+- Their cosine similarity is 1, although their Euclidean distance is large
+- Their cosine similarity is 0
+:::
+
+::: {.sb-quiz-explain}
+B's vector is A's vector multiplied by 3: same direction, so a cosine of 1, but a longer vector, so far away for the Euclidean distance. The cosine ignores the length of the texts, which is why it is the usual similarity for texts.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**7.** What does `CountVectorizer(min_df=2, max_df=0.5)` do?
+
+::: {.sb-quiz-options}
+- It keeps the words that appear between 2 and 50 times
+- It ignores the words found in fewer than 2 documents and the words found in more than half of the documents
+- It keeps 2 to 50% of the vocabulary, chosen at random
+- It removes the words with fewer than 2 letters
+:::
+
+::: {.sb-quiz-explain}
+`min_df` removes the rare words (often typos), `max_df` removes the words present almost everywhere (the "stop words" of the corpus). An integer means a number of documents, a float a share of the documents.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**8.** Why does `CountVectorizer` return a sparse matrix?
+
+::: {.sb-quiz-options}
+- Because the counts are not integers
+- Because each document uses only a few words of the vocabulary, so the matrix is almost full of zeros
+- Because scikit-learn cannot store text
+- To hide the vocabulary
+:::
+
+::: {.sb-quiz-explain}
+A sparse matrix stores only the non-zero values and their positions. On a real corpus, often less than 1% of the cells are non-zero, and the dense matrix may not fit in memory.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Natural language processing exercises →](../exercises/obi-wan-kenobi.ipynb)**
+:::

@@ -419,3 +419,111 @@ website:
                       href: courses/ml/10-conversion-challenge/lessons/the-challenge.ipynb
                     - text: "Starter notebook"
                       href: courses/ml/10-conversion-challenge/lessons/starter-notebook.ipynb
+    - id: uml
+      title: "04 · Unsupervised Machine Learning"
+      style: floating
+      contents:
+        - text: "All courses"
+          href: courses/index.qmd
+        - text: "Overview"
+          href: courses/uml/index.qmd
+        - section: "Clustering"
+          contents:
+            - section: "1. K-Means"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "K-Means"
+                      href: courses/uml/01-kmeans/lessons/kmeans.ipynb
+                    - text: "K-Means with scikit-learn"
+                      href: courses/uml/01-kmeans/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/uml/01-kmeans/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "Know your customers"
+                      href: courses/uml/01-kmeans/exercises/know-your-customers.ipynb
+                    - text: "Handwritten digits"
+                      href: courses/uml/01-kmeans/exercises/digits.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "Know your customers"
+                      href: courses/uml/01-kmeans/solutions/know-your-customers.ipynb
+                    - text: "Handwritten digits"
+                      href: courses/uml/01-kmeans/solutions/digits.ipynb
+            - section: "2. DBSCAN"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "DBSCAN"
+                      href: courses/uml/02-dbscan/lessons/dbscan.ipynb
+                    - text: "DBSCAN with scikit-learn"
+                      href: courses/uml/02-dbscan/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/uml/02-dbscan/quiz/quiz.qmd
+                - text: "Exercises"
+                  href: courses/uml/02-dbscan/exercises/911-emergencies.ipynb
+                - text: "Solutions"
+                  href: courses/uml/02-dbscan/solutions/911-emergencies.ipynb
+        - section: "Dimensionality reduction"
+          contents:
+            - section: "3. Principal component analysis"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Principal component analysis"
+                      href: courses/uml/03-pca/lessons/pca.ipynb
+                    - text: "PCA with scikit-learn"
+                      href: courses/uml/03-pca/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/uml/03-pca/quiz/quiz.qmd
+                - section: "Exercises"
+                  contents:
+                    - text: "House prices"
+                      href: courses/uml/03-pca/exercises/house-prices.ipynb
+                    - text: "Noise cancellation"
+                      href: courses/uml/03-pca/exercises/noise-cancellation.ipynb
+                - section: "Solutions"
+                  contents:
+                    - text: "House prices"
+                      href: courses/uml/03-pca/solutions/house-prices.ipynb
+                    - text: "Noise cancellation"
+                      href: courses/uml/03-pca/solutions/noise-cancellation.ipynb
+        - section: "Text"
+          contents:
+            - section: "4. Natural language processing"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "NLP basics"
+                      href: courses/uml/04-nlp/lessons/nlp-basics.ipynb
+                    - text: "NLP with spaCy and scikit-learn"
+                      href: courses/uml/04-nlp/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/uml/04-nlp/quiz/quiz.qmd
+                - text: "Exercises"
+                  href: courses/uml/04-nlp/exercises/obi-wan-kenobi.ipynb
+                - text: "Solutions"
+                  href: courses/uml/04-nlp/solutions/obi-wan-kenobi.ipynb
+            - section: "5. Topic modeling"
+              contents:
+                - section: "Lessons"
+                  contents:
+                    - text: "Latent semantic analysis"
+                      href: courses/uml/05-topic-modeling/lessons/lsa.ipynb
+                    - text: "LSA with scikit-learn"
+                      href: courses/uml/05-topic-modeling/lessons/workflow.ipynb
+                - text: "Quiz"
+                  href: courses/uml/05-topic-modeling/quiz/quiz.qmd
+                - text: "Exercises"
+                  href: courses/uml/05-topic-modeling/exercises/topic-modeling.ipynb
+                - text: "Solutions"
+                  href: courses/uml/05-topic-modeling/solutions/topic-modeling.ipynb
+        - section: "Projects"
+          contents:
+            - section: "6. Project: Uber pickups"
+              contents:
+                - text: "Lesson"
+                  href: courses/uml/06-uber-pickups/lessons/uber-pickups.ipynb
+                - text: "Solution"
+                  href: courses/uml/06-uber-pickups/solutions/uber-pickups.ipynb

@@ -1,0 +1,140 @@
+---
+title: "Topic modeling: quiz"
+subtitle: "Unsupervised Machine Learning · Section 5 · Quiz"
+description: "Check what you learned: Find the hidden topics of a collection of texts with latent semantic analysis (LSA)."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/lsa.ipynb)
+:::
+
+8 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What is LSA, in one sentence?
+
+::: {.sb-quiz-options}
+- A supervised model that predicts the topic of a document
+- A truncated SVD of the document-term matrix: a PCA-like reduction applied to word counts or TF-IDF
+- A clustering algorithm that puts each document in exactly one topic
+- A neural network that reads the words in order
+:::
+
+::: {.sb-quiz-explain}
+LSA decomposes the document-term matrix as $A \approx U_k\Sigma_kV_k^\top$, with the same tool as PCA (but without centering the data). It uses no label, and a document gets a coordinate on every topic.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**2.** Why are document-term matrices stored as sparse matrices?
+
+::: {.sb-quiz-options}
+- Because TF-IDF values are always very small
+- Because scikit-learn can't handle NumPy arrays
+- Because almost all their values are zeros: each document uses only a few words of the vocabulary
+- Because it keeps the order of the words
+:::
+
+::: {.sb-quiz-explain}
+On the 2,400 newsgroup messages, 99.58% of the TF-IDF values are zeros. A sparse matrix stores only the non-zero values and their positions: 1.3 MB instead of 200.1 MB, and faster products.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**3.** In $A \approx U_k\Sigma_kV_k^\top$, what does `TruncatedSVD.components_` contain?
+
+::: {.sb-quiz-options}
+- The coordinates of each document on each topic ($U_k\Sigma_k$)
+- The singular values ($\Sigma_k$)
+- The weight of each word in each topic ($V_k^\top$, topics × words)
+- The reconstructed matrix $A_k$
+:::
+
+::: {.sb-quiz-explain}
+`components_` has one row per topic and one column per word. `fit_transform` returns the other side, the documents × topics coordinates $U_k\Sigma_k$.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**4.** Why doesn't `TruncatedSVD` center the data like PCA does?
+
+::: {.sb-quiz-options}
+- Because the TF-IDF values are already centered
+- Because centering would turn almost all the zeros into non-zero values, so the matrix would no longer be sparse
+- Because centering would change the vocabulary
+- It does center the data
+:::
+
+::: {.sb-quiz-explain}
+Subtracting the mean of each column fills the matrix. Without centering, the first component points towards the average document instead.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**5.** On a corpus, the first LSA topic has positive weights on very common words (*know, like, think*) and almost every document has a positive coordinate on it. What is it?
+
+::: {.sb-quiz-options}
+- The most important theme of the corpus
+- An error of the algorithm
+- The "average document" direction: it measures how much a document uses the common words, not what it talks about
+- The topic of the longest document
+:::
+
+::: {.sb-quiz-explain}
+Because the data are not centered, the first component points towards the average document (cosine 0.996 with it on the newsgroups). That's why assigning each document to its largest coordinate puts most documents in topic 1.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**6.** Topic 2 has positive weights on hockey words and negative weights on graphics words. After another run, the signs are reversed. What does it mean?
+
+::: {.sb-quiz-options}
+- The model is broken
+- The documents changed theme
+- Nothing: the sign of an SVD component is arbitrary; only the contrast between the two groups of words matters
+- The hockey words became less important
+:::
+
+::: {.sb-quiz-explain}
+Multiplying a column of $U$ and the same row of $V^\top$ by −1 gives exactly the same product $U\Sigma V^\top$. Read a topic from both ends.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**7.** 10 LSA topics keep only 4.5% of the variance of a TF-IDF matrix. What should you do?
+
+::: {.sb-quiz-options}
+- Keep adding topics until 80% of the variance is explained
+- Nothing special: text is very high-dimensional; choose the number of topics by reading them (are they meaningful, do new ones bring new themes?)
+- Give up: LSA doesn't work on this corpus
+- Standardize the TF-IDF matrix first
+:::
+
+::: {.sb-quiz-explain}
+Each message has many words of its own, so even 100 topics keep only about 22% of the variance. The goal is a few readable themes, not a copy of the matrix.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**8.** How can you group the documents once the LSA topics are computed?
+
+::: {.sb-quiz-options}
+- Assign each document to the topic with its largest coordinate
+- Run a clustering (for example k-means) on the topic coordinates, normalized to length 1
+- Topic modeling is already a clustering, nothing more to do
+- Sort the documents by their first coordinate
+:::
+
+::: {.sb-quiz-explain}
+On the newsgroups, the largest coordinate gives a purity of 0.452 (topic 1 wins almost always), while k-means on the normalized LSA coordinates finds the 6 newsgroups with a purity of 0.875.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Topic modeling exercises →](../exercises/topic-modeling.ipynb)**
+:::

@@ -1,0 +1,140 @@
+---
+title: "DBSCAN: quiz"
+subtitle: "Unsupervised Machine Learning · Section 2 · Quiz"
+description: "Check what you learned: Density-based clustering: clusters of any shape, and noise points."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/dbscan.ipynb)
+:::
+
+8 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** With `eps=1` and `min_samples=5` (scikit-learn), when is a point a core point?
+
+::: {.sb-quiz-options}
+- When it has at least 5 points within a distance of 5
+- When its circle of radius 1 contains at least 5 points, the point itself included
+- When it is at a distance of at most 1 from a core point
+- When it is one of the 5 points closest to the centre of its cluster
+:::
+
+::: {.sb-quiz-explain}
+The neighbourhood of a point is the set of points at a distance at most `eps`. If it contains at least `min_samples` points (scikit-learn counts the point itself), the neighbourhood is dense and the point is a core point.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** A point has only 2 points in its circle, but one of them is a core point. What is it?
+
+::: {.sb-quiz-options}
+- A core point
+- A border point
+- Noise
+- The centre of a new cluster
+:::
+
+::: {.sb-quiz-explain}
+A border point is not dense enough to be a core point, but it is in the neighbourhood of a core point: it joins the cluster of that core point. It does not pass the cluster on to its own neighbours.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**3.** What does the label -1 mean in `labels_`?
+
+::: {.sb-quiz-options}
+- The first cluster
+- A point that could not be computed because of a missing value
+- A noise point: it belongs to no cluster
+- A core point
+:::
+
+::: {.sb-quiz-explain}
+DBSCAN does not force every point into a cluster. Points that are neither core points nor border points are noise, and scikit-learn gives them the label -1. Remember to leave them out when you count the clusters.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**4.** Why does DBSCAN separate two interleaved half-moons when K-Means does not?
+
+::: {.sb-quiz-options}
+- Because DBSCAN is told that there are two clusters
+- Because DBSCAN scales the data automatically
+- Because DBSCAN grows clusters from neighbour to neighbour, so a cluster can have any shape
+- Because DBSCAN runs K-Means several times and keeps the best result
+:::
+
+::: {.sb-quiz-explain}
+K-Means assigns each point to its nearest centroid, so its clusters are round and separated by straight lines. DBSCAN links points that are close to each other, step by step through core points: a cluster can follow a curve, as long as there is no gap wider than `eps`.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** You increase `eps` a lot, keeping `min_samples` fixed. What usually happens?
+
+::: {.sb-quiz-options}
+- More clusters and more noise
+- Fewer, larger clusters that end up merging, and less noise
+- Nothing: `eps` only changes the speed of the algorithm
+- All the points become noise
+:::
+
+::: {.sb-quiz-explain}
+A larger radius gives more points in every neighbourhood: more core points, and clusters that touch each other and merge. With a very large `eps`, everything ends up in one cluster.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**6.** How do you read a good value of `eps` on a k-distance plot?
+
+::: {.sb-quiz-options}
+- It is the highest value of the curve
+- It is the value at the middle of the curve
+- It is around the elbow, where the sorted distances to the k-th neighbour start to rise quickly
+- It is always the value where the curve crosses 1
+:::
+
+::: {.sb-quiz-explain}
+With `k = min_samples`, the curve gives for each point the smallest `eps` that would make it a core point. Points inside clusters have small values; isolated points have large ones. The elbow separates the two. It gives candidates, which you then check against the meaning of the clusters.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**7.** You cluster GPS positions given in degrees (`lat`, `lng`) and want hot spots of 500 m. What do you do?
+
+::: {.sb-quiz-options}
+- `DBSCAN(eps=500, metric="euclidean")` on the degrees
+- `DBSCAN(eps=0.5)` after a `StandardScaler`
+- `DBSCAN(eps=500 / 6_371_000, metric="haversine")` on the coordinates converted to radians
+- `DBSCAN(eps=500, metric="manhattan")` on the degrees
+:::
+
+::: {.sb-quiz-explain}
+Degrees are not a distance: a degree of longitude shrinks with the latitude. The haversine distance measures the distance on the sphere. In scikit-learn it takes `[lat, lng]` in radians and returns an angle, so the radius in metres is divided by the radius of the Earth (6,371,000 m).
+:::
+:::
+
+::: {.sb-quiz-q data-answer="3"}
+**8.** In which situation does DBSCAN struggle?
+
+::: {.sb-quiz-options}
+- When the clusters are not round
+- When the data contains outliers
+- When the number of clusters is unknown
+- When the clusters have very different densities
+:::
+
+::: {.sb-quiz-explain}
+`eps` and `min_samples` define one density for the whole dataset. A value that suits a tight cluster cuts a spread-out cluster into noise; a value that suits the spread-out cluster merges tight clusters that are close to each other. HDBSCAN is a variant that adapts to the local density.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: DBSCAN exercises →](../exercises/911-emergencies.ipynb)**
+:::

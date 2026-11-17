@@ -40,14 +40,15 @@ page-layout: custom
     </div>
     <span class="go">Start →</span>
   </a>
-  <div class="sb-course soon">
+  <a class="sb-course" href="uml/index.html">
     <span class="num">04</span>
     <div>
       <h2>Unsupervised Machine Learning</h2>
-      <p>Clustering and dimensionality reduction: find structure in data without labels.</p>
-      <span class="meta">Coming soon</span>
+      <p>Clustering, dimensionality reduction and topics in texts: find structure in data without labels.</p>
+      <span class="meta">6 sections · after Supervised ML</span>
     </div>
-  </div>
+    <span class="go">Start →</span>
+  </a>
   <div class="sb-course soon">
     <span class="num">05</span>
     <div>

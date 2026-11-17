@@ -1,0 +1,140 @@
+---
+title: "Principal component analysis: quiz"
+subtitle: "Unsupervised Machine Learning · Section 3 · Quiz"
+description: "Check what you learned: Reduce the number of variables while keeping most of the information."
+include-after-body:
+  text: '<script src="../../../../assets/js/quiz.js"></script>'
+---
+
+::: {.sb-lesson-links}
+[← Lesson](../lessons/pca.ipynb)
+:::
+
+8 questions. Click an answer to check it: you will see right away whether it is correct, with a short explanation. Nothing is saved.
+
+::: {.sb-quiz-q data-answer="1"}
+**1.** What is the first principal component?
+
+::: {.sb-quiz-options}
+- The original variable with the largest variance
+- The direction along which the projected data has the largest variance
+- The direction that best separates the classes
+- The average of all the variables
+:::
+
+::: {.sb-quiz-explain}
+PCA turns an axis through the centre of the cloud and keeps the direction where the projections are the most spread out. It is a combination of all the variables, and PCA never uses the labels.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**2.** What is on the diagonal of a covariance matrix?
+
+::: {.sb-quiz-options}
+- The correlations between pairs of variables
+- The variance of each variable
+- Only zeros
+- The means of the variables
+:::
+
+::: {.sb-quiz-explain}
+The diagonal holds the variances; the other cells hold the covariances between pairs of variables. The matrix is symmetric because Cov(x, y) = Cov(y, x).
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**3.** In PCA, what does the eigenvalue of a component tell you?
+
+::: {.sb-quiz-options}
+- The angle of the component
+- The number of variables that drive the component
+- The variance of the data along this component
+- The accuracy of a model trained on this component
+:::
+
+::: {.sb-quiz-explain}
+If C u = λ u with u of length 1, then the variance of the projections, uᵀ C u, is equal to λ. scikit-learn stores the eigenvalues in `explained_variance_`, and their shares in `explained_variance_ratio_`.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**4.** What does the covariance matrix of the principal components look like?
+
+::: {.sb-quiz-options}
+- The same as the covariance matrix of the original variables
+- All its values are equal to 1
+- It is diagonal: the components are uncorrelated, and the diagonal holds the eigenvalues
+- It is full of large negative values
+:::
+
+::: {.sb-quiz-explain}
+PCA rotates the cloud so that its axes become the new variables. They are uncorrelated, sorted by decreasing variance, and the total variance is unchanged.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**5.** A dataset has a `price` column in euros (values in the thousands) and a `rating` from 1 to 5. What happens if you run a PCA without standardising?
+
+::: {.sb-quiz-options}
+- Nothing, PCA is not sensitive to the units
+- The first component will be almost only `price`, because its variance is much larger
+- PCA will fail with an error
+- The first component will be almost only `rating`
+:::
+
+::: {.sb-quiz-explain}
+PCA looks for variance, and a variable in large units has a large variance just because of its unit. Standardise first, unless all the variables share the same unit and their spread is meaningful (like the pixels of an image).
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**6.** `PCA(n_components=0.9)` means...
+
+::: {.sb-quiz-options}
+- Keep 90% of the variables
+- Keep 9 components
+- Keep the smallest number of components that explains at least 90% of the variance
+- Drop the components that explain less than 0.9% of the variance
+:::
+
+::: {.sb-quiz-explain}
+An integer gives the number of components; a float between 0 and 1 gives the share of variance to keep. After fitting, `n_components_` tells how many components were kept.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="1"}
+**7.** You keep 5 components out of 20 and call `inverse_transform`. What do you get?
+
+::: {.sb-quiz-options}
+- The original data, exactly
+- An approximation of the original data, rebuilt from the 5 components only
+- The 5 components
+- The covariance matrix
+:::
+
+::: {.sb-quiz-explain}
+`inverse_transform` goes back to the original variables: x̂ = mean + z₁u₁ + … + z₅u₅. The error comes from the 15 dropped components: its size is the variance they carried.
+:::
+:::
+
+::: {.sb-quiz-q data-answer="2"}
+**8.** Why can PCA remove noise from images?
+
+::: {.sb-quiz-options}
+- Because it deletes the pixels with the most noise
+- Because it standardises the pixels
+- Because the noise spreads evenly over all the components, while the shapes of the images are concentrated in the first ones
+- Because the labels tell PCA which pixels are noise
+:::
+
+::: {.sb-quiz-explain}
+Random noise has no favourite direction. The signal (the strokes of the digits) is strongly correlated between pixels, so a few components hold most of it. Keeping these components and rebuilding the images with `inverse_transform` removes most of the noise.
+:::
+:::
+
+::: {.sb-quiz-score}
+:::
+
+::: {.sb-next}
+**[Next: Principal component analysis exercises →](../exercises/house-prices.ipynb)**
+:::
