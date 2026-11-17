@@ -1,6 +1,6 @@
 ---
 pagetitle: "About"
-description: "Applied mathematics engineer (Télécom Paris), 10 years in AI R&D, now building multimodal brain imaging pipelines in health AI."
+description: "Engineer in applied mathematics, 10 years in AI R&D, now building multimodal brain imaging pipelines in health AI."
 page-layout: custom
 image: assets/photo.jpg
 ---
@@ -21,7 +21,7 @@ image: assets/photo.jpg
 </section>
 
 <section class="sb-story">
-  <p><strong>Hi, I'm Sabrine.</strong> I'm an engineer in applied mathematics by training (Télécom Paris). For 10 years I've worked in innovation and R&amp;D teams, on the part of AI that most people skip: making something that works in a notebook work in the real world.</p>
+  <p><strong>Hi, I'm Sabrine.</strong> I'm an engineer in applied mathematics. For 10 years I've worked in innovation and R&amp;D teams, on the part of AI that most people skip: making something that works in a notebook work in the real world.</p>
   <p>I started in energy, then moved to water networks, where I contributed to a patent on leak prediction. Those years taught me that a model is only the beginning. The pipeline, the monitoring and the people who use it matter just as much.</p>
   <p>Then I wanted to point what I knew at <span class="hl">health</span>. I went back to study, with a Master's in computational neuroscience at CentraleSupélec, and moved into biosignals and medical imaging with AI startups. Today I build pipelines for multimodal brain imaging (MEG, functional MRI and structural MRI) that work for both sides: rigorous enough for research, robust enough for a product.</p>
   <p>Along the way I never stopped teaching. I've trained more than 500 people on DataILearn, the learning platform I built and ran, and I teach teams, bootcamp learners and university students. I write for Towards Data Science, and I share my courses here for free. I also help open the door for more women in tech, as a Google Women Techmakers Ambassador and president of the Descodeuses association.</p>
@@ -33,7 +33,7 @@ image: assets/photo.jpg
   <div class="sb-path">
     <div>
       <span class="y">2016</span>
-      <span class="w">Engineering degree in applied mathematics, Télécom Paris</span>
+      <span class="w">Master's in applied mathematics</span>
       <span class="d">The foundation.</span>
     </div>
     <div>
