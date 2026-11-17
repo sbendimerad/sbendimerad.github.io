@@ -23,7 +23,7 @@ listing:
     <span class="sb-eyebrow">Engineer · Researcher · Writer · Lecturer</span>
     <h1>I take AI from research to <span class="hl">production</span>.</h1>
     <p><strong>Hi, I'm Sabrine.</strong> An applied mathematics engineer by training, I've spent 10 years taking machine learning to production: at EDF, where I was tech lead, then at SAUR on water networks, where I contributed to a patent on leak prediction.</p>
-    <p>In 2024 I chose to bring this to the brain: EEG signal quality with a biosignals startup, a Master's in computational neuroscience at CentraleSupélec, then CEA, where I work on multimodal brain imaging (MEG, fMRI, structural MRI), including upstream work for a brain–computer interface application in stroke. Rigorous enough for research, robust enough for a product.</p>
+    <p>In 2024 I worked with a biosignals startup on EEG data, and it made me want to switch my field of application to the brain. So I went back to study alongside it, with a Master's in computational neuroscience at CentraleSupélec, then joined CEA, where I work on multimodal brain imaging (MEG, fMRI, structural MRI), including upstream work for a brain–computer interface application in stroke. Rigorous enough for research, robust enough for a product.</p>
     <p>Along the way, I teach, write, and help open the door for more women in tech.</p>
     <div class="sb-btns">
       <a class="sb-btn sb-btn-primary" href="work-with-me.html">Work with me</a>
@@ -66,7 +66,7 @@ listing:
     <div>
       <span class="org">SAUR</span>
       <h3>Leak prediction</h3>
-      <p>From sensor and satellite data. Industrialised and patented.</p>
+      <p>From geospatial and satellite data. Industrialised and patented.</p>
     </div>
     <div>
       <span class="org">EDF</span>

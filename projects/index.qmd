@@ -33,10 +33,10 @@ A card without a link uses <div class="sb-card"> instead of <a>.
     <div class="sb-tags"><span class="sb-tag">signal processing</span><span class="sb-tag">open source</span></div>
   </a>
 
-  <a class="sb-card" href="https://github.com/sbendimerad/mfa-internship/blob/main/src/mvmd.py">
+  <a class="sb-card" href="https://github.com/sbendimerad/mvmd-torch">
     <span class="sb-label">Implementation</span>
     <h3>MVMD in PyTorch</h3>
-    <p>Multivariate variational mode decomposition in PyTorch, GPU-accelerated and about 10× faster than the existing CPU version. Used to extract shared oscillatory modes across 306 MEG sensors.</p>
+    <p>Multivariate variational mode decomposition in PyTorch, GPU-accelerated. Used to extract shared oscillatory modes across 306 MEG sensors.</p>
     <div class="sb-tags"><span class="sb-tag">signal processing</span><span class="sb-tag">PyTorch</span><span class="sb-tag">MEG</span></div>
   </a>
 
