@@ -311,7 +311,7 @@ COURSES = {
         "number": "04",
         "subtitle": "Course 04 · after Supervised Machine Learning",
         "intro": "Find structure in data without labels: clustering with K-Means and DBSCAN, dimensionality reduction "
-                 "with PCA, then text: NLP basics and topic modeling, and a project. "
+                 "with PCA, then text: NLP basics and topic modeling, and two projects. "
                  "Each section has **lessons**, a **quiz**, **exercises** and their **solutions**.",
         "sections": [
             {"part": "Clustering", "slug": "kmeans", "title": "K-Means",
@@ -375,6 +375,11 @@ COURSES = {
              "lessons": [{"path": "unsupervised/projects/uber_pickups/uber_pickups.ipynb"}],
              "exercises": [{"slug": "uber-pickups", "title": "Uber pickups",
                             "solution": "unsupervised/projects/uber_pickups/uber_pickups_solution.ipynb"}]},
+            {"part": "Projects", "slug": "outdoor-catalog", "title": "Project: an outdoor shop catalogue",
+             "description": "Group products by their descriptions, build a recommender, and find the topics of a catalogue.",
+             "lessons": [{"path": "unsupervised/projects/outdoor_catalog/outdoor_catalog.ipynb"}],
+             "exercises": [{"slug": "outdoor-catalog", "title": "Outdoor catalogue",
+                            "solution": "unsupervised/projects/outdoor_catalog/outdoor_catalog_solution.ipynb"}]},
         ],
     },
 }

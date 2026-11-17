@@ -45,7 +45,7 @@ page-layout: custom
     <div>
       <h2>Unsupervised Machine Learning</h2>
       <p>Clustering, dimensionality reduction and topics in texts: find structure in data without labels.</p>
-      <span class="meta">6 sections · after Supervised ML</span>
+      <span class="meta">7 sections · after Supervised ML</span>
     </div>
     <span class="go">Start →</span>
   </a>

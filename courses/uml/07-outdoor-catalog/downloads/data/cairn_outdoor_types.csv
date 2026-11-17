@@ -1,0 +1,305 @@
+id,type,theme
+1,base layer,winter
+2,daypack,winter
+3,trail shoe,winter
+4,boot,winter
+5,leggings,climbing
+6,leggings,running
+7,t-shirt,running
+8,leggings,winter
+9,hiking pants,running
+10,trekking pack,travel
+11,sleeping pad,climbing
+12,trail shoe,winter
+13,daypack,travel
+14,sleeping pad,winter
+15,t-shirt,climbing
+16,rain jacket,running
+17,sleeping pad,travel
+18,base layer,travel
+19,rain jacket,climbing
+20,insulated jacket,climbing
+21,sleeping pad,winter
+22,trail shoe,winter
+23,base layer,winter
+24,sleeping bag,winter
+25,trekking pack,running
+26,hiking pants,climbing
+27,fleece,winter
+28,boot,travel
+29,sleeping pad,winter
+30,boot,travel
+31,sleeping pad,travel
+32,base layer,winter
+33,daypack,travel
+34,fleece,climbing
+35,rain jacket,running
+36,tent,climbing
+37,rain jacket,winter
+38,trail shoe,winter
+39,accessory,running
+40,sleeping bag,climbing
+41,sleeping pad,climbing
+42,tent,winter
+43,sleeping bag,running
+44,hiking pants,climbing
+45,rain jacket,climbing
+46,t-shirt,winter
+47,leggings,travel
+48,tent,running
+49,insulated jacket,travel
+50,shorts,running
+51,trail shoe,winter
+52,insulated jacket,running
+53,sleeping pad,running
+54,rain jacket,running
+55,fleece,climbing
+56,sleeping bag,climbing
+57,boot,winter
+58,shorts,winter
+59,trekking pack,winter
+60,base layer,running
+61,trekking pack,running
+62,trekking pack,winter
+63,insulated jacket,running
+64,base layer,climbing
+65,hiking pants,winter
+66,daypack,travel
+67,hiking pants,climbing
+68,accessory,running
+69,accessory,travel
+70,sleeping pad,winter
+71,sleeping pad,winter
+72,insulated jacket,travel
+73,t-shirt,climbing
+74,insulated jacket,travel
+75,fleece,climbing
+76,tent,winter
+77,sleeping pad,running
+78,trekking pack,running
+79,insulated jacket,climbing
+80,leggings,climbing
+81,trail shoe,winter
+82,insulated jacket,climbing
+83,trail shoe,travel
+84,daypack,travel
+85,hiking pants,running
+86,shorts,running
+87,daypack,travel
+88,accessory,running
+89,sleeping bag,travel
+90,shorts,climbing
+91,leggings,winter
+92,sleeping pad,running
+93,t-shirt,running
+94,sleeping bag,running
+95,boot,climbing
+96,leggings,travel
+97,shorts,winter
+98,accessory,running
+99,fleece,travel
+100,sleeping bag,running
+101,accessory,climbing
+102,tent,travel
+103,daypack,travel
+104,daypack,climbing
+105,shorts,travel
+106,fleece,travel
+107,leggings,winter
+108,rain jacket,travel
+109,trekking pack,running
+110,t-shirt,running
+111,daypack,running
+112,fleece,running
+113,base layer,winter
+114,leggings,climbing
+115,trail shoe,climbing
+116,sleeping bag,winter
+117,accessory,climbing
+118,sleeping bag,running
+119,daypack,travel
+120,boot,climbing
+121,insulated jacket,travel
+122,t-shirt,travel
+123,trekking pack,travel
+124,sleeping bag,travel
+125,shorts,winter
+126,leggings,travel
+127,base layer,winter
+128,daypack,winter
+129,boot,travel
+130,hiking pants,running
+131,rain jacket,running
+132,base layer,winter
+133,hiking pants,winter
+134,trekking pack,winter
+135,daypack,winter
+136,rain jacket,running
+137,hiking pants,travel
+138,accessory,travel
+139,base layer,running
+140,base layer,travel
+141,sleeping bag,winter
+142,tent,winter
+143,daypack,running
+144,boot,travel
+145,fleece,running
+146,accessory,climbing
+147,rain jacket,winter
+148,hiking pants,travel
+149,sleeping bag,running
+150,rain jacket,running
+151,trekking pack,winter
+152,shorts,running
+153,insulated jacket,winter
+154,insulated jacket,winter
+155,t-shirt,travel
+156,boot,winter
+157,tent,running
+158,insulated jacket,winter
+159,trail shoe,travel
+160,sleeping pad,climbing
+161,boot,winter
+162,t-shirt,travel
+163,fleece,winter
+164,rain jacket,climbing
+165,boot,running
+166,hiking pants,running
+167,trekking pack,winter
+168,t-shirt,running
+169,rain jacket,running
+170,tent,travel
+171,base layer,travel
+172,fleece,travel
+173,rain jacket,travel
+174,daypack,climbing
+175,fleece,travel
+176,sleeping bag,travel
+177,accessory,running
+178,sleeping pad,climbing
+179,shorts,running
+180,tent,running
+181,base layer,climbing
+182,accessory,travel
+183,sleeping pad,winter
+184,shorts,running
+185,sleeping bag,climbing
+186,tent,travel
+187,sleeping bag,winter
+188,fleece,running
+189,shorts,climbing
+190,leggings,travel
+191,trail shoe,travel
+192,sleeping bag,travel
+193,leggings,travel
+194,hiking pants,climbing
+195,trail shoe,climbing
+196,hiking pants,running
+197,sleeping bag,travel
+198,t-shirt,winter
+199,sleeping bag,travel
+200,daypack,climbing
+201,insulated jacket,running
+202,trekking pack,climbing
+203,hiking pants,travel
+204,rain jacket,climbing
+205,t-shirt,winter
+206,boot,travel
+207,hiking pants,travel
+208,accessory,running
+209,trail shoe,climbing
+210,trail shoe,travel
+211,base layer,winter
+212,fleece,running
+213,fleece,climbing
+214,t-shirt,climbing
+215,accessory,travel
+216,leggings,travel
+217,tent,winter
+218,insulated jacket,climbing
+219,trail shoe,winter
+220,leggings,travel
+221,leggings,climbing
+222,t-shirt,winter
+223,trekking pack,running
+224,hiking pants,winter
+225,tent,running
+226,shorts,running
+227,boot,running
+228,accessory,winter
+229,tent,climbing
+230,rain jacket,winter
+231,base layer,winter
+232,tent,winter
+233,t-shirt,climbing
+234,daypack,running
+235,shorts,travel
+236,leggings,climbing
+237,trail shoe,running
+238,accessory,winter
+239,leggings,running
+240,trail shoe,running
+241,t-shirt,travel
+242,t-shirt,climbing
+243,accessory,climbing
+244,rain jacket,winter
+245,shorts,running
+246,hiking pants,winter
+247,insulated jacket,running
+248,base layer,climbing
+249,daypack,climbing
+250,sleeping pad,climbing
+251,base layer,winter
+252,rain jacket,travel
+253,shorts,running
+254,boot,running
+255,trekking pack,travel
+256,fleece,climbing
+257,hiking pants,running
+258,boot,winter
+259,fleece,winter
+260,fleece,running
+261,trail shoe,winter
+262,shorts,running
+263,insulated jacket,winter
+264,trekking pack,winter
+265,daypack,winter
+266,leggings,travel
+267,sleeping pad,climbing
+268,tent,running
+269,insulated jacket,climbing
+270,insulated jacket,climbing
+271,shorts,running
+272,trekking pack,winter
+273,boot,running
+274,boot,travel
+275,leggings,winter
+276,boot,winter
+277,trekking pack,running
+278,hiking pants,running
+279,tent,winter
+280,sleeping pad,climbing
+281,shorts,climbing
+282,trail shoe,running
+283,base layer,climbing
+284,insulated jacket,climbing
+285,daypack,winter
+286,accessory,travel
+287,trekking pack,travel
+288,accessory,winter
+289,fleece,winter
+290,tent,winter
+291,t-shirt,winter
+292,base layer,travel
+293,t-shirt,climbing
+294,accessory,running
+295,sleeping pad,climbing
+296,boot,winter
+297,sleeping bag,climbing
+298,rain jacket,running
+299,tent,winter
+300,trail shoe,climbing
+301,tent,climbing
+302,shorts,travel
+303,fleece,travel
+304,trekking pack,winter

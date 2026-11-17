@@ -527,3 +527,9 @@ website:
                   href: courses/uml/06-uber-pickups/lessons/uber-pickups.ipynb
                 - text: "Solution"
                   href: courses/uml/06-uber-pickups/solutions/uber-pickups.ipynb
+            - section: "7. Project: an outdoor shop catalogue"
+              contents:
+                - text: "Lesson"
+                  href: courses/uml/07-outdoor-catalog/lessons/outdoor-catalog.ipynb
+                - text: "Solution"
+                  href: courses/uml/07-outdoor-catalog/solutions/outdoor-catalog.ipynb
