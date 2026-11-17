@@ -45,8 +45,7 @@ page-layout: custom
 </section>
 
 <section class="sb-clients">
-  <p class="k">I've trained and worked with</p>
-  <p class="v">Jedha · EFREI · PSB · Université Paris Cité</p>
+  <p class="v" style="font-weight:400">I've trained and taught with Jedha, Simplon, OpenClassrooms, AdaTech, Université Paris Cité, EFREI, Paris School of Business and others, and supported startups through the AI Forge incubator.</p>
 </section>
 
 <section class="sb-contact">

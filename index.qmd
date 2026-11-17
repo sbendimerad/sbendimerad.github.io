@@ -22,8 +22,8 @@ listing:
   <div class="sb-hero-text">
     <span class="sb-eyebrow">Engineer · Researcher · Writer · Lecturer</span>
     <h1>I take AI from research to <span class="hl">production</span>.</h1>
-    <p><strong>Hi, I'm Sabrine.</strong> An engineer in applied mathematics, I've spent 10 years in innovation and R&amp;D teams, first in energy, then on water networks, where I contributed to a patent on leak prediction.</p>
-    <p>Then I wanted to point what I knew at health. I completed a Master's in computational neuroscience at CentraleSupélec and moved into biosignals and medical imaging with AI startups. Today I build pipelines for multimodal brain imaging (MEG, fMRI and structural MRI) that work for both sides: rigorous enough for research, robust enough for a product.</p>
+    <p><strong>Hi, I'm Sabrine.</strong> An applied mathematics engineer by training, I've spent 10 years taking machine learning to production: at EDF, where I was tech lead, then at SAUR on water networks, where I contributed to a patent on leak prediction.</p>
+    <p>In 2024 I chose to bring this to the brain: EEG signal quality with a biosignals startup, a Master's in computational neuroscience at CentraleSupélec, then CEA, where I work on multimodal brain imaging (MEG, fMRI, structural MRI), including upstream work for a brain–computer interface application in stroke. Rigorous enough for research, robust enough for a product.</p>
     <p>Along the way, I teach, write, and help open the door for more women in tech.</p>
     <div class="sb-btns">
       <a class="sb-btn sb-btn-primary" href="work-with-me.html">Work with me</a>
@@ -45,7 +45,35 @@ listing:
     <div><span class="n">500+</span><span class="l">People trained</span></div>
     <div><span class="n">30</span><span class="l">Articles published</span></div>
   </div>
-  <p class="sb-logos">Trained and taught with Jedha · EFREI · PSB · Université Paris Cité — and writing for Towards Data Science</p>
+  <p class="sb-logos">Trained and taught with Jedha · Simplon · OpenClassrooms · Université Paris Cité · EFREI and more — and writing for Towards Data Science</p>
+</section>
+
+<section class="sb-section">
+  <div class="sb-head">
+    <h2 class="sb-h2">Shipped to production</h2>
+  </div>
+  <div class="sb-shipped">
+    <div>
+      <span class="org">EDF</span>
+      <h3>Power-plant classification, Iberian electricity market</h3>
+      <p>2nd prize out of 63 teams in the EDF Group Data Science Challenge, then put into production.</p>
+    </div>
+    <div>
+      <span class="org">EDF</span>
+      <h3>AIOps</h3>
+      <p>Anomaly detection on servers and CPU-overload forecasting. I led the design and deployment.</p>
+    </div>
+    <div>
+      <span class="org">SAUR</span>
+      <h3>Leak prediction</h3>
+      <p>From sensor and satellite data. Industrialised and patented.</p>
+    </div>
+    <div>
+      <span class="org">EDF</span>
+      <h3>Web-analytics data pipeline</h3>
+      <p>Comscore → Google Analytics, migrated to Google Cloud, industrialised.</p>
+    </div>
+  </div>
 </section>
 ```
 

@@ -1,6 +1,6 @@
 ---
 pagetitle: "About"
-description: "Engineer in applied mathematics, 10 years in AI R&D, now building multimodal brain imaging pipelines in health AI."
+description: "Applied mathematics engineer, 10 years taking ML to production at EDF and SAUR, now a research engineer in multimodal brain imaging at CEA."
 page-layout: custom
 image: assets/photo.jpg
 ---
@@ -21,10 +21,10 @@ image: assets/photo.jpg
 </section>
 
 <section class="sb-story">
-  <p><strong>Hi, I'm Sabrine.</strong> I'm an engineer in applied mathematics. For 10 years I've worked in innovation and R&amp;D teams, on the part of AI that most people skip: making something that works in a notebook work in the real world.</p>
-  <p>I started in energy, then moved to water networks, where I contributed to a patent on leak prediction. Those years taught me that a model is only the beginning. The pipeline, the monitoring and the people who use it matter just as much.</p>
-  <p>Then I wanted to point what I knew at <span class="hl">health</span>. I went back to study, with a Master's in computational neuroscience at CentraleSupélec, and moved into biosignals and medical imaging with AI startups. Today I build pipelines for multimodal brain imaging (MEG, functional MRI and structural MRI) that work for both sides: rigorous enough for research, robust enough for a product.</p>
-  <p>Along the way I never stopped teaching. I've trained more than 500 people on DataILearn, the learning platform I built and ran, and I teach teams, bootcamp learners and university students. I write for Towards Data Science, and I share my courses here for free. I also help open the door for more women in tech, as a Google Women Techmakers Ambassador and president of the Descodeuses association.</p>
+  <p><strong>Hi, I'm Sabrine.</strong> I'm an applied mathematics engineer by training. For 10 years I've worked on the part of AI that most people skip: making something that works in a notebook work in the real world.</p>
+  <p>I spent five years at EDF, as an AI engineer and then tech lead: AIOps, production pipelines, and a model from the Group's data science challenge taken all the way to production. Then I joined SAUR, on water networks, where I took leak prediction to production and contributed to a patent. Those years taught me that a model is only the beginning. The pipeline, the monitoring and the people who use it matter just as much.</p>
+  <p>In 2024 I chose to bring this to the <span class="hl">brain</span>: EEG signal quality with a biosignals startup, then a Master's in computational neuroscience at CentraleSupélec. Today I'm a research engineer at CEA, working on multimodal brain imaging (MEG, functional MRI and structural MRI), including upstream work for a brain–computer interface application in stroke. Rigorous enough for research, robust enough for a product.</p>
+  <p>Along the way I never stopped teaching: more than 500 people trained in bootcamps, universities and engineering schools, and a certified RNCP level-7 Data Science programme I designed for Simplon. I write for Towards Data Science, and I share my courses here for free. I also help open the door for more women in tech, as a Google Women Techmakers Ambassador and president of the Descodeuses association.</p>
   <p>I speak Arabic, French and English, and I work in all three.</p>
 </section>
 
@@ -33,33 +33,33 @@ image: assets/photo.jpg
   <div class="sb-path">
     <div>
       <span class="y">2016</span>
-      <span class="w">Master's in applied mathematics</span>
+      <span class="w">Applied mathematics, Télécom ParisTech</span>
       <span class="d">The foundation.</span>
     </div>
     <div>
       <span class="y">2017 – 2022</span>
-      <span class="w">AI R&amp;D, energy</span>
-      <span class="d">Research projects taken to production.</span>
+      <span class="w">AI Engineer &amp; Tech Lead, EDF</span>
+      <span class="d">AIOps, production pipelines, a challenge model taken to production.</span>
     </div>
     <div>
-      <span class="y">2022 – 2023</span>
-      <span class="w">AI R&amp;D, water networks</span>
-      <span class="d">Leak prediction; contributor to a patent.</span>
-    </div>
-    <div>
-      <span class="y">2024 – 2025</span>
-      <span class="w">Biosignals &amp; medical imaging, AI startups</span>
-      <span class="d">Pipelines between research and product.</span>
+      <span class="y">2022 – 2024</span>
+      <span class="w">Senior AI Engineer, SAUR</span>
+      <span class="d">Leak prediction in production (patent); led an intern and two apprentices.</span>
     </div>
     <div>
       <span class="y">2024 – 2025</span>
-      <span class="w">Master's (M2) in Computational Neuroscience and Neuroengineering, Université Paris-Saclay / CentraleSupélec</span>
+      <span class="w">Biosignals startup</span>
+      <span class="d">EEG signal quality for a wearable headband.</span>
+    </div>
+    <div>
+      <span class="y">2024 – 2025</span>
+      <span class="w">Master's, Computational Neuroscience &amp; Neuroengineering, Université Paris-Saclay / CentraleSupélec</span>
       <span class="d">The step towards health, alongside my work.</span>
     </div>
     <div class="now">
       <span class="y">Now · since 2025</span>
-      <span class="w">Research engineer, health AI</span>
-      <span class="d">Multimodal brain imaging: MEG, fMRI, structural MRI.</span>
+      <span class="w">Research Engineer, CEA</span>
+      <span class="d">Multimodal brain imaging; upstream work for a BCI application in stroke.</span>
     </div>
   </div>
 </section>

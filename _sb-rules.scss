@@ -320,6 +320,17 @@ a:hover { opacity: .8; }
   p { margin: 0; font-size: 15px; line-height: 1.6; color: $sb-text-3; }
 }
 
+.sb-shipped {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+  margin-top: 24px;
+  > div { display: flex; flex-direction: column; gap: 6px; border-top: 2px solid $sb-text; padding-top: 16px; }
+  .org { font-size: 13px; font-weight: 600; color: $sb-accent; letter-spacing: 0.01em; }
+  h3 { margin: 0; font-size: 18px; line-height: 1.35; letter-spacing: -0.01em; }
+  p { margin: 0; font-size: 15px; line-height: 1.6; color: $sb-text-3; }
+}
+
 // ---------- Closing CTA ----------
 .sb-cta {
   margin-top: 96px;
@@ -567,7 +578,7 @@ a.sb-sol-link {
 
 // ---------- Responsive ----------
 @media (max-width: 860px) {
-  .sb-cards, .sb-three, .sb-steps { grid-template-columns: 1fr; }
+  .sb-cards, .sb-three, .sb-steps, .sb-shipped { grid-template-columns: 1fr; }
   .sb-two, .sb-projects { grid-template-columns: 1fr; gap: 32px; }
   .sb-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
   .sb-section { padding-top: 56px; }
